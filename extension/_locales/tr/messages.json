@@ -1,0 +1,64 @@
+{
+  "appName": {
+    "message": "Media Player Accelerator & Optimizer",
+    "description": "The name of the extension"
+  },
+  "appDesc": {
+    "message": "Video arabelleğe alma hızını artırın, oynatma gecikmesini azaltın ve akış performansını optimize edin.",
+    "description": "The description of the extension"
+  },
+  "statusActive": {
+    "message": "Aktif (Pro)",
+    "description": "Active license status"
+  },
+  "statusInactive": {
+    "message": "Pasif",
+    "description": "Inactive license status"
+  },
+  "statusExpired": {
+    "message": "Süresi Dolmuş",
+    "description": "Expired license status"
+  },
+  "enterLicenseKey": {
+    "message": "Lisans anahtarınızı girin",
+    "description": "Placeholder for license input"
+  },
+  "btnActivate": {
+    "message": "Lisansı Doğrula",
+    "description": "Activate button text"
+  },
+  "btnBuy": {
+    "message": "Lisans Anahtarı Satın Al",
+    "description": "Buy license link text"
+  },
+  "btnHelp": {
+    "message": "Destek & Kılavuz",
+    "description": "Help documentation link text"
+  },
+  "deviceInfo": {
+    "message": "Cihaz Kimliği: $ID$",
+    "description": "Device ID label",
+    "placeholders": {
+      "id": {
+        "content": "$1"
+      }
+    }
+  },
+  "licenseExpires": {
+    "message": "Bitiş Tarihi: $DATE$",
+    "description": "License expiry date",
+    "placeholders": {
+      "date": {
+        "content": "$1"
+      }
+    }
+  },
+  "toastSuccess": {
+    "message": "Lisans başarıyla aktifleştirildi!",
+    "description": "Success message"
+  },
+  "toastError": {
+    "message": "Geçersiz lisans veya cihaz sınırına ulaşıldı.",
+    "description": "Error message"
+  }
+}

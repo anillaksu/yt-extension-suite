@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Media Player Accelerator & Optimizer</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <div class="logo-area">
+        <div class="logo-icon">⚡</div>
+        <div>
+          <h1 class="title">YT Accelerator</h1>
+          <span class="badge" id="version-badge">v1.0.0 Pro</span>
+        </div>
+      </div>
+      <div class="header-right">
+        <select id="lang-select" class="lang-dropdown" title="Select Language">
+          <option value="en">🇺🇸 EN</option>
+          <option value="tr">🇹🇷 TR</option>
+          <option value="es">🇪🇸 ES</option>
+          <option value="de">🇩🇪 DE</option>
+        </select>
+        <div class="status-pill" id="status-pill">
+          <span class="status-dot" id="status-dot"></span>
+          <span id="status-text" data-i18n="statusInactive">Inactive</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- License Activation Section (Visible when unverified) -->
+    <section class="card" id="license-section">
+      <div class="card-header">
+        <h3 data-i18n="licenseHeader">🔑 License Activation</h3>
+      </div>
+      <p class="card-desc" data-i18n="licenseDesc">Enter your license key purchased from our official store:</p>
+      
+      <div class="input-group">
+        <input type="text" id="license-input" placeholder="LIC-XXXX-XXXX-XXXX" spellcheck="false" autocomplete="off">
+        <button id="activate-btn" class="btn btn-primary" data-i18n="btnActivate">Activate</button>
+      </div>
+      <div id="license-msg" class="msg-box hidden"></div>
+
+      <div class="support-links">
+        <a href="https://forfor.site" id="buy-license-link" target="_blank" class="text-link" data-i18n="btnBuy">🛒 Get a License Key</a>
+        <span class="dot-separator">•</span>
+        <button id="toggle-advanced" class="text-link-btn" data-i18n="advancedSettings">Advanced</button>
+      </div>
+
+      <!-- Advanced API URL config (hidden by default) -->
+      <div id="advanced-config" class="hidden advanced-box">
+        <label for="custom-api-input" data-i18n="serverUrlLabel">API Endpoint:</label>
+        <input type="text" id="custom-api-input" placeholder="https://yt-license-service-74070171768.europe-west1.run.app">
+        <button id="save-api-btn" class="btn btn-secondary btn-sm" data-i18n="btnSave">Save</button>
+      </div>
+    </section>
+
+    <!-- License Info Card (Visible when active) -->
+    <section class="card hidden" id="license-info-card">
+      <div class="info-row">
+        <span class="info-label" data-i18n="userLabel">User:</span>
+        <span class="info-value" id="user-email">-</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label" data-i18n="expiresLabel">Expires:</span>
+        <span class="info-value" id="expire-date">-</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label" data-i18n="deviceIdLabel">Device ID:</span>
+        <span class="info-value mono" id="device-id-text">-</span>
+      </div>
+    </section>
+
+    <!-- Features & Controls Section -->
+    <section class="card">
+      <div class="card-header">
+        <h3 data-i18n="smartFeaturesHeader">⚙️ Acceleration Engine</h3>
+      </div>
+
+      <div class="toggle-list">
+        <div class="toggle-item">
+          <div class="toggle-label">
+            <strong data-i18n="featureInterceptorTitle">Stream Interceptor Engine</strong>
+            <small data-i18n="featureInterceptorDesc">0ms zero-latency video player pipeline</small>
+          </div>
+          <label class="switch">
+            <input type="checkbox" id="toggle-main" checked>
+            <span class="slider"></span>
+          </label>
+        </div>
+
+        <div class="toggle-item">
+          <div class="toggle-label">
+            <strong data-i18n="featureBannerTitle">Visual Cleaner & Optimizer</strong>
+            <small data-i18n="featureBannerDesc">Cleans sidebar clutter and optimizes layout</small>
+          </div>
+          <label class="switch">
+            <input type="checkbox" id="toggle-banner" checked>
+            <span class="slider"></span>
+          </label>
+        </div>
+
+        <div class="toggle-item">
+          <div class="toggle-label">
+            <strong data-i18n="featureShieldTitle">Anti-Interruption Shield</strong>
+            <small data-i18n="featureShieldDesc">Auto-dismisses playback interruption modals</small>
+          </div>
+          <label class="switch">
+            <input type="checkbox" id="toggle-shield" checked>
+            <span class="slider"></span>
+          </label>
+        </div>
+
+        <div class="toggle-item">
+          <div class="toggle-label">
+            <strong data-i18n="featureSpeedTitle">16x Fast-Forward Accelerator</strong>
+            <small data-i18n="featureSpeedDesc">Auto-skips buffer stalls and stream pauses</small>
+          </div>
+          <label class="switch">
+            <input type="checkbox" id="toggle-speed" checked>
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <span>YT Accelerator Suite</span>
+      <span class="footer-links">
+        <a href="https://anillaksu.github.io/yt-accelerator-support/" id="docs-support-link" target="_blank" data-i18n="btnSupport">Support & Docs</a>
+      </span>
+    </footer>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

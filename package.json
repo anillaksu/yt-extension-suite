@@ -1,0 +1,28 @@
+{
+  "name": "yt-extension-suite",
+  "version": "1.0.0",
+  "description": "Commercial YouTube Media Player Accelerator & Monetized Extension Suite",
+  "main": "backend/server.js",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build-extension.js",
+    "build:icons": "node scripts/generate-icons.js",
+    "dev:backend": "cd backend && npm run dev",
+    "start:backend": "cd backend && npm start",
+    "deploy:gcp": "powershell -ExecutionPolicy Bypass -File scripts/deploy-gcp.ps1"
+  },
+  "devDependencies": {
+    "archiver": "^7.0.1",
+    "javascript-obfuscator": "^4.1.1"
+  },
+  "keywords": [
+    "youtube",
+    "accelerator",
+    "chrome-extension",
+    "manifest-v3",
+    "shopify-licensing"
+  ],
+  "author": "Anil Aksu",
+  "license": "UNLICENSED",
+  "private": true
+}

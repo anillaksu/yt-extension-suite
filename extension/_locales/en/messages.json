@@ -1,0 +1,64 @@
+{
+  "appName": {
+    "message": "Media Player Accelerator & Optimizer",
+    "description": "The name of the extension"
+  },
+  "appDesc": {
+    "message": "Boost video buffer speed, reduce playback latency, and optimize streaming performance.",
+    "description": "The description of the extension"
+  },
+  "statusActive": {
+    "message": "Active (Pro)",
+    "description": "Active license status"
+  },
+  "statusInactive": {
+    "message": "Inactive",
+    "description": "Inactive license status"
+  },
+  "statusExpired": {
+    "message": "Expired",
+    "description": "Expired license status"
+  },
+  "enterLicenseKey": {
+    "message": "Enter your license key",
+    "description": "Placeholder for license input"
+  },
+  "btnActivate": {
+    "message": "Activate License",
+    "description": "Activate button text"
+  },
+  "btnBuy": {
+    "message": "Get a License Key",
+    "description": "Buy license link text"
+  },
+  "btnHelp": {
+    "message": "Support & Docs",
+    "description": "Help documentation link text"
+  },
+  "deviceInfo": {
+    "message": "Hardware ID: $ID$",
+    "description": "Device ID label",
+    "placeholders": {
+      "id": {
+        "content": "$1"
+      }
+    }
+  },
+  "licenseExpires": {
+    "message": "Expires: $DATE$",
+    "description": "License expiry date",
+    "placeholders": {
+      "date": {
+        "content": "$1"
+      }
+    }
+  },
+  "toastSuccess": {
+    "message": "License successfully activated!",
+    "description": "Success message"
+  },
+  "toastError": {
+    "message": "Invalid license key or device limit reached.",
+    "description": "Error message"
+  }
+}
