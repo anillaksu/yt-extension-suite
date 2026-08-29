@@ -9,13 +9,13 @@
     "dev": "node --watch server.js"
   },
   "dependencies": {
-    "@google-cloud/firestore": "^7.11.0",
+    "@google-cloud/firestore": "^9.0.0",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "helmet": "^8.0.0",
     "morgan": "^1.10.0",
-    "uuid": "^11.1.0"
+    "uuid": "^14.0.2"
   },
   "engines": {
     "node": ">=20.0.0"
