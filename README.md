@@ -10,3 +10,4 @@ Official public documentation, showcase portals, and licensing store for YT Exte
 - 📜 **Terms of Service:** [terms/](terms/)
 
 © 2026 YT Extension Suite. All rights reserved.
+
