@@ -223,19 +223,14 @@
       sessions.unshift(newSession);
       saveStoredSessions(sessions);
 
-      // Async Geo Detection via Cloudflare Edge API
-      fetch('/api/health')
-        .then(r => r.json())
-        .then(data => {
-          if (data && data.country) {
-            updateSessionData(sessionId, {
-              country: data.country || 'TR',
-              city: data.city || 'Istanbul',
-              region: data.region || 'EU'
-            });
-          }
-        })
-        .catch(() => {});
+      // Faz 4: "Async Geo Detection via Cloudflare Edge API" olarak adlandırılan
+      // /api/health çağrısı kaldırıldı. Backend'in kendisi hiçbir zaman
+      // country/city/region alanı döndürmüyordu (gerçek yanıtı sadece
+      // {status, service, version, ...} idi — bu blok her zaman no-op'tu,
+      // sadece gereksiz bir istekti). Backend emekliye ayrıldıktan sonra
+      // (bkz. licensing-backend-server/RETIRED.md) 403 ile konsolu
+      // kirletmeye başladı; session zaten üstteki sabit TR/Istanbul
+      // varsayılanını kullanıyor, işlevsel kayıp yok.
 
     } else {
       appendPageToSession(sessionId, window.location.pathname);

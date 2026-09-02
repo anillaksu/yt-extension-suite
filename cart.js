@@ -179,14 +179,57 @@ function selectPaymentMethod(method) {
   });
 }
 
+// checkoutItems: modal'ın GERÇEKTEN neyi checkout edeceğini tutar.
+// Faz 4 bug düzeltmesi: eskiden singleProductId verildiğinde addToCart()
+// çağrılıyordu — bu, kalıcı sepete (localStorage) ekliyordu ve modal
+// SEPETİN TAMAMINI gösteriyordu, ama submitCheckout() her zaman sadece
+// cart[0]'ı (ilk ürünü) Polar'a gönderiyordu. Sonuç: müşteri "Satın Al"a
+// bastığında, sepette daha önce kalan başka bir ürün varsa, modal ikisinin
+// TOPLAMINI gösterip sadece BİRİNİN checkout linkine yönlendiriyordu —
+// gerçek bir tıklama testiyle (g6-click-test.js) yakalandı. Artık tek
+// ürünlü "Satın Al" kalıcı sepete hiç dokunmuyor; kendi geçici listesini
+// kullanıyor.
+let checkoutItems = [];
+
+function buildCheckoutLineItem(productId) {
+  const prod = PRODUCTS_DB[productId];
+  if (!prod) return null;
+  return {
+    id: prod.id,
+    slug: prod.slug || productId,
+    icon: prod.icon,
+    priceTry: prod.priceTry,
+    priceUsd: prod.priceUsd,
+    polarPriceId: prod.polarPriceId,
+    productId: prod.productId || prod.id,
+    checkoutUrl: prod.checkoutUrl,
+    qty: 1
+  };
+}
+
 function openCheckoutModal(singleProductId = null) {
   closeCart();
+
   if (singleProductId) {
-    addToCart(singleProductId, false);
-  }
-  if (cart.length === 0) {
-    showToast('⚠️ ' + (typeof t === 'function' ? t('cartEmpty') : 'Sepetiniz boş.'));
-    return;
+    // Tekli "Satın Al" — kalıcı sepete DOKUNMAZ, sadece bu ürünü checkout eder.
+    const item = buildCheckoutLineItem(singleProductId);
+    if (!item) return;
+    checkoutItems = [item];
+  } else {
+    // Sepet çekmecesinden "Siparişi Tamamla" — mevcut sepeti kullanır.
+    if (cart.length === 0) {
+      showToast('⚠️ ' + (typeof t === 'function' ? t('cartEmpty') : 'Sepetiniz boş.'));
+      return;
+    }
+    // Polar checkout linkleri TEK ürün/fiyata bağlıdır — birden fazla
+    // FARKLI ürün varsa submitCheckout sessizce sadece ilkini gönderirdi
+    // (aynı bug). Bunun yerine burada uyarıp durduruyoruz.
+    if (cart.length > 1) {
+      showToast('⚠️ Sepetinizde birden fazla farklı ürün var. Lütfen tek tek satın alın veya Ultimate Suite Bundle\'ı tercih edin.');
+      openCart();
+      return;
+    }
+    checkoutItems = cart;
   }
 
   const modal = document.getElementById('checkout-modal');
@@ -194,12 +237,13 @@ function openCheckoutModal(singleProductId = null) {
   const totalEl = document.getElementById('checkout-total-amount');
 
   if (summaryEl && totalEl) {
-    const totals = getCartTotal();
-    summaryEl.innerHTML = cart.map(i => {
+    const totalTry = checkoutItems.reduce((acc, item) => acc + (item.priceTry * item.qty), 0);
+    const totalUsd = checkoutItems.reduce((acc, item) => acc + (item.priceUsd * item.qty), 0);
+    summaryEl.innerHTML = checkoutItems.map(i => {
       const itemName = getProductName(i.id);
       return `<div style="display:flex; justify-content:space-between; margin-bottom:6px;"><span>${i.icon} ${itemName} (${i.qty}x)</span><strong>₺${i.priceTry * i.qty}</strong></div>`;
     }).join('');
-    totalEl.textContent = `₺${totals.totalTry} / $${totals.totalUsd.toFixed(2)} USD`;
+    totalEl.textContent = `₺${totalTry} / $${totalUsd.toFixed(2)} USD`;
   }
 
   if (modal) {
@@ -209,7 +253,7 @@ function openCheckoutModal(singleProductId = null) {
     }
     modal.classList.add('active');
     if (typeof window.trackEvent === 'function') {
-      window.trackEvent('Ecommerce', 'checkout_modal_opened', (cart[0]?.id || 'bundle_suite'));
+      window.trackEvent('Ecommerce', 'checkout_modal_opened', (checkoutItems[0]?.id || 'bundle_suite'));
     }
   }
 }
@@ -238,7 +282,9 @@ async function submitCheckout(event) {
     return;
   }
 
-  const item = cart[0] || PRODUCTS_DB.bundle_suite;
+  // checkoutItems modal acilirken doldurulur (openCheckoutModal) — tekli
+  // "Satin Al" icin kalici sepetten BAGIMSIZDIR (Faz 4 bug duzeltmesi).
+  const item = checkoutItems[0] || cart[0] || PRODUCTS_DB.bundle_suite;
   const directCheckoutUrl = item.checkoutUrl || PRODUCTS_DB[item.productId || item.id]?.checkoutUrl || PRODUCTS_DB.bundle_suite.checkoutUrl;
 
   if (typeof window.trackEvent === 'function') {
@@ -252,8 +298,13 @@ async function submitCheckout(event) {
 
   const checkoutUrlWithEmail = email ? `${directCheckoutUrl}?customer_email=${encodeURIComponent(email)}` : directCheckoutUrl;
 
-  cart = [];
-  saveCart();
+  // Sadece GERCEKTEN checkout edilen sey sepet ise (tekli "Satin Al" degil)
+  // sepeti temizle — tekli akista kalici sepete hic dokunulmamisti.
+  if (checkoutItems === cart) {
+    cart = [];
+    saveCart();
+  }
+  checkoutItems = [];
   window.location.href = checkoutUrlWithEmail;
 }
 
