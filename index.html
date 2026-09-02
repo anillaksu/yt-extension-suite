@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="hubTitle">Anıl Aksu — Chrome Extension Engineering & Software Marketplace</title>
+  <meta name="description" content="Official portfolio & software marketplace of Anıl Aksu. Featuring high-performance, 100% client-side Chrome extensions: YouTube Player Accelerator Pro and Clean Full Page & PDF Capture Pro.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E%E2%9A%A1%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <script src="analytics.js" defer></script>
+  <script src="i18n.js" defer></script>
+  <script src="catalog.js" defer></script>
+  <script src="cart.js" defer></script>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="/store/index.html" class="logo-link">
+        <span class="logo-badge">⚡</span>
+        <span class="logo-text" data-i18n="brandName">Anıl Aksu • Studio</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="/store/index.html" class="active" data-i18n="navHub">Portföy</a>
+        <a href="/store/" data-i18n="navStore">Mağaza</a>
+        <a href="/store/yt-extension-suite/" data-i18n="navYtAccelerator">YT Accelerator</a>
+        <a href="/store/screen-pdf-capture/" data-i18n="navCleanCapture">PDF Capture</a>
+        <a href="#future-projects" data-i18n="navFuture">Gelecek Projeler</a>
+
+        <!-- Cart Button with Live Badge -->
+        <button class="cart-nav-btn" onclick="openCart()">
+          <span>🛒</span>
+          <span data-i18n="navCart">Sepetim</span>
+          <span class="cart-badge" id="nav-cart-badge" style="display: none;">0</span>
+        </button>
+
+        <!-- Language Switcher Dropdown -->
+        <div class="lang-selector">
+          <select id="lang-switch" class="lang-select-dropdown" onchange="applyLanguage(this.value)">
+            <option value="tr">🇹🇷 Türkçe</option>
+            <option value="en">🇬🇧 English</option>
+            <option value="es">🇪🇸 Español</option>
+            <option value="de">🇩🇪 Deutsch</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="container">
+      <div class="hero-tag" data-i18n="hubTag">🚀 Bağımsız Chrome Eklentileri & Yazılım Portföyü</div>
+      <h1 class="hero-title" data-i18n="hubTitle">Gizlilik Odaklı & Yüksek Performanslı Tarayıcı Eklentileri</h1>
+      <p class="hero-subtitle" data-i18n="hubSubtitle">
+        Tüm işlemler tarayıcının kendi belleğinde (%100 Client-Side) çalışır. Sıfır sunucu telemetrisi ve maksimum hız ile geliştirilen profesyonel Chrome eklentileri.
+      </p>
+
+      <div class="hero-actions">
+        <a href="/store/" class="btn-primary" data-i18n="hubBtnStore">🛒 Resmi Mağaza & Sepet &rarr;</a>
+        <a href="#featured-products" class="btn-secondary" data-i18n="hubBtnExplore">Ürünleri İncele</a>
+      </div>
+
+      <div style="margin-top: 48px; text-align: center;">
+        <img src="assets/hero-banner.png" alt="Anıl Aksu Chrome Extensions Portfolio" style="width: 100%; max-width: 980px; border-radius: 18px; border: 1px solid rgba(0, 240, 255, 0.3); box-shadow: 0 25px 60px rgba(0, 240, 255, 0.15);" />
+      </div>
+    </div>
+  </header>
+
+  <!-- Standalone Products Marketplace Section -->
+  <section class="section" id="featured-products" style="padding: 60px 0;">
+    <div class="container">
+      <div style="text-align: center; margin-bottom: 48px;">
+        <h2 style="font-size: 2.2rem; font-weight: 800; color: #fff; margin-bottom: 10px;" data-i18n="secProductsTitle">Geliştirilen Bağımsız Eklentiler</h2>
+        <p style="color: var(--text-muted); font-size: 1.05rem;" data-i18n="secProductsSubtitle">Her eklenti bağımsız bir mimariyle, belirli bir amaca en yüksek performansla hizmet etmek üzere kodlanmıştır.</p>
+      </div>
+
+      <div class="grid-3">
+        <!-- Product 1: YT Accelerator Pro -->
+        <div class="product-card">
+          <div class="card-icon">⚡</div>
+          <h3 class="card-title" data-i18n="p1Title">YouTube Player Accelerator Pro</h3>
+          <div class="card-tagline" data-i18n="p1Tagline">16x Reklam Atlama & Hızlandırma Motoru</div>
+          <p class="card-desc" data-i18n="p1Desc">
+            YouTube reklamlarını DOM seviyesinde gizler, 'Atla' butonuna otomatik basar ve atlanamayan reklamları 16x hızda geçirir. Reklam kaynaklı oynatıcı donmalarını ve kesintileri azaltır.
+          </p>
+
+          <ul class="feature-list">
+            <li data-i18n="p1F1">Reklam öğelerini CSS ile anında gizler</li>
+            <li data-i18n="p1F2">Akıllı video akış interceptor motoru</li>
+            <li data-i18n="p1F3">Reklamlarda 16x hızlı geçiş ve otomatik atlama</li>
+            <li data-i18n="p1F4">Reklam sonrası otomatik oynatmaya devam eder</li>
+          </ul>
+
+          <div class="price-box">
+            <div>
+              <div class="price-amount" data-i18n="p1Price">₺499 / $19.99</div>
+              <div class="price-period" data-i18n="p1PriceText">Ömür Boyu VIP Lisans</div>
+            </div>
+          </div>
+
+          <div class="card-actions">
+            <a href="/store/yt-extension-suite/" class="btn-secondary" style="flex: 1; text-align: center; padding: 12px 14px; font-size: 0.88rem;" data-i18n="btnViewDetails">İncele</a>
+            <button onclick="openCheckoutModal('yt_accelerator')" class="btn-primary" style="flex: 1; justify-content: center; padding: 12px 14px; font-size: 0.88rem;" data-i18n="btnBuyNow">Hemen Al</button>
+            <button onclick="addToCart('yt_accelerator')" class="btn-cart-action" style="padding: 12px 16px;">🛒</button>
+          </div>
+        </div>
+
+        <!-- Product 2: Clean Capture Pro -->
+        <div class="product-card">
+          <div class="card-icon">📸</div>
+          <h3 class="card-title" data-i18n="p2Title">Clean Full Page & PDF Capture Pro</h3>
+          <div class="card-tagline" data-i18n="p2Tagline">%100 İstemci Taraflı Tam Sayfa Ekran Görüntüsü & PDF</div>
+          <p class="card-desc" data-i18n="p2Desc">
+            Kaydır & birleştir tekniğiyle piksel kaybı olmadan tam sayfa düzen yakalama, çok sayfalı A4 PDF motoru ve yerel OCR.
+          </p>
+
+          <ul class="feature-list">
+            <li data-i18n="p2F1">Kaydır & birleştir ile kayıpsız tam sayfa düzen yakalama</li>
+            <li data-i18n="p2F2">Otomatik A4 çok sayfalı PDF dönüştürücü</li>
+            <li data-i18n="p2F3">İnteraktif DOM öğe seçici (Tablo, grafik)</li>
+            <li data-i18n="p2F5">Sansür filtresi (Blur) ve yerel OCR</li>
+          </ul>
+
+          <div class="price-box">
+            <div>
+              <div class="price-amount" data-i18n="p2Price">₺299 / $11.99</div>
+              <div class="price-period" data-i18n="p2PriceText">Ömür Boyu VIP Stüdyo Lisansı</div>
+            </div>
+          </div>
+
+          <div class="card-actions">
+            <a href="/store/screen-pdf-capture/" class="btn-secondary" style="flex: 1; text-align: center; padding: 12px 14px; font-size: 0.88rem;" data-i18n="btnViewDetails">İncele</a>
+            <button onclick="openCheckoutModal('clean_capture')" class="btn-primary" style="flex: 1; justify-content: center; padding: 12px 14px; font-size: 0.88rem;" data-i18n="btnBuyNow">Hemen Al</button>
+            <button onclick="addToCart('clean_capture')" class="btn-cart-action" style="padding: 12px 16px;">🛒</button>
+          </div>
+        </div>
+
+        <!-- Product 3: Bundle Pass -->
+        <div class="product-card featured">
+          <div class="badge-featured" data-i18n="featuredBadge">EN AVANTAJLI PAKET</div>
+          <div class="card-icon">💎</div>
+          <h3 class="card-title" data-i18n="bundleTitle">Ultimate Extension Suite Bundle Pass</h3>
+          <div class="card-tagline" style="color: #f43f5e;" data-i18n="bundleTagline">Tüm Pro Eklentilere Tek Anahtarla Sınırsız Erişim</div>
+          <p class="card-desc" data-i18n="bundleDesc">
+            Hem YouTube Accelerator Pro hem de Clean Capture Pro eklentilerini içeren, yeni çıkacak tüm eklentilere erken erişim sağlayan VIP geliştirici paketi.
+          </p>
+
+          <ul class="feature-list">
+            <li data-i18n="bundleF1">YouTube Accelerator Pro VIP Lisansı</li>
+            <li data-i18n="bundleF2">Clean Full Page & PDF Capture Pro Lisansı</li>
+            <li data-i18n="bundleF3">Tek Evrensel Master Lisans Anahtarı</li>
+            <li data-i18n="bundleF4">Gelecek Tüm Eklentilere Erken Beta Erişimi</li>
+            <li data-i18n="bundleF5">Öncelikli Geliştirici Doğrudan Destek</li>
+          </ul>
+
+          <div class="price-box">
+            <div>
+              <div class="price-amount" style="color: #38bdf8;" data-i18n="bundlePrice">₺649 / $24.99</div>
+              <div class="price-period" data-i18n="bundlePriceText">Tüm Eklentiler - %20 İndirimli</div>
+            </div>
+          </div>
+
+          <div class="card-actions">
+            <button onclick="openCheckoutModal('bundle_suite')" class="btn-primary" style="flex: 1; justify-content: center; font-size: 0.95rem;" data-i18n="btnBuyNow">⚡ Hemen Satın Al</button>
+            <button onclick="addToCart('bundle_suite')" class="btn-cart-action" style="flex: 1; justify-content: center; font-size: 0.95rem;" data-i18n="btnAddToCart">🛒 Sepete Ekle</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Architecture & Privacy Section -->
+  <section class="section" style="background: rgba(15, 23, 42, 0.6); padding: 70px 0; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
+    <div class="container">
+      <div style="text-align: center; margin-bottom: 48px;">
+        <h2 style="font-size: 2.2rem; font-weight: 800; color: #fff; margin-bottom: 10px;" data-i18n="secArchTitle">%100 İstemci Taraflı (Client-Side) Güvenlik Garantisi</h2>
+        <p style="color: var(--text-muted); font-size: 1.05rem;" data-i18n="secArchSubtitle">Ekran görüntüleriniz, izlediğiniz videolar veya tarama verileriniz ASLA uzak bir sunucuya gönderilmez.</p>
+      </div>
+
+      <div class="grid-3">
+        <div style="background: rgba(30, 41, 59, 0.5); border: 1px solid var(--border-color); border-radius: 16px; padding: 28px;">
+          <div style="font-size: 2.2rem; margin-bottom: 14px;">🛡️</div>
+          <h3 style="color: #fff; font-size: 1.25rem; font-weight: 800; margin-bottom: 8px;" data-i18n="arch1Title">Sıfır Bulut Telemetrisi</h3>
+          <p style="color: var(--text-muted); font-size: 0.92rem; line-height: 1.6;" data-i18n="arch1Desc">
+            Tüm canvas işleme, video akış düzenleme ve PDF motorları doğrudan bilgisayarınızın RAM belleğinde çalışır.
+          </p>
+        </div>
+
+        <div style="background: rgba(30, 41, 59, 0.5); border: 1px solid var(--border-color); border-radius: 16px; padding: 28px;">
+          <div style="font-size: 2.2rem; margin-bottom: 14px;">⚡</div>
+          <h3 style="color: #fff; font-size: 1.25rem; font-weight: 800; margin-bottom: 8px;" data-i18n="arch2Title">Manifest V3 Güvenlik Standardı</h3>
+          <p style="color: var(--text-muted); font-size: 0.92rem; line-height: 1.6;" data-i18n="arch2Desc">
+            Google Chrome'un en güncel güvenlik manifestosuyla, yalnızca zorunlu izinler kullanılarak geliştirilmiştir.
+          </p>
+        </div>
+
+        <div style="background: rgba(30, 41, 59, 0.5); border: 1px solid var(--border-color); border-radius: 16px; padding: 28px;">
+          <div style="font-size: 2.2rem; margin-bottom: 14px;">🔒</div>
+          <h3 style="color: #fff; font-size: 1.25rem; font-weight: 800; margin-bottom: 8px;" data-i18n="arch3Title">Cihaz Bazlı Lisans Aktivasyonu</h3>
+          <p style="color: var(--text-muted); font-size: 0.92rem; line-height: 1.6;" data-i18n="arch3Desc">
+            Her cihaza rastgele üretilen benzersiz bir kimlik atanır; lisans bu kimliğe bağlı doğrulanır, hiçbir kişisel veri iletilmez.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Future Projects & Roadmap Section -->
+  <section class="section" id="future-projects" style="padding: 70px 0;">
+    <div class="container">
+      <div style="text-align: center; margin-bottom: 48px;">
+        <h2 style="font-size: 2.2rem; font-weight: 800; color: #fff; margin-bottom: 10px;" data-i18n="secFutureTitle">Yol Haritası & Gelecek Eklenti Projeleri</h2>
+        <p style="color: var(--text-muted); font-size: 1.05rem;" data-i18n="secFutureSubtitle">Geliştirme aşamasında olan yeni nesil tarayıcı araçlarımız:</p>
+      </div>
+
+      <div class="grid-3" style="margin-bottom: 50px;">
+        <div style="background: rgba(30, 41, 59, 0.6); border: 1px dashed rgba(56, 189, 248, 0.4); border-radius: 16px; padding: 28px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+            <span style="font-size: 2rem;">🧠</span>
+            <span style="background: rgba(56, 189, 248, 0.2); color: #38bdf8; font-size: 0.75rem; font-weight: 800; padding: 3px 8px; border-radius: 6px;">GELİŞTİRİLİYOR (%85)</span>
+          </div>
+          <h3 style="color: #fff; font-size: 1.2rem; font-weight: 800; margin-bottom: 8px;" data-i18n="fut1Title">AI Prompt & Copilot Studio</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem;" data-i18n="fut1Desc">Her web sitesinde çalışan yerel istemci taraflı AI prompt şablonlayıcı ve metin optimize edici.</p>
+        </div>
+
+        <div style="background: rgba(30, 41, 59, 0.6); border: 1px dashed rgba(16, 185, 129, 0.4); border-radius: 16px; padding: 28px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+            <span style="font-size: 2rem;">⚡</span>
+            <span style="background: rgba(16, 185, 129, 0.2); color: #10b981; font-size: 0.75rem; font-weight: 800; padding: 3px 8px; border-radius: 6px;">PLANLANDI (%60)</span>
+          </div>
+          <h3 style="color: #fff; font-size: 1.2rem; font-weight: 800; margin-bottom: 8px;" data-i18n="fut2Title">Chrome Tab Memory & RAM Saver</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem;" data-i18n="fut2Desc">Arka planda kullanılmayan sekmeleri otomatik uyku moduna alarak RAM tasarrufu sağlayan akıllı bellek yöneticisi.</p>
+        </div>
+
+        <div style="background: rgba(30, 41, 59, 0.6); border: 1px dashed rgba(244, 63, 94, 0.4); border-radius: 16px; padding: 28px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+            <span style="font-size: 2rem;">🛡️</span>
+            <span style="background: rgba(244, 63, 94, 0.2); color: #f43f5e; font-size: 0.75rem; font-weight: 800; padding: 3px 8px; border-radius: 6px;">AR-GE (%40)</span>
+          </div>
+          <h3 style="color: #fff; font-size: 1.2rem; font-weight: 800; margin-bottom: 8px;" data-i18n="fut3Title">Web Shield & Privacy AdGuard</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem;" data-i18n="fut3Desc">Gereksiz izleyicileri ve çerez pencerelerini DOM katmanında sessizce temizleyen gizlilik kalkanı.</p>
+        </div>
+      </div>
+
+      <!-- Newsletter Box -->
+      <div style="background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.9)); border: 1px solid var(--border-color); border-radius: 20px; padding: 40px; text-align: center; max-width: 760px; margin: 0 auto;">
+        <h3 style="color: #fff; font-size: 1.6rem; font-weight: 800; margin-bottom: 10px;" data-i18n="newsletterTitle">Yeni Eklentiler Çıktığında İlk Haberdar Siz Olun</h3>
+        <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 24px;" data-i18n="newsletterDesc">Yeni eklenti lansmanları, beta test davetleri ve erken erişim indirim kuponları için bültenimize katılın.</p>
+        <form onsubmit="subscribeNewsletter(event)" style="display: flex; gap: 12px; max-width: 480px; margin: 0 auto; flex-wrap: wrap;">
+          <input type="email" id="newsletter-email" required placeholder="E-posta adresiniz..." class="form-input" style="flex: 1; min-width: 240px;">
+          <button type="submit" class="btn-primary" style="padding: 12px 24px;" data-i18n="newsletterBtn">Abone Ol</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- License Recovery Widget -->
+  <section class="section" style="padding: 40px 0; background: rgba(10, 15, 29, 0.8);">
+    <div class="container" style="max-width: 760px; text-align: center;">
+      <h3 style="color: #fff; font-size: 1.4rem; font-weight: 800; margin-bottom: 8px;" data-i18n="recoveryTitle">🔑 Lisans Anahtarımı Bul / Sorgula</h3>
+      <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;" data-i18n="recoveryDesc">Daha önce satın aldığınız lisans anahtarını kaybettiyseniz, satın alma e-postanızı girerek anında görüntüleyebilirsiniz.</p>
+      <form onsubmit="searchLicenses(event); return false;" id="license-recovery-form" style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+        <input type="text" id="recovery-query" placeholder="Satın alma e-posta adresiniz veya lisans kodunuz (LIC-...)..." data-i18n-placeholder="recoveryPlaceholder" class="form-input" style="max-width: 400px;">
+        <button type="submit" id="recovery-submit-btn" class="btn-secondary" data-i18n="recoveryBtn">Sorgula</button>
+      </form>
+      <div id="recovery-results" style="margin-top: 20px;"></div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="logo-link" style="margin-bottom: 12px;">
+            <span class="logo-badge">⚡</span>
+            <span class="logo-text">Anıl Aksu Studio</span>
+          </div>
+          <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;" data-i18n="footerDesc">
+            Anıl Aksu tarafından geliştirilen yüksek performanslı, gizlilik odaklı bağımsız Chrome eklentileri stüdyosu.
+          </p>
+        </div>
+        <div>
+          <h4 style="color: #fff; font-size: 0.95rem; font-weight: 700; margin-bottom: 14px;">Eklentiler</h4>
+          <p><a href="/store/yt-extension-suite/" style="color: var(--text-muted); font-size: 0.9rem;" data-i18n="navYtAccelerator">YouTube Accelerator Pro</a></p>
+          <p style="margin-top: 8px;"><a href="/store/screen-pdf-capture/" style="color: var(--text-muted); font-size: 0.9rem;" data-i18n="navCleanCapture">Clean Capture Pro</a></p>
+          <p style="margin-top: 8px;"><a href="/store/" style="color: var(--text-muted); font-size: 0.9rem;" data-i18n="navStore">VIP Mağaza & Sepet</a></p>
+        </div>
+        <div>
+          <h4 style="color: #fff; font-size: 0.95rem; font-weight: 700; margin-bottom: 14px;">Geliştirici & Yol Haritası</h4>
+          <p><a href="#future-projects" style="color: var(--text-muted); font-size: 0.9rem;" data-i18n="navFuture">Gelecek Projeler</a></p>
+          <p style="margin-top: 8px;"><a href="https://github.com/anillaksu" target="_blank" style="color: var(--text-muted); font-size: 0.9rem;">GitHub Portföy</a></p>
+        </div>
+        <div>
+          <h4 style="color: #fff; font-size: 0.95rem; font-weight: 700; margin-bottom: 14px;">Yasal</h4>
+          <p><a href="/store/privacy/" style="color: var(--text-muted); font-size: 0.9rem;" data-i18n="navPrivacy">Gizlilik Politikası</a></p>
+          <p style="margin-top: 8px;"><a href="/store/terms/" style="color: var(--text-muted); font-size: 0.9rem;" data-i18n="navTerms">Kullanım Şartları</a></p>
+        </div>
+      </div>
+      <div style="border-top: 1px solid var(--border-color); padding-top: 24px; text-align: center; color: var(--text-muted); font-size: 0.85rem;" data-i18n="footerRights">
+        © 2026 Anıl Aksu • YT Extension Suite. Tüm hakları saklıdır.
+      </div>
+    </div>
+  </footer>
+
+  <!-- ======================================================= -->
+  <!-- SLIDE-OVER CART DRAWER (SEPET) -->
+  <!-- ======================================================= -->
+  <div class="cart-drawer-overlay" id="cart-overlay" onclick="closeCart()"></div>
+  <div class="cart-drawer" id="cart-drawer">
+    <div class="cart-drawer-header">
+      <div class="cart-drawer-title">
+        <span>🛒</span>
+        <span data-i18n="navCart">Alışveriş Sepetim</span>
+      </div>
+      <button class="cart-close-btn" onclick="closeCart()">✕</button>
+    </div>
+    <div class="cart-drawer-body" id="cart-drawer-items">
+      <!-- Injected via cart.js -->
+    </div>
+    <div class="cart-drawer-footer">
+      <div class="cart-subtotal-row">
+        <span class="cart-subtotal-label" data-i18n="cartSubtotalLabel">Toplam Tutar:</span>
+        <span class="cart-subtotal-val" id="cart-drawer-subtotal">₺0.00</span>
+      </div>
+      <button onclick="openCheckoutModal()" class="btn-primary" style="width: 100%; justify-content: center; font-size: 1.05rem;" data-i18n="btnInstantCheckout">
+        🔒 Siparişi Tamamla (Kayıtsız)
+      </button>
+    </div>
+  </div>
+
+  <!-- ======================================================= -->
+  <!-- GUEST CHECKOUT MODAL (ÜYELİKSİZ HIZLI SATIN ALMA) -->
+  <!-- ======================================================= -->
+  <div class="modal-overlay" id="checkout-modal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeCheckoutModal()">✕</button>
+      <h3 style="color: #fff; font-size: 1.4rem; font-weight: 800; margin-bottom: 6px;" data-i18n="modalCheckoutTitle">⚡ Hızlı Sipariş & Lisans Teslimatı</h3>
+      <p style="color: var(--text-muted); font-size: 0.88rem; margin-bottom: 20px;" data-i18n="modalCheckoutSubtitle">Üyelik gerekmez. Lisans anahtarınız ödeme sonrası anında ekranda gösterilir ve e-posta adresinize iletilir.</p>
+
+      <!-- Order Summary Box -->
+      <div style="background: #1e293b; border-radius: 12px; padding: 14px; margin-bottom: 18px; font-size: 0.9rem;" id="checkout-order-summary"></div>
+      <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 18px; padding: 0 4px;">
+        <span style="font-weight: 700; color: #cbd5e1;" data-i18n="modalCheckoutSummaryLabel">Ödenecek Tutar:</span>
+        <strong style="color: var(--accent-cyan); font-size: 1.3rem;" id="checkout-total-amount">₺0.00</strong>
+      </div>
+
+      <form onsubmit="submitCheckout(event)">
+        <div class="form-group">
+          <label class="form-label" data-i18n="modalCheckoutEmailLabel">E-Posta Adresiniz (Lisansın İletileceği Adres) *</label>
+          <input type="email" id="checkout-email" required placeholder="adiniz@example.com" data-i18n-placeholder="modalCheckoutEmailPlaceholder" class="form-input">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" data-i18n="modalCheckoutNameLabel">Ad Soyad (Opsiyonel)</label>
+          <input type="text" id="checkout-name" placeholder="Ad Soyad..." data-i18n-placeholder="modalCheckoutNamePlaceholder" class="form-input">
+        </div>
+
+        <!-- Payment Method Selector -->
+        <label class="form-label" data-i18n="modalCheckoutPaymentLabel">Güvenli Ödeme Altyapısı:</label>
+        <div style="background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 12px; padding: 14px; margin-bottom: 18px; display: flex; align-items: center; gap: 12px;">
+          <span style="font-size: 1.5rem;">🔒</span>
+          <div>
+            <div style="color: #fff; font-weight: 700; font-size: 0.95rem;" data-i18n="modalCheckoutSecureTitle">🔒 3D Secure 256-Bit Güvenli Ödeme</div>
+            <div style="color: var(--text-muted); font-size: 0.82rem;" data-i18n="modalCheckoutSecureSub">Tüm Kredi / Banka Kartları & Apple Pay desteklenir. Lisansınız anında iletilir.</div>
+          </div>
+        </div>
+
+        <label class="checkbox-label">
+          <input type="checkbox" id="checkout-terms" required checked>
+          <span><a href="/store/terms/" target="_blank" style="color: var(--accent-cyan); text-decoration: underline;" data-i18n="modalCheckoutTermsPart1">Kullanım Koşulları</a> ve <a href="/store/privacy/" target="_blank" style="color: var(--accent-cyan); text-decoration: underline;" data-i18n="modalCheckoutTermsPart2">Gizlilik Politikasını</a> <span data-i18n="modalCheckoutTermsPart3">okudum, kabul ediyorum.</span></span>
+        </label>
+
+        <label class="checkbox-label">
+          <input type="checkbox" id="checkout-marketing" checked>
+          <span data-i18n="modalCheckoutMarketing">Gelecekteki yeni eklentiler, güncellemeler ve özel indirim kuponları hakkında e-posta bildirimi almayı onaylıyorum.</span>
+        </label>
+
+        <button type="submit" id="btn-submit-order" class="btn-primary" style="width: 100%; justify-content: center; margin-top: 12px; font-size: 1.05rem;" data-i18n="modalCheckoutSubmitBtn">
+          🔒 Güvenli Ödeme & Lisansı Al &rarr;
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ======================================================= -->
+  <!-- ORDER SUCCESS & INSTANT LICENSE DISPLAY MODAL -->
+  <!-- ======================================================= -->
+  <div class="modal-overlay" id="order-success-modal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeSuccessModal()">✕</button>
+      <div id="order-success-details">
+        <!-- Injected via cart.js -->
+      </div>
+      <button onclick="closeSuccessModal()" class="btn-secondary" style="width: 100%; justify-content: center; margin-top: 20px;" data-i18n="successCloseBtn">
+        Tamamla ve Kapat
+      </button>
+    </div>
+  </div>
+
+</body>
+</html>

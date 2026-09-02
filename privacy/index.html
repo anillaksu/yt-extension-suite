@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="navPrivacy">Gizlilik Politikası — Anıl Aksu Chrome Extensions</title>
+  <meta name="description" content="Privacy Policy for Anıl Aksu Chrome Extensions Studio, YouTube Player Accelerator Pro, and Clean Full Page & PDF Capture Pro. 100% client-side privacy guarantee.">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="../i18n.js" defer></script>
+  <script src="../cart.js" defer></script>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="logo-link">
+        <span class="logo-badge">⚡</span>
+        <span class="logo-text" data-i18n="brandName">Anıl Aksu • Studio</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="../index.html" data-i18n="navHub">Portföy</a>
+        <a href="../store/" data-i18n="navStore">Mağaza</a>
+        <a href="../yt-extension-suite/" data-i18n="navYtAccelerator">YT Accelerator</a>
+        <a href="../screen-pdf-capture/" data-i18n="navCleanCapture">PDF Capture</a>
+        <a href="../#future-projects" data-i18n="navFuture">Gelecek Projeler</a>
+
+        <!-- Cart Button -->
+        <button class="cart-nav-btn" onclick="openCart()">
+          <span>🛒</span>
+          <span data-i18n="navCart">Sepetim</span>
+          <span class="cart-badge" id="nav-cart-badge" style="display: none;">0</span>
+        </button>
+
+        <!-- Language Switcher -->
+        <div class="lang-selector">
+          <select id="lang-switch" class="lang-select-dropdown" onchange="applyLanguage(this.value)">
+            <option value="tr">🇹🇷 Türkçe</option>
+            <option value="en">🇬🇧 English</option>
+            <option value="es">🇪🇸 Español</option>
+            <option value="de">🇩🇪 Deutsch</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container" style="max-width: 860px; padding: 60px 24px;">
+    <h1 style="font-size: 2.5rem; font-weight: 800; color: #fff; margin-bottom: 10px;" data-i18n="privTitle">Gizlilik Politikası (Privacy Policy)</h1>
+    <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 36px;">Son Güncelleme: 1 Eylül 2026 • Sürüm 2.1</p>
+
+    <div style="background: rgba(30, 41, 59, 0.6); border: 1px solid var(--border-color); border-radius: 18px; padding: 32px; line-height: 1.8; color: #cbd5e1; font-size: 0.95rem;">
+      <h3 style="color: #00f0ff; font-size: 1.25rem; margin-bottom: 12px;">1. Temel Gizlilik Felsefemiz (%100 İstemci Taraflı Çalışma)</h3>
+      <p style="margin-bottom: 20px;">
+        Anıl Aksu tarafından geliştirilen tüm Chrome eklentileri (<strong>YouTube Player Accelerator Pro</strong> ve <strong>Clean Full Page & PDF Capture Pro</strong>), kullanıcı gizliliğini en üst düzeyde korumak üzere tasarlanmıştır. Tüm video akış optimizasyonları, ekran yakalamaları, görsel çizimleri ve PDF üretimleri doğrudan bilgisayarınızın yerel tarayıcı belleğinde (client-side) gerçekleştirilir. Hiçbir içerik veya kullanım alışkanlığı harici bir sunucuya iletilmez.
+      </p>
+
+      <h3 style="color: #00f0ff; font-size: 1.25rem; margin-bottom: 12px;">2. Eklentilere Özel Veri İşleme Prensipleri</h3>
+      <div style="margin-bottom: 20px; padding-left: 12px; border-left: 3px solid var(--accent-cyan);">
+        <p><strong>A) YouTube Player Accelerator Pro:</strong></p>
+        <p>Eklenti yalnızca `*://*.youtube.com/*` üzerinde çalışır. Video izleme geçmişiniz, çalma listeleriniz veya hesap bilgileriniz hiçbir sunucuya kaydedilmez veya izlenmez.</p>
+        <br>
+        <p><strong>B) Clean Full Page & PDF Capture Pro:</strong></p>
+        <p>Ekran görüntüsü aldığınız web sayfaları, ekran görüntüleri, uygulanan sansürler ve üretilen PDF dosyaları 100% çevrimdışı (offline) Offscreen Canvas API ve jsPDF motoru ile bilgisayarınızda oluşturulur. Sıfır sunucu yüklemesi (zero data upload) esastır.</p>
+      </div>
+
+      <h3 style="color: #00f0ff; font-size: 1.25rem; margin-bottom: 12px;">3. Lisans Doğrulama ve Donanım Özeti (Hardware Hash)</h3>
+      <p style="margin-bottom: 20px;">
+        Satın alınan VIP lisans anahtarının tek bir tarayıcıda yetkilendirilmesini sağlamak amacıyla, tarayıcı tarafından tek yönlü SHA-256 algoritmasıyla üretilmiş anonim bir özet (Hardware ID) lisans sunucusuna gönderilir. Bu özet kimliğinizi, IP adresinizi veya kişisel bilgilerinizi içermez; tersine mühendislikle geri döndürülemez.
+      </p>
+
+      <h3 style="color: #00f0ff; font-size: 1.25rem; margin-bottom: 12px;">4. Mağaza Siparişleri ve Ödeme Güvenliği</h3>
+      <p style="margin-bottom: 20px;">
+        Web sitemiz üzerinden yapılan alışverişlerde girilen e-posta adresi, lisans anahtarınızın ve fatura bilgilerinizin size ulaştırılması amacıyla kaydedilir. Kredi kartı veya ödeme bilgileriniz asla sunucularımızda saklanmaz. Ödeme işlemleri doğrudan lisanslı ödeme aracısı olan <strong>Polar (3D Secure / Global)</strong> güvencesiyle yürütülür.
+      </p>
+
+      <h3 style="color: #00f0ff; font-size: 1.25rem; margin-bottom: 12px;">5. İletişim ve Veri Sahibi Hakları (GDPR / KVKK)</h3>
+      <p>
+        Kayıtlı e-posta adresinizin bülten listemizden çıkarılması veya lisans kayıtlarınızın silinmesi talepleri için doğrudan <a href="mailto:support@forfor.site" style="color: var(--accent-cyan); font-weight: 700;">support@forfor.site</a> adresinden iletişime geçebilirsiniz.
+      </p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="logo-link" style="margin-bottom: 12px;">
+            <span class="logo-badge">⚡</span>
+            <span class="logo-text">Anıl Aksu Studio</span>
+          </div>
+          <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;" data-i18n="footerDesc">
+            Anıl Aksu tarafından geliştirilen yüksek performanslı, gizlilik odaklı bağımsız Chrome eklentileri stüdyosu.
+          </p>
+        </div>
+        <div>
+          <h4 style="color: #fff; font-size: 0.95rem; font-weight: 700; margin-bottom: 14px;">Eklentiler</h4>
+          <p><a href="../yt-extension-suite/" style="color: var(--text-muted); font-size: 0.9rem;" data-i18n="navYtAccelerator">YouTube Accelerator Pro</a></p>
+          <p style="margin-top: 8px;"><a href="../screen-pdf-capture/" style="color: var(--text-muted); font-size: 0.9rem;" data-i18n="navCleanCapture">Clean Capture Pro</a></p>
+          <p style="margin-top: 8px;"><a href="../store/" style="color: var(--text-muted); font-size: 0.9rem;" data-i18n="navStore">VIP Mağaza & Sepet</a></p>
+        </div>
+        <div>
+          <h4 style="color: #fff; font-size: 0.95rem; font-weight: 700; margin-bottom: 14px;">Geliştirici</h4>
+          <p><a href="../#future-projects" style="color: var(--text-muted); font-size: 0.9rem;" data-i18n="navFuture">Gelecek Projeler</a></p>
+          <p style="margin-top: 8px;"><a href="https://github.com/anillaksu" target="_blank" style="color: var(--text-muted); font-size: 0.9rem;">GitHub Portföy</a></p>
+        </div>
+        <div>
+          <h4 style="color: #fff; font-size: 0.95rem; font-weight: 700; margin-bottom: 14px;">Yasal</h4>
+          <p><a href="../privacy/" style="color: var(--text-muted); font-size: 0.9rem;" data-i18n="navPrivacy">Gizlilik Politikası</a></p>
+          <p style="margin-top: 8px;"><a href="../terms/" style="color: var(--text-muted); font-size: 0.9rem;" data-i18n="navTerms">Kullanım Şartları</a></p>
+        </div>
+      </div>
+      <div style="border-top: 1px solid var(--border-color); padding-top: 24px; text-align: center; color: var(--text-muted); font-size: 0.85rem;" data-i18n="footerRights">
+        © 2026 Anıl Aksu • YT Extension Suite. Tüm hakları saklıdır.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Slide-Over Cart Drawer -->
+  <div class="cart-drawer-overlay" id="cart-overlay" onclick="closeCart()"></div>
+  <div class="cart-drawer" id="cart-drawer">
+    <div class="cart-drawer-header">
+      <div class="cart-drawer-title">
+        <span>🛒</span>
+        <span data-i18n="navCart">Alışveriş Sepetim</span>
+      </div>
+      <button class="cart-close-btn" onclick="closeCart()">✕</button>
+    </div>
+    <div class="cart-drawer-body" id="cart-drawer-items"></div>
+    <div class="cart-drawer-footer">
+      <div class="cart-subtotal-row">
+        <span class="cart-subtotal-label" data-i18n="cartSubtotalLabel">Toplam Tutar:</span>
+        <span class="cart-subtotal-val" id="cart-drawer-subtotal">₺0.00</span>
+      </div>
+      <button onclick="openCheckoutModal()" class="btn-primary" style="width: 100%; justify-content: center; font-size: 1.05rem;" data-i18n="btnInstantCheckout">
+        🔒 Siparişi Tamamla (Kayıtsız)
+      </button>
+    </div>
+  </div>
+
+</body>
+</html>

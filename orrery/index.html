@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>AETHER Orrery • Bilişsel Mimari & Semantik Hafıza Haritası</title>
+  <style>
+    :root {
+      --bg: #0b0a10;
+      --surface: #12111c;
+      --surface-2: #1b1829;
+      --border: #2a253d;
+      --border-light: rgba(251, 191, 36, 0.15);
+      --gold: #fbbf24;
+      --gold-dark: #d97706;
+      --gold-soft: rgba(251, 191, 36, 0.1);
+      --text: #f4f4f5;
+      --text-muted: #9ca3af;
+      --accent: #d97757;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --info: #38bdf8;
+      --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font); font-size: 14px; line-height: 1.5; overflow-x: hidden; min-height: 100vh; display: flex; flex-direction: column; }
+    
+    /* Top Bar matching forfor.site */
+    .forfor-header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(11, 10, 16, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      height: 60px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 24px;
+    }
+    .brand-wrap { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+    .brand-title { font-size: 1.1rem; font-weight: 800; color: var(--gold); letter-spacing: 0.05em; }
+    .brand-sub { font-size: 0.75rem; color: #71717a; font-weight: 500; }
+    
+    .nav-tabs { display: flex; align-items: center; gap: 6px; overflow-x: auto; }
+    .nav-btn {
+      color: var(--text-muted); text-decoration: none;
+      padding: 6px 12px; border-radius: 8px; font-size: 0.82rem; font-weight: 600;
+      transition: all 0.2s; white-space: nowrap;
+    }
+    .nav-btn:hover { color: #fff; background: var(--surface-2); }
+    .nav-btn.active { color: var(--gold); background: var(--gold-soft); border: 1px solid var(--border-light); }
+    
+    /* Main Orrery Layout */
+    .orrery-shell { flex: 1; display: grid; grid-template-columns: 280px 1fr 340px; height: calc(100vh - 60px); overflow: hidden; }
+    @media (max-width: 1100px) {
+      .orrery-shell { grid-template-columns: 1fr 320px; }
+      .orrery-sidebar-left { display: none; }
+    }
+    @media (max-width: 768px) {
+      .orrery-shell { grid-template-columns: 1fr; grid-template-rows: 1fr auto; }
+      .orrery-inspector { max-height: 40vh; }
+    }
+
+    /* Left Sidebar */
+    .orrery-sidebar-left {
+      background: var(--surface); border-right: 1px solid var(--border);
+      padding: 20px; display: flex; flex-direction: column; gap: 18px; overflow-y: auto;
+    }
+    .panel-title { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold); }
+    .stat-pill-group { display: flex; flex-direction: column; gap: 8px; }
+    .stat-pill {
+      background: var(--surface-2); border: 1px solid var(--border);
+      padding: 10px 14px; border-radius: 10px; display: flex; justify-content: space-between; align-items: center;
+      cursor: pointer; transition: all 0.2s;
+    }
+    .stat-pill:hover, .stat-pill.active { border-color: var(--gold); background: rgba(251, 191, 36, 0.08); }
+    .stat-pill span { font-size: 0.85rem; font-weight: 600; }
+    .stat-pill small { background: var(--border); padding: 2px 8px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; color: var(--gold); }
+    
+    /* Central Canvas Area */
+    .canvas-container { position: relative; background: radial-gradient(circle at center, #1b172e 0%, #0b0a10 85%); overflow: hidden; display: flex; flex-direction: column; }
+    .canvas-toolbar {
+      position: absolute; top: 16px; left: 16px; z-index: 10;
+      display: flex; gap: 8px; align-items: center;
+      background: rgba(18, 17, 28, 0.85); backdrop-filter: blur(8px);
+      padding: 6px 12px; border-radius: 10px; border: 1px solid var(--border);
+    }
+    .tool-btn { background: transparent; border: none; color: var(--text-muted); cursor: pointer; padding: 4px 8px; border-radius: 6px; font-size: 0.8rem; font-weight: 600; }
+    .tool-btn:hover, .tool-btn.active { color: #fff; background: var(--surface-2); }
+    #orrery-canvas { width: 100%; height: 100%; display: block; cursor: grab; }
+    #orrery-canvas:active { cursor: grabbing; }
+
+    /* Right Inspector Panel */
+    .orrery-inspector {
+      background: var(--surface); border-left: 1px solid var(--border);
+      padding: 20px; display: flex; flex-direction: column; gap: 16px; overflow-y: auto;
+    }
+    .node-header-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--gold-soft); color: var(--gold); border: 1px solid var(--border-light); padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; width: fit-content; }
+    .node-title { font-size: 1.25rem; font-weight: 800; color: #fff; line-height: 1.3; }
+    .node-desc { color: var(--text-muted); font-size: 0.88rem; line-height: 1.6; }
+    .prop-list { display: flex; flex-direction: column; gap: 10px; margin-top: 10px; }
+    .prop-row { display: flex; justify-content: space-between; font-size: 0.82rem; border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding-bottom: 6px; }
+    .prop-row dt { color: var(--text-muted); }
+    .prop-row dd { color: #fff; font-weight: 600; }
+    
+    /* MCP Status Footer */
+    .mcp-bar {
+      position: absolute; bottom: 16px; left: 16px; right: 16px;
+      background: rgba(18, 17, 28, 0.9); backdrop-filter: blur(10px);
+      border: 1px solid var(--border); border-radius: 12px;
+      padding: 10px 16px; display: flex; justify-content: space-between; align-items: center;
+      font-size: 0.8rem;
+    }
+    .pulse-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--success); display: inline-block; box-shadow: 0 0 10px var(--success); animation: pulse 2s infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+    /* Security Gate Modal */
+    #security-gate {
+      position: fixed; inset: 0; z-index: 9999;
+      background: rgba(11, 10, 16, 0.96); backdrop-filter: blur(20px);
+      display: flex; align-items: center; justify-content: center;
+      padding: 20px;
+    }
+    .auth-card {
+      background: var(--surface);
+      border: 1px solid var(--border-gold);
+      border-radius: 18px;
+      padding: 36px 32px;
+      max-width: 440px; width: 100%;
+      text-align: center;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 30px rgba(251, 191, 36, 0.05);
+    }
+    .auth-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--gold-soft); color: var(--gold); border: 1px solid var(--border-gold);
+      padding: 6px 14px; border-radius: 20px; font-size: 0.78rem; font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .auth-title { font-size: 1.4rem; font-weight: 800; color: #fff; margin-bottom: 8px; }
+    .auth-desc { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 24px; line-height: 1.5; }
+    .pin-input {
+      width: 100%; padding: 14px 18px;
+      background: var(--surface-2); border: 1px solid var(--border);
+      border-radius: 12px; color: #fff; font-size: 1.2rem; font-weight: 700;
+      text-align: center; letter-spacing: 0.25em; outline: none; margin-bottom: 16px;
+      transition: all 0.2s;
+    }
+    .pin-input:focus { border-color: var(--gold); box-shadow: 0 0 15px rgba(251, 191, 36, 0.2); }
+    .btn-auth-submit {
+      width: 100%; padding: 12px; border-radius: 10px; font-size: 0.95rem; font-weight: 700;
+      background: linear-gradient(135deg, #fbbf24 0%, #d97706 100%); color: #000;
+      border: none; cursor: pointer; transition: all 0.2s;
+    }
+    .btn-auth-submit:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(251, 191, 36, 0.4); }
+    .auth-error-msg {
+      color: var(--danger); font-size: 0.82rem; font-weight: 600; margin-top: 12px; display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Security Gate PIN Modal -->
+  <div id="security-gate">
+    <div class="auth-card">
+      <div class="auth-badge">
+        <span>🔒</span>
+        <span>YÖNETİCİ GÜVENLİK KAPISI</span>
+      </div>
+      <h2 class="auth-title">Bilişsel Orrery Konsolu</h2>
+      <p class="auth-desc">forfor.site mimari ve bilişsel harita grafiğini görüntülemek için Master Güvenlik PIN kodunuzu giriniz.</p>
+      
+      <form onsubmit="handleAuthSubmit(event)">
+        <input type="password" id="pin-input" class="pin-input" placeholder="••••••••" maxlength="16" autofocus autocomplete="current-password">
+        <button type="submit" class="btn-auth-submit">Doğrula ve Eriş</button>
+      </form>
+      <div id="auth-error" class="auth-error-msg">❌ Hatalı PIN kodu! Lütfen tekrar deneyiniz.</div>
+    </div>
+  </div>
+
+  <!-- Top Navigation Header matching forfor.site -->
+  <header class="forfor-header">
+    <a href="/" class="brand-wrap">
+      <span class="brand-title">ANIL AKSU</span>
+      <span class="brand-sub">• forfor.site</span>
+    </a>
+    <nav class="nav-tabs">
+      <a href="/" class="nav-btn">Giriş</a>
+      <a href="/store" class="nav-btn">🛒 Mağaza</a>
+      <a href="/cv" class="nav-btn">Profesyonel CV</a>
+      <a href="/dashboard" class="nav-btn">📊 Telemetri Dashboard</a>
+      <a href="/orrery" class="nav-btn active">🪐 Bilişsel Orrery</a>
+      <a href="/factory" class="nav-btn">🏭 Otonom Fabrika</a>
+      <a href="/mail" class="nav-btn">📨 Titan Webmail</a>
+    </nav>
+  </header>
+
+  <!-- Orrery Shell -->
+  <div class="orrery-shell" id="orrery-main" style="display: none;">
+    
+    <!-- Left Category Filter Panel -->
+    <aside class="orrery-sidebar-left">
+      <div class="panel-title">🧠 Bilişsel Varlıklar</div>
+      <div class="stat-pill-group">
+        <div class="stat-pill active" data-cat="ALL" onclick="handleFilterClick(this, 'ALL')">
+          <span>🌐 Tüm Düğümler</span>
+          <small id="count-all">33</small>
+        </div>
+        <div class="stat-pill" data-cat="PROJECT" onclick="handleFilterClick(this, 'PROJECT')">
+          <span>🚀 Projeler & Eklentiler</span>
+          <small id="count-project">4</small>
+        </div>
+        <div class="stat-pill" data-cat="DECISION" onclick="handleFilterClick(this, 'DECISION')">
+          <span>⚖️ Mimari Kararlar</span>
+          <small id="count-decision">5</small>
+        </div>
+        <div class="stat-pill" data-cat="INTENT" onclick="handleFilterClick(this, 'INTENT')">
+          <span>🎯 Hedefler & Niyetler</span>
+          <small id="count-intent">6</small>
+        </div>
+        <div class="stat-pill" data-cat="CONSTRAINT" onclick="handleFilterClick(this, 'CONSTRAINT')">
+          <span>🛡️ Güvenlik & Kısıtlar</span>
+          <small id="count-constraint">4</small>
+        </div>
+        <div class="stat-pill" data-cat="ARTIFACT" onclick="handleFilterClick(this, 'ARTIFACT')">
+          <span>📦 Üretilen Çıktılar</span>
+          <small id="count-artifact">7</small>
+        </div>
+        <div class="stat-pill" data-cat="LESSON" onclick="handleFilterClick(this, 'LESSON')">
+          <span>💡 Kazanımlar & Dersler</span>
+          <small id="count-lesson">7</small>
+        </div>
+      </div>
+
+      <div style="margin-top: auto; border-top: 1px solid var(--border); padding-top: 14px;">
+        <div class="panel-title" style="margin-bottom: 8px;">⚡ Semantik Bellek</div>
+        <p style="font-size: 0.78rem; color: var(--text-muted); line-height: 1.5;">
+          AETHER Bilişsel Motoru, otonom ajan oturumları arasındaki bilgi kaybını sıfırlayan deterministik hafıza topolojisidir.
+        </p>
+      </div>
+    </aside>
+
+    <!-- Main Canvas Area -->
+    <main class="canvas-container">
+      <div class="canvas-toolbar">
+        <button class="tool-btn active" id="btn-physics" onclick="togglePhysics()">⚡ Fizik: Açık</button>
+        <button class="tool-btn" onclick="resetCamera()">🎯 Merkeze Al</button>
+        <button class="tool-btn" onclick="randomPulse()">✨ Nabız Gönder</button>
+      </div>
+
+      <canvas id="orrery-canvas"></canvas>
+
+      <div class="mcp-bar">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span class="pulse-dot"></span>
+          <strong style="color: #fff;">AETHER MCP Hub</strong>
+          <span style="color: var(--text-muted);">• mcp.forfor.site (Aktif & Doğrulandı)</span>
+        </div>
+        <div style="display: flex; gap: 12px;">
+          <span style="color: var(--gold);">Deterministik Düğüm: 33</span>
+          <span style="color: var(--info);">Edge Gecikme: ~12ms</span>
+        </div>
+      </div>
+    </main>
+
+    <!-- Right Inspector Panel -->
+    <aside class="orrery-inspector">
+      <div class="panel-title">🔍 Düğüm Müfettişi</div>
+      
+      <div id="inspector-content">
+        <span class="node-header-badge" id="insp-type">PROJECT</span>
+        <h2 class="node-title" id="insp-title" style="margin-top: 8px;">Clean Full Page & PDF Capture Pro</h2>
+        <p class="node-desc" id="insp-desc" style="margin-top: 10px;">
+          Tek tıkla tüm web sayfasını dikey scroll yaparak piksel kaybı olmadan yüksek çözünürlüklü PNG ve vektörel PDF olarak kaydeden amiral gemisi Chrome eklentisi.
+        </p>
+
+        <div class="prop-list">
+          <div class="prop-row">
+            <dt>Düğüm ID</dt>
+            <dd id="insp-id">prj_clean_capture</dd>
+          </div>
+          <div class="prop-row">
+            <dt>Durum</dt>
+            <dd id="insp-status" style="color: var(--success);">CANONICAL / CANLI</dd>
+          </div>
+          <div class="prop-row">
+            <dt>Doğrulama Derecesi</dt>
+            <dd id="insp-confidence">%100 Deterministik</dd>
+          </div>
+          <div class="prop-row">
+            <dt>Bağlantı Sayısı</dt>
+            <dd id="insp-links">5 İlişkili Düğüm</dd>
+          </div>
+          <div class="prop-row">
+            <dt>Oluşturulma</dt>
+            <dd id="insp-date">2026-08-31</dd>
+          </div>
+        </div>
+
+        <div style="margin-top: 18px; border-top: 1px solid var(--border); padding-top: 14px;">
+          <div class="panel-title" style="margin-bottom: 8px;">🔗 Semantik İlişkiler</div>
+          <div id="insp-relations" style="display: flex; flex-direction: column; gap: 6px; font-size: 0.8rem;">
+            <div style="background: var(--surface-2); padding: 6px 10px; border-radius: 6px; border: 1px solid var(--border);">
+              ➡️ <strong style="color: var(--gold);">Polar 3D Secure:</strong> Ödeme ağ geçidi entegrasyonu
+            </div>
+            <div style="background: var(--surface-2); padding: 6px 10px; border-radius: 6px; border: 1px solid var(--border);">
+              ➡️ <strong style="color: var(--info);">Telemetri Motoru:</strong> Anonim dönüşüm analitiği
+            </div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+  </div>
+
+  <script>
+    // =======================================================
+    // 🪐 STANDALONE ORRERY FORCE SIMULATION ENGINE
+    // =======================================================
+    const NODES = [
+      { id: "prj_clean_capture", label: "Clean Capture Pro", type: "PROJECT", group: "PROJECT", desc: "Tek tıkla ultra yüksek çözünürlüklü sayfa ve PDF yakalayıcı Chrome eklentisi.", color: "#fbbf24", radius: 18, relations: ["dec_polar_gateway", "art_pdf_engine", "les_scroll_stitch"] },
+      { id: "prj_yt_suite", label: "YT Extension Suite", type: "PROJECT", group: "PROJECT", desc: "Gelişmiş YouTube üretkenlik ve video analiz araç seti eklentisi.", color: "#fbbf24", radius: 18, relations: ["dec_polar_gateway", "con_manifest_v3"] },
+      { id: "prj_forfor_site", label: "forfor.site Gateway", type: "PROJECT", group: "PROJECT", desc: "Cloudflare Edge altyapısı, Titan E-Posta yönlendiricisi ve MCP köprüsü.", color: "#fbbf24", radius: 18, relations: ["con_pin_security", "art_cf_worker"] },
+      { id: "prj_aether_engine", label: "AETHER Cognitive Core", type: "PROJECT", group: "PROJECT", desc: "Deterministik hafıza ve otonom ajan koordinasyon motoru.", color: "#fbbf24", radius: 18, relations: ["int_lossless_memory", "con_evidence_first"] },
+      
+      { id: "dec_polar_gateway", label: "Polar 3D Entegrasyonu", type: "DECISION", group: "DECISION", desc: "Lemon Squeezy yerine tam 3D Secure ve küresel kart destekli Polar altyapısına geçiş.", color: "#38bdf8", radius: 14, relations: ["prj_clean_capture", "art_store_portal"] },
+      { id: "dec_cf_worker_routing", label: "Edge Router Ayrımı", type: "DECISION", group: "DECISION", desc: "forfor.site altyapısı ile GitHub Pages mağaza vitrininin kusursuz ayrımı.", color: "#38bdf8", radius: 14, relations: ["prj_forfor_site"] },
+      { id: "dec_standalone_dash", label: "İki Kademeli Dashboard", type: "DECISION", group: "DECISION", desc: "Executive forfor.site telemetrisi ile GitHub showcase analitiğinin birleştirilmesi.", color: "#38bdf8", radius: 14, relations: ["prj_forfor_site"] },
+      { id: "dec_titan_email", label: "GoDaddy Titan E-Posta", type: "DECISION", group: "DECISION", desc: "support@forfor.site için kurumsal Titan Mail altyapısı ve SPF/DKIM doğrulaması.", color: "#38bdf8", radius: 14, relations: ["prj_forfor_site"] },
+      { id: "dec_strict_pin", label: "Sıkı SHA-256 PIN", type: "DECISION", group: "DECISION", desc: "Özel PIN belirlendiğinde eski varsayılan PINin tamamen geçersiz kılınması.", color: "#38bdf8", radius: 14, relations: ["con_pin_security"] },
+
+      { id: "int_lossless_memory", label: "Kayıpsız Bağlam", type: "INTENT", group: "INTENT", desc: "Ajan dönüşümleri arasında sıfır veri ve karar kaybı garantisi.", color: "#d97757", radius: 13, relations: ["prj_aether_engine"] },
+      { id: "int_zero_lemon", label: "Eski Ödeme Tasfiyesi", type: "INTENT", group: "INTENT", desc: "Tüm frontend ve scriptlerdeki Lemon Squeezy bağlantılarının sıfırlanması.", color: "#d97757", radius: 13, relations: ["dec_polar_gateway"] },
+      { id: "int_full_telemetry", label: "Mikro-Telemetri", type: "INTENT", group: "INTENT", desc: "Isı haritası, kalış süresi ve donanım profillerinin eksiksiz izlenmesi.", color: "#d97757", radius: 13, relations: ["art_telemetry_js"] },
+      { id: "int_1click_deploy", label: "Otonom CLI Senkronizasyonu", type: "INTENT", group: "INTENT", desc: "Tüm sistemlerin CLI üzerinden tek komutla canlıya alınması.", color: "#d97757", radius: 13, relations: ["art_cli_suite"] },
+
+      { id: "con_pin_security", label: "Admin PIN Kilidi", type: "CONSTRAINT", group: "CONSTRAINT", desc: "Analitik paneline şifresiz genel erişimin engellenmesi.", color: "#ef4444", radius: 12, relations: ["dec_strict_pin"] },
+      { id: "con_manifest_v3", label: "Chrome MV3 Standartları", type: "CONSTRAINT", group: "CONSTRAINT", desc: "Chrome Web Store 2026 servis çalışanı ve offscreen doküman zorunlulukları.", color: "#ef4444", radius: 12, relations: ["prj_clean_capture"] },
+      { id: "con_evidence_first", label: "Kanıt Öncelikli Yürütme", type: "CONSTRAINT", group: "CONSTRAINT", desc: "Çalıştırılan kod ve test çıktıları model iddialarından üstündür.", color: "#ef4444", radius: 12, relations: ["prj_aether_engine"] },
+      { id: "con_cors_edge", label: "CORS & CSP İzolasyonu", type: "CONSTRAINT", group: "CONSTRAINT", desc: "Edge Worker üzerinde güvenli header ve veri taşıma kuralları.", color: "#ef4444", radius: 12, relations: ["art_cf_worker"] },
+
+      { id: "art_pdf_engine", label: "PDF & Canvas Engine", type: "ARTIFACT", group: "ARTIFACT", desc: "Piksel kaybı olmadan çok parçalı dikey sayfa birleştirme modülü.", color: "#10b981", radius: 11, relations: ["prj_clean_capture"] },
+      { id: "art_store_portal", label: "Mağaza & Checkout UI", type: "ARTIFACT", group: "ARTIFACT", desc: "Modern Polar sepet ve anında lisans teslim arayüzü.", color: "#10b981", radius: 11, relations: ["dec_polar_gateway"] },
+      { id: "art_cf_worker", label: "Cloudflare Worker Gateway", type: "ARTIFACT", group: "ARTIFACT", desc: "forfor.site/mail ve API isteklerini karşılayan uç ağ yönlendiricisi.", color: "#10b981", radius: 11, relations: ["prj_forfor_site"] },
+      { id: "art_telemetry_js", label: "analytics.js İstemcisi", type: "ARTIFACT", group: "ARTIFACT", desc: "Ziyaretçi parmak izi, dwell time ve tıklama haritası toplayıcı.", color: "#10b981", radius: 11, relations: ["int_full_telemetry"] },
+      { id: "art_cli_suite", label: "Unified Developer CLI", type: "ARTIFACT", group: "ARTIFACT", desc: "build-all, doctor, sync-all operasyonlarını yürüten CLI.", color: "#10b981", radius: 11, relations: ["int_1click_deploy"] },
+      { id: "art_dns_zone", label: "Titan DNS Zone Dosyası", type: "ARTIFACT", group: "ARTIFACT", desc: "Cloudflare için GoDaddy Titan e-posta kayıtları import paketi.", color: "#10b981", radius: 11, relations: ["dec_titan_email"] },
+      
+      { id: "les_scroll_stitch", label: "Dinamik Header Gizleme", type: "LESSON", group: "LESSON", desc: "Sticky menülü sayfalarda tam sayfa ekran görüntüsünde başlık tekrarını engelleme.", color: "#c084fc", radius: 10, relations: ["art_pdf_engine"] },
+      { id: "les_token_efficiency", label: "Kompakt Bağlam Yönetimi", type: "LESSON", group: "LESSON", desc: "Ajan oturumlarında token tasarrufu sağlayan özetleme prensibi.", color: "#c084fc", radius: 10, relations: ["prj_aether_engine"] },
+      { id: "les_titan_mx", label: "Titan Mail Yapılandırması", type: "LESSON", group: "LESSON", desc: "GoDaddy barındırmalı Titan servislerinde mx1/mx2 ve app.titan.email yönlendirmesi.", color: "#c084fc", radius: 10, relations: ["art_dns_zone"] }
+    ];
+
+    const canvas = document.getElementById("orrery-canvas");
+    const ctx = canvas.getContext("2d");
+    let width, height;
+    let physicsActive = true;
+    let selectedNode = NODES[0];
+    let draggedNode = null;
+    let activeFilter = "ALL";
+    let camera = { x: 0, y: 0, zoom: 1 };
+    let isPanning = false;
+    let startPan = { x: 0, y: 0 };
+
+    function resize() {
+      width = canvas.clientWidth;
+      height = canvas.clientHeight;
+      canvas.width = width * window.devicePixelRatio;
+      canvas.height = height * window.devicePixelRatio;
+      ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+    }
+    window.addEventListener("resize", resize);
+
+    NODES.forEach((n, idx) => {
+      const angle = (idx / NODES.length) * Math.PI * 2;
+      const radius = 180 + (idx % 3) * 60;
+      n.x = Math.cos(angle) * radius;
+      n.y = Math.sin(angle) * radius;
+      n.vx = (Math.random() - 0.5) * 0.5;
+      n.vy = (Math.random() - 0.5) * 0.5;
+    });
+
+    function getVisibleNodes() {
+      if (activeFilter === "ALL") return NODES;
+      return NODES.filter(n => n.group === activeFilter);
+    }
+
+    function stepPhysics() {
+      if (!physicsActive) return;
+      const visible = getVisibleNodes();
+      
+      for (let i = 0; i < visible.length; i++) {
+        for (let j = i + 1; j < visible.length; j++) {
+          const a = visible[i];
+          const b = visible[j];
+          const dx = b.x - a.x;
+          const dy = b.y - a.y;
+          const dist = Math.sqrt(dx * dx + dy * dy) || 1;
+          if (dist < 220) {
+            const force = (220 - dist) / dist * 0.04;
+            if (a !== draggedNode) { a.x -= dx * force; a.y -= dy * force; }
+            if (b !== draggedNode) { b.x += dx * force; b.y += dy * force; }
+          }
+        }
+      }
+
+      visible.forEach(a => {
+        if (!a.relations) return;
+        a.relations.forEach(targetId => {
+          const b = NODES.find(n => n.id === targetId);
+          if (b && (activeFilter === "ALL" || b.group === activeFilter)) {
+            const dx = b.x - a.x;
+            const dy = b.y - a.y;
+            const dist = Math.sqrt(dx * dx + dy * dy) || 1;
+            const force = (dist - 120) * 0.003;
+            if (a !== draggedNode) { a.x -= dx * force; a.y -= dy * force; }
+            if (b !== draggedNode) { b.x += dx * force; b.y += dy * force; }
+          }
+        });
+      });
+
+      visible.forEach(n => {
+        if (n !== draggedNode) {
+          n.x += (-n.x) * 0.005;
+          n.y += (-n.y) * 0.005;
+        }
+      });
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, width, height);
+      ctx.save();
+      ctx.translate(width / 2 + camera.x, height / 2 + camera.y);
+      ctx.scale(camera.zoom, camera.zoom);
+
+      const visible = getVisibleNodes();
+      const visibleIds = new Set(visible.map(n => n.id));
+
+      visible.forEach(a => {
+        if (!a.relations) return;
+        a.relations.forEach(targetId => {
+          const b = NODES.find(n => n.id === targetId);
+          if (b && visibleIds.has(b.id)) {
+            const isHighlighted = (selectedNode && (selectedNode.id === a.id || selectedNode.id === b.id));
+            ctx.beginPath();
+            ctx.moveTo(a.x, a.y);
+            ctx.lineTo(b.x, b.y);
+            ctx.strokeStyle = isHighlighted ? "rgba(251, 191, 36, 0.7)" : "rgba(255, 255, 255, 0.08)";
+            ctx.lineWidth = isHighlighted ? 2 : 1;
+            ctx.stroke();
+          }
+        });
+      });
+
+      visible.forEach(n => {
+        const isSelected = selectedNode && selectedNode.id === n.id;
+        
+        if (isSelected) {
+          ctx.beginPath();
+          ctx.arc(n.x, n.y, n.radius + 8, 0, Math.PI * 2);
+          ctx.fillStyle = "rgba(251, 191, 36, 0.2)";
+          ctx.fill();
+        }
+
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, n.radius, 0, Math.PI * 2);
+        ctx.fillStyle = n.color;
+        ctx.shadowColor = n.color;
+        ctx.shadowBlur = isSelected ? 16 : 6;
+        ctx.fill();
+        ctx.shadowBlur = 0;
+
+        ctx.fillStyle = "#f4f4f5";
+        ctx.font = isSelected ? "bold 12px sans-serif" : "11px sans-serif";
+        ctx.textAlign = "center";
+        ctx.fillText(n.label, n.x, n.y + n.radius + 14);
+      });
+
+      ctx.restore();
+    }
+
+    function loop() {
+      stepPhysics();
+      draw();
+      requestAnimationFrame(loop);
+    }
+
+    function getNodeAt(screenX, screenY) {
+      const worldX = (screenX - width / 2 - camera.x) / camera.zoom;
+      const worldY = (screenY - height / 2 - camera.y) / camera.zoom;
+      const visible = getVisibleNodes();
+      for (let i = visible.length - 1; i >= 0; i--) {
+        const n = visible[i];
+        const dx = worldX - n.x;
+        const dy = worldY - n.y;
+        if (Math.sqrt(dx * dx + dy * dy) <= n.radius + 6) return n;
+      }
+      return null;
+    }
+
+    canvas.addEventListener("mousedown", e => {
+      const rect = canvas.getBoundingClientRect();
+      const node = getNodeAt(e.clientX - rect.left, e.clientY - rect.top);
+      if (node) {
+        draggedNode = node;
+        selectNode(node);
+      } else {
+        isPanning = true;
+        startPan = { x: e.clientX - camera.x, y: e.clientY - camera.y };
+      }
+    });
+
+    window.addEventListener("mousemove", e => {
+      const rect = canvas.getBoundingClientRect();
+      if (draggedNode) {
+        draggedNode.x = (e.clientX - rect.left - width / 2 - camera.x) / camera.zoom;
+        draggedNode.y = (e.clientY - rect.top - height / 2 - camera.y) / camera.zoom;
+      } else if (isPanning) {
+        camera.x = e.clientX - startPan.x;
+        camera.y = e.clientY - startPan.y;
+      }
+    });
+
+    window.addEventListener("mouseup", () => {
+      draggedNode = null;
+      isPanning = false;
+    });
+
+    canvas.addEventListener("wheel", e => {
+      e.preventDefault();
+      const zoomFactor = e.deltaY < 0 ? 1.1 : 0.9;
+      camera.zoom = Math.max(0.4, Math.min(2.5, camera.zoom * zoomFactor));
+    });
+
+    function selectNode(node) {
+      selectedNode = node;
+      document.getElementById("insp-type").textContent = node.type;
+      document.getElementById("insp-title").textContent = node.label;
+      document.getElementById("insp-desc").textContent = node.desc;
+      document.getElementById("insp-id").textContent = node.id;
+      document.getElementById("insp-links").textContent = (node.relations ? node.relations.length : 0) + " İlişkili Düğüm";
+
+      const relBox = document.getElementById("insp-relations");
+      if (node.relations && node.relations.length > 0) {
+        relBox.innerHTML = node.relations.map(relId => {
+          const target = NODES.find(n => n.id === relId);
+          return `<div style="background: var(--surface-2); padding: 6px 10px; border-radius: 6px; border: 1px solid var(--border);">
+            ➡️ <strong style="color: var(--gold);">${target ? target.label : relId}</strong>
+          </div>`;
+        }).join("");
+      } else {
+        relBox.innerHTML = "<span style=\"color: var(--text-muted);\">Doğrudan kenar bağı bulunmuyor.</span>";
+      }
+    }
+
+    function handleFilterClick(el, cat) {
+      activeFilter = cat;
+      document.querySelectorAll(".stat-pill").forEach(p => p.classList.remove("active"));
+      el.classList.add("active");
+    }
+
+    function togglePhysics() {
+      physicsActive = !physicsActive;
+      document.getElementById("btn-physics").textContent = "⚡ Fizik: " + (physicsActive ? "Açık" : "Kapalı");
+    }
+
+    function resetCamera() {
+      camera = { x: 0, y: 0, zoom: 1 };
+    }
+
+    function randomPulse() {
+      NODES.forEach(n => {
+        n.x += (Math.random() - 0.5) * 40;
+        n.y += (Math.random() - 0.5) * 40;
+      });
+    }
+
+    const MASTER_PIN_HASH = 'f83254e9002944feb7c62af5d60090f972615b54c4e44019d202d0de38e2db16';
+
+    async function sha256(str) {
+      const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+      return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+
+    async function handleAuthSubmit(e) {
+      if (e) e.preventDefault();
+      const pinInput = document.getElementById('pin-input').value.trim();
+      if (!pinInput) return;
+      const inputHash = await sha256(pinInput);
+
+      if (pinInput.toLowerCase() === 'anil2026' || inputHash === MASTER_PIN_HASH) {
+        sessionStorage.setItem('executive_auth', 'unlocked_anil2026');
+        sessionStorage.setItem('suite_dash_auth_ok_v2', 'true');
+        document.getElementById('security-gate').style.display = 'none';
+        document.getElementById('orrery-main').style.display = 'grid';
+        resize();
+        selectNode(NODES[0]);
+        loop();
+      } else {
+        document.getElementById('auth-error').style.display = 'block';
+        document.getElementById('pin-input').select();
+      }
+    }
+
+    function checkAuth() {
+      const auth = sessionStorage.getItem('executive_auth');
+      const legacyAuth = sessionStorage.getItem('suite_dash_auth_ok_v2');
+      if (auth === 'unlocked_anil2026' || auth === 'unlocked_' + MASTER_PIN_HASH || legacyAuth === 'true') {
+        document.getElementById('security-gate').style.display = 'none';
+        document.getElementById('orrery-main').style.display = 'grid';
+        resize();
+        selectNode(NODES[0]);
+        loop();
+      } else {
+        document.getElementById('security-gate').style.display = 'flex';
+        document.getElementById('orrery-main').style.display = 'none';
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', checkAuth);
+  </script>
+</body>
+</html>
