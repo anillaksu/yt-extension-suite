@@ -39,17 +39,19 @@ const TRANSLATIONS = {
     secProductsSubtitle: "Her eklenti bağımsız bir mimariyle, belirli bir amaca en yüksek performansla hizmet etmek üzere kodlanmıştır.",
 
     // Product 1: YouTube Accelerator
+    // GEN:PRODUCTS:START
     p1Title: "YouTube Player Accelerator Pro",
-    p1Tagline: "16x Reklam Atlama & Hızlandırma Motoru",
-    p1Desc: "YouTube reklamlarını DOM seviyesinde gizler, 'Atla' butonuna otomatik basar ve atlanamayan reklamları 16x hızda geçirir. Reklam kaynaklı oynatıcı donmalarını ve kesintileri azaltır.",
+    p1Tagline: "16x Reklam Atlama & Hızlandırma",
+    p1Desc: "YouTube reklamlarını DOM seviyesinde gizler, 'Atla' butonuna otomatik basar ve atlanamayan reklamları 16x hızda geçirip sonuna atlar.",
     p1F1: "Reklam öğelerini CSS ile anında gizler",
-    p1F2: "Akıllı video akış interceptor motoru (Main World)",
+    p1F2: "Akıllı video akış interceptor motoru",
     p1F3: "Reklamlarda 16x hızlı geçiş ve otomatik atlama",
     p1F4: "Anti-adblock uyarı kalkanı (pop-up engelleyici)",
-    p1F5: "Reklam sonrası otomatik oynatmaya devam eder",
+    p1F5: "Anti-adblock uyarı kalkanı (pop-up engelleyici)",
     p1F6: "Ömür Boyu Ücretsiz Güncellemeler",
     p1Price: "₺499 / $19.99",
     p1PriceText: "Ömür Boyu VIP Lisans",
+    // GEN:PRODUCTS:END
 
     ytHeroTag: "⚡ YOUTUBE STREAM INTERCEPTOR MOTORU",
     ytHeroTitle: "YouTube Player Accelerator Pro",
@@ -63,17 +65,19 @@ const TRANSLATIONS = {
     ytTechSpecsTitle: "Teknik Özellikler & Uyumluluk",
 
     // Product 2: Clean Capture
+    // GEN:PRODUCTS:START
     p2Title: "Clean Full Page & PDF Capture Pro",
-    p2Tagline: "%100 İstemci Taraflı Tam Sayfa Ekran Görüntüsü & Çok Sayfalı PDF Stüdyosu",
-    p2Desc: "Kaydır & birleştir tekniğiyle piksel kaybı olmadan tam sayfa yakalar, A4 çok sayfalı PDF'e böler; yerel OCR ile metin çıkarımı yakında.",
+    p2Tagline: "%100 İstemci Taraflı Ekran Görüntüsü & PDF",
+    p2Desc: "Kaydır & birleştir tekniğiyle piksel piksel tam sayfa yakalama, A4 çok sayfalı PDF'e bölme ve sansür filtresi (blur/pikselleştirme).",
     p2F1: "Kaydır & birleştir ile kayıpsız tam sayfa düzen yakalama",
-    p2F2: "Otomatik A4 sayfa bölme ve numaralandırma motoru",
-    p2F3: "İnteraktif DOM öğe seçici (Tablo, grafik, div)",
+    p2F2: "Otomatik A4 çok sayfalı PDF dönüştürücü",
+    p2F3: "DOM Öğe Seçici (Spesifik tablo ve grafikler)",
     p2F4: "Stüdyo Çizim & Düzenleme Araçları",
-    p2F5: "Sansür filtresi (Bulanıklaştırma & Pikselleme)",
-    p2F6: "%100 Çevrimdışı İstemci İçi Yerel OCR",
+    p2F5: "Bulanıklaştırma & Sansürleme Filtresi",
+    p2F6: "Yerel OCR — Yakında",
     p2Price: "₺299 / $11.99",
     p2PriceText: "Ömür Boyu VIP Stüdyo Lisansı",
+    // GEN:PRODUCTS:END
 
     capHeroTag: "📸 100% İSTEMCİ TARAFLI TAM SAYFA & PDF MOTORU",
     capHeroTitle: "Clean Full Page & PDF Capture Pro",
@@ -81,13 +85,14 @@ const TRANSLATIONS = {
     capBtnBuy: "⚡ Hemen Satın Al (₺299 / $11.99)",
     capSimTitle: "🖼️ İnteraktif DOM Öğe & Sansürleme Simülatörü",
     capSimDesc: "Sayfa üzerindeki spesifik bileşenleri seçip PDF'e dönüştürme ve sansürleme mantığını test edin:",
-    capSimBtnCapture: "📸 Tam Sayfa CDP Yakala",
+    capSimBtnCapture: "📸 Tam Sayfa Yakala",
     capSimBtnPicker: "🎯 DOM Bileşen Seçici",
     capSimBtnBlur: "🔒 Sansür Filtresi (Blur)",
     capSimBtnPdf: "📄 A4 Çok Sayfalı PDF Export",
     capTechSpecsTitle: "Teknik Özellikler & Uyumluluk",
 
     // Bundle
+    // GEN:PRODUCTS:START
     bundleTitle: "Ultimate Extension Suite Bundle Pass",
     bundleTagline: "Tüm Pro Eklentilere Tek Anahtarla Sınırsız Erişim",
     bundleDesc: "Hem YouTube Accelerator Pro hem de Clean Capture Pro eklentilerini içeren, yeni çıkacak tüm eklentilere erken erişim sağlayan VIP geliştirici paketi.",
@@ -99,6 +104,7 @@ const TRANSLATIONS = {
     bundleF6: "%20 İndirim Avantajı",
     bundlePrice: "₺649 / $24.99",
     bundlePriceText: "Tüm Eklentiler - %20 İndirimli",
+    // GEN:PRODUCTS:END
 
     // Architecture & Privacy
     secArchTitle: "%100 İstemci Taraflı (Client-Side) Güvenlik Garantisi",
@@ -248,6 +254,7 @@ const TRANSLATIONS = {
     secProductsTitle: "Independent Chrome Extensions",
     secProductsSubtitle: "Each extension is crafted with dedicated architecture to deliver pinnacle performance for a specific purpose.",
 
+    // GEN:PRODUCTS:START
     p1Title: "YouTube Player Accelerator Pro",
     p1Tagline: "16x Ad-Skip & Acceleration Engine",
     p1Desc: "Hides YouTube ads at the DOM level, auto-clicks the Skip button, and fast-forwards through non-skippable ads at 16x speed.",
@@ -259,6 +266,7 @@ const TRANSLATIONS = {
     p1F6: "Lifetime Free Updates",
     p1Price: "$19.99 / ₺499",
     p1PriceText: "Lifetime VIP License",
+    // GEN:PRODUCTS:END
 
     ytHeroTag: "⚡ YOUTUBE STREAM INTERCEPTOR ENGINE",
     ytHeroTitle: "YouTube Player Accelerator Pro",
@@ -271,6 +279,7 @@ const TRANSLATIONS = {
     ytSimBtnAudio: "🛡️ Anti-Adblock Shield",
     ytTechSpecsTitle: "Technical Specifications & Compatibility",
 
+    // GEN:PRODUCTS:START
     p2Title: "Clean Full Page & PDF Capture Pro",
     p2Tagline: "100% Client-Side Screenshot & Multi-Page PDF Studio",
     p2Desc: "Captures full-page layouts via scroll-and-stitch with zero pixel loss, splits into multi-page A4 PDFs; offline OCR text extraction coming soon.",
@@ -279,9 +288,10 @@ const TRANSLATIONS = {
     p2F3: "Interactive DOM element picker (tables, charts, divs)",
     p2F4: "Studio Drawing & Annotation Tools",
     p2F5: "Redaction filter (Blur & Pixelate)",
-    p2F6: "100% Offline Client-Side Local OCR",
+    p2F6: "Local OCR — Coming Soon",
     p2Price: "$11.99 / ₺299",
     p2PriceText: "Lifetime VIP Studio License",
+    // GEN:PRODUCTS:END
 
     capHeroTag: "📸 100% CLIENT-SIDE FULL PAGE & PDF ENGINE",
     capHeroTitle: "Clean Full Page & PDF Capture Pro",
@@ -289,12 +299,13 @@ const TRANSLATIONS = {
     capBtnBuy: "⚡ Buy VIP License ($11.99 / ₺299)",
     capSimTitle: "🖼️ Interactive DOM Picker & Redaction Simulator",
     capSimDesc: "Test selecting specific components, exporting to multi-page PDF, and applying blur filters in real-time:",
-    capSimBtnCapture: "📸 Full Page CDP Capture",
+    capSimBtnCapture: "📸 Full Page Capture",
     capSimBtnPicker: "🎯 DOM Element Picker",
     capSimBtnBlur: "🔒 Redaction Filter (Blur)",
     capSimBtnPdf: "📄 Multi-Page A4 PDF Export",
     capTechSpecsTitle: "Technical Specifications & Compatibility",
 
+    // GEN:PRODUCTS:START
     bundleTitle: "Ultimate Extension Suite Bundle Pass",
     bundleTagline: "Unlimited VIP Access to All Pro Extensions",
     bundleDesc: "Includes full VIP access to YouTube Accelerator Pro, Clean Capture Pro, and early beta access to upcoming releases with a single master key.",
@@ -306,6 +317,7 @@ const TRANSLATIONS = {
     bundleF6: "20% Package Discount",
     bundlePrice: "$24.99 / ₺649",
     bundlePriceText: "All Extensions - 20% Discounted",
+    // GEN:PRODUCTS:END
 
     secArchTitle: "100% Client-Side Privacy Guarantee",
     secArchSubtitle: "Your screenshots, watched videos, or browsing habits are NEVER uploaded to any external server.",
@@ -444,6 +456,7 @@ const TRANSLATIONS = {
     secProductsTitle: "Extensiones de Chrome Destacadas",
     secProductsSubtitle: "Cada extensión está diseñada de forma independiente para un propósito específico.",
 
+    // GEN:PRODUCTS:START
     p1Title: "YouTube Player Accelerator Pro",
     p1Tagline: "Motor de Aceleración y Omisión de Anuncios 16x",
     p1Desc: "Oculta los anuncios de YouTube a nivel DOM, hace clic automáticamente en 'Saltar anuncio' y adelanta a 16x los anuncios no omitibles.",
@@ -455,6 +468,7 @@ const TRANSLATIONS = {
     p1F6: "Actualizaciones gratuitas de por vida",
     p1Price: "$19.99 / ₺499",
     p1PriceText: "Licencia VIP de por vida",
+    // GEN:PRODUCTS:END
 
     ytHeroTag: "⚡ MOTOR INTERCEPTOR DE TRANSMISIÓN DE YOUTUBE",
     ytHeroTitle: "YouTube Player Accelerator Pro",
@@ -467,17 +481,19 @@ const TRANSLATIONS = {
     ytSimBtnAudio: "🛡️ Escudo Anti-Adblock",
     ytTechSpecsTitle: "Especificaciones Técnicas y Compatibilidad",
 
+    // GEN:PRODUCTS:START
     p2Title: "Clean Full Page & PDF Capture Pro",
     p2Tagline: "Captura de pantalla de página completa y visor de PDF 100% local",
-    p2Desc: "Captura páginas completas con CDP sin pérdida de calidad y exporta a PDF A4 con OCR local.",
-    p2F1: "Costura de diseño completa CDP de 0 ms",
+    p2Desc: "Captura páginas completas mediante desplazamiento y unión sin pérdida de calidad, exporta a PDF A4 multipágina; extracción de texto OCR sin conexión próximamente.",
+    p2F1: "Captura de página completa sin pérdida mediante desplazamiento y unión",
     p2F2: "Motor de exportación de PDF A4 multipágina",
     p2F3: "Selector de elementos DOM interactivo",
     p2F4: "Herramientas de dibujo y anotación",
     p2F5: "Filtro de censura (Desenfoque y Pixelado)",
-    p2F6: "OCR local sin conexión 100% en el cliente",
+    p2F6: "OCR Local — Próximamente",
     p2Price: "$11.99 / ₺299",
     p2PriceText: "Licencia de Estudio VIP de por vida",
+    // GEN:PRODUCTS:END
 
     capHeroTag: "📸 MOTOR DE PÁGINA COMPLETA Y PDF 100% LOCAL",
     capHeroTitle: "Clean Full Page & PDF Capture Pro",
@@ -485,12 +501,13 @@ const TRANSLATIONS = {
     capBtnBuy: "⚡ Comprar Licencia VIP ($11.99 / ₺299)",
     capSimTitle: "🖼️ Simulador Interactivo de Selector DOM y Censura",
     capSimDesc: "Pruebe la selección de elementos específicos, exportación a PDF multipágina y aplicación de filtros de desenfoque:",
-    capSimBtnCapture: "📸 Captura CDP de Página Completa",
+    capSimBtnCapture: "📸 Captura de Página Completa",
     capSimBtnPicker: "🎯 Selector de Elementos DOM",
     capSimBtnBlur: "🔒 Filtro de Censura (Blur)",
     capSimBtnPdf: "📄 Exportar a PDF A4 Multipágina",
     capTechSpecsTitle: "Especificaciones Técnicas y Compatibilidad",
 
+    // GEN:PRODUCTS:START
     bundleTitle: "Pase Paquete Ultimate Extension Suite",
     bundleTagline: "Acceso VIP Ilimitado a Todas las Extensiones",
     bundleDesc: "Incluye acceso a YouTube Accelerator Pro y Clean Capture Pro con un 20% de descuento.",
@@ -502,6 +519,7 @@ const TRANSLATIONS = {
     bundleF6: "Descuento del 20% en el paquete",
     bundlePrice: "$24.99 / ₺649",
     bundlePriceText: "Todas las Extensiones - 20% de Descuento",
+    // GEN:PRODUCTS:END
 
     secArchTitle: "Garantía de Privacidad 100% en el Cliente",
     secArchSubtitle: "Sus capturas de pantalla y hábitos de visualización NUNCA se cargan en ningún servidor externo.",
@@ -641,6 +659,7 @@ const TRANSLATIONS = {
     secProductsTitle: "Unabhängige Chrome-Erweiterungen",
     secProductsSubtitle: "Jede Erweiterung ist modular für maximale Effizienz und absolute Datensicherheit entwickelt.",
 
+    // GEN:PRODUCTS:START
     p1Title: "YouTube Player Accelerator Pro",
     p1Tagline: "16x Werbe-Überspring- & Beschleunigungs-Engine",
     p1Desc: "Blendet YouTube-Werbung auf DOM-Ebene aus, klickt automatisch auf 'Überspringen' und spult nicht überspringbare Werbung mit 16-facher Geschwindigkeit vor.",
@@ -652,6 +671,7 @@ const TRANSLATIONS = {
     p1F6: "Lebenslange kostenlose Updates",
     p1Price: "19,99 $ / 499 ₺",
     p1PriceText: "Lebenslange VIP-Lizenz",
+    // GEN:PRODUCTS:END
 
     ytHeroTag: "⚡ YOUTUBE STREAM INTERCEPTOR ENGINE",
     ytHeroTitle: "YouTube Player Accelerator Pro",
@@ -664,17 +684,19 @@ const TRANSLATIONS = {
     ytSimBtnAudio: "🛡️ Anti-Adblock-Schutzschild",
     ytTechSpecsTitle: "Technische Daten & Kompatibilität",
 
+    // GEN:PRODUCTS:START
     p2Title: "Clean Full Page & PDF Capture Pro",
     p2Tagline: "100% Client-Side Screenshot & Mehrseitiges PDF-Studio",
-    p2Desc: "Erfasst ganze Webseiten via CDP ohne Qualitätsverlust und konvertiert in mehrseitige A4-PDFs mit lokaler OCR.",
+    p2Desc: "Erfasst ganze Webseiten per Scroll-and-Stitch-Technik ohne Qualitätsverlust und konvertiert in mehrseitige A4-PDFs; Offline-OCR-Texterkennung folgt in Kürze.",
     p2F1: "Verlustfreie Scroll-and-Stitch-Seitenlayouts",
     p2F2: "Mehrseitige A4-PDF-Export-Engine",
     p2F3: "Interaktiver DOM-Elementauswähler",
     p2F4: "Studio-Zeichen- & Bearbeitungswerkzeuge",
     p2F5: "Zensurfilter (Weichzeichnen & Verpixeln)",
-    p2F6: "100% Offline Client-Side Lokale OCR",
+    p2F6: "Lokale OCR — Demnächst",
     p2Price: "11,99 $ / 299 ₺",
     p2PriceText: "Lebenslange VIP-Studio-Lizenz",
+    // GEN:PRODUCTS:END
 
     capHeroTag: "📸 100% CLIENT-SIDE VOLLSEITEN- & PDF-ENGINE",
     capHeroTitle: "Clean Full Page & PDF Capture Pro",
@@ -682,12 +704,13 @@ const TRANSLATIONS = {
     capBtnBuy: "⚡ VIP-Lizenz Kaufen (11,99 $ / 299 ₺)",
     capSimTitle: "🖼️ Interaktiver DOM-Auswähler & Zensur-Simulator",
     capSimDesc: "Testen Sie das Auswählen von Elementen, den mehrseitigen PDF-Export und Weichzeichnungsfilter:",
-    capSimBtnCapture: "📸 Vollseiten-CDP-Screenshot",
+    capSimBtnCapture: "📸 Vollseiten-Screenshot",
     capSimBtnPicker: "🎯 DOM-Element-Auswähler",
     capSimBtnBlur: "🔒 Zensurfilter (Blur)",
     capSimBtnPdf: "📄 Mehrseitiger A4-PDF-Export",
     capTechSpecsTitle: "Technische Daten & Kompatibilität",
 
+    // GEN:PRODUCTS:START
     bundleTitle: "Ultimate Extension Suite Bundle Pass",
     bundleTagline: "Unbegrenzter VIP-Zugang zu allen Pro-Erweiterungen",
     bundleDesc: "Enthält VIP-Lizenzen für YouTube Accelerator Pro und Clean Capture Pro mit 20% Rabatt.",
@@ -699,6 +722,7 @@ const TRANSLATIONS = {
     bundleF6: "20% Paket-Rabatt",
     bundlePrice: "24,99 $ / 649 ₺",
     bundlePriceText: "Alle Erweiterungen - 20% Rabatt",
+    // GEN:PRODUCTS:END
 
     secArchTitle: "100% Client-Side Datenschutzgarantie",
     secArchSubtitle: "Ihre Screenshots und Videoverläufe werden NIEMALS auf externe Server übertragen.",
