@@ -54,9 +54,9 @@ const TRANSLATIONS = {
     p1PriceText: "Ömür Boyu VIP Lisans",
     // GEN:PRODUCTS:END
 
-    ytHeroTag: "⚡ YOUTUBE STREAM INTERCEPTOR MOTORU",
+    ytHeroTag: "🍿 REKLAMSIZ SİNEMA MODU",
     ytHeroTitle: "Zen Cinema Pro",
-    ytHeroSubtitle: "Reklamları otomatik gizler ve atlar, atlanamayan reklamlarda 16x hızlandırma sunar.",
+    ytHeroSubtitle: "Her reklamı otomatik atlayın, atlanamayanları 16x hızda geçin - böylece her videoda gerçek veri/bant genişliği tasarrufu edin. Sonra sayfayı OLED-siyaha çevirip dikkat dağıtmadan izleyin. Hepsi kendi cihazınızda, kendi Google hesabınızla.",
     ytBtnBuy: "⚡ Hemen Satın Al (₺499 / $19.99)",
     ytSimTitle: "🎮 Canlı Oynatıcı & Akış Simülatörü",
     ytSimDesc: "Eklentinin YouTube oynatıcı API'sine müdahale mantığını canlı test edin:",
@@ -270,9 +270,9 @@ const TRANSLATIONS = {
     p1PriceText: "Lifetime VIP License",
     // GEN:PRODUCTS:END
 
-    ytHeroTag: "⚡ YOUTUBE STREAM INTERCEPTOR ENGINE",
+    ytHeroTag: "🍿 AD-FREE CINEMA MODE",
     ytHeroTitle: "Zen Cinema Pro",
-    ytHeroSubtitle: "Automatically hides and skips ads, fast-forwards non-skippable ads at 16x.",
+    ytHeroSubtitle: "Skip every ad automatically, fast-forward non-skippable ones at 16x - saving real data/bandwidth on every video. Then dim the page into an OLED-black cinema mode. All on your own device, your own Google account.",
     ytBtnBuy: "⚡ Buy VIP License ($19.99 / ₺499)",
     ytSimTitle: "🎮 Live Player & Stream Interceptor Simulator",
     ytSimDesc: "Experience how our engine hooks into YouTube's player API with zero delay in real-time:",
@@ -473,9 +473,9 @@ const TRANSLATIONS = {
     p1PriceText: "Licencia VIP de por vida",
     // GEN:PRODUCTS:END
 
-    ytHeroTag: "⚡ MOTOR INTERCEPTOR DE TRANSMISIÓN DE YOUTUBE",
+    ytHeroTag: "🍿 MODO CINE SIN ANUNCIOS",
     ytHeroTitle: "Zen Cinema Pro",
-    ytHeroSubtitle: "Oculta y omite anuncios automáticamente, avanza a 16x los anuncios no omitibles, con modo de enfoque de cine.",
+    ytHeroSubtitle: "Omite todos los anuncios automáticamente y avanza a 16x los que no se pueden saltar - ahorrando datos reales en cada video. Luego atenúa la página a un modo cine OLED negro. Todo en tu propio dispositivo y cuenta de Google.",
     ytBtnBuy: "⚡ Comprar Licencia VIP ($19.99 / ₺499)",
     ytSimTitle: "🎮 Simulador de Reproductor y Flujo en Vivo",
     ytSimDesc: "Pruebe en tiempo real cómo interactúa nuestro motor con la API de reproducción de YouTube:",
@@ -677,9 +677,9 @@ const TRANSLATIONS = {
     p1PriceText: "Lebenslange VIP-Lizenz",
     // GEN:PRODUCTS:END
 
-    ytHeroTag: "⚡ YOUTUBE STREAM INTERCEPTOR ENGINE",
+    ytHeroTag: "🍿 WERBEFREIER KINOMODUS",
     ytHeroTitle: "Zen Cinema Pro",
-    ytHeroSubtitle: "Blendet Werbung automatisch aus und überspringt sie, spult nicht überspringbare Werbung 16-fach vor, mit Kino-Fokusmodus.",
+    ytHeroSubtitle: "Überspringt jede Werbung automatisch und spult nicht überspringbare 16-fach vor - spart echte Daten/Bandbreite bei jedem Video. Dimmt die Seite dann in einen OLED-schwarzen Kinomodus. Alles auf Ihrem eigenen Gerät, Ihrem eigenen Google-Konto.",
     ytBtnBuy: "⚡ VIP-Lizenz Kaufen (19,99 $ / 499 ₺)",
     ytSimTitle: "🎮 Live-Player & Stream-Interceptor-Simulator",
     ytSimDesc: "Erleben Sie in Echtzeit, wie unsere Engine ohne Verzögerung in die YouTube-Player-API eingreift:",
