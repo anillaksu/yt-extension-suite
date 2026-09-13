@@ -38,7 +38,7 @@ const TRANSLATIONS = {
     secProductsTitle: "Geliştirilen Bağımsız Eklentiler",
     secProductsSubtitle: "Her eklenti bağımsız bir mimariyle, belirli bir amaca en yüksek performansla hizmet etmek üzere kodlanmıştır.",
 
-    // Product 1: YouTube Accelerator
+    // Product 1: Zen Cinema Pro
     // GEN:PRODUCTS:START
     p1Title: "Zen Cinema Pro — Reklamsız Sinema Modu",
     p1Tagline: "Kendi Oynatıcısıyla Reklamlardan Sıfır Etkilenen İzleme",
