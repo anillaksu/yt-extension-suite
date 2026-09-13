@@ -55,7 +55,7 @@ const TRANSLATIONS = {
     // GEN:PRODUCTS:END
 
     ytHeroTag: "⚡ YOUTUBE STREAM INTERCEPTOR MOTORU",
-    ytHeroTitle: "YouTube Player Accelerator Pro",
+    ytHeroTitle: "Zen Cinema Pro",
     ytHeroSubtitle: "Reklamları otomatik gizler ve atlar, atlanamayan reklamlarda 16x hızlandırma sunar.",
     ytBtnBuy: "⚡ Hemen Satın Al (₺499 / $19.99)",
     ytSimTitle: "🎮 Canlı Oynatıcı & Akış Simülatörü",
@@ -96,8 +96,8 @@ const TRANSLATIONS = {
     // GEN:PRODUCTS:START
     bundleTitle: "Ultimate Extension Suite Bundle Pass",
     bundleTagline: "Tüm Pro Eklentilere Tek Anahtarla Sınırsız Erişim",
-    bundleDesc: "Hem YouTube Accelerator Pro hem de Clean Capture Pro eklentilerini içeren, yeni çıkacak tüm eklentilere erken erişim sağlayan VIP geliştirici paketi.",
-    bundleF1: "YouTube Accelerator Pro VIP Lisansı",
+    bundleDesc: "Hem Zen Cinema Pro hem de Clean Capture Pro eklentilerini içeren, yeni çıkacak tüm eklentilere erken erişim sağlayan VIP geliştirici paketi.",
+    bundleF1: "Zen Cinema Pro VIP Lisansı",
     bundleF2: "Clean Full Page & PDF Capture Pro Lisansı",
     bundleF3: "Tek Evrensel Master Lisans Anahtarı",
     bundleF4: "Gelecek Tüm Eklentilere Erken Beta Erişimi",
@@ -271,7 +271,7 @@ const TRANSLATIONS = {
     // GEN:PRODUCTS:END
 
     ytHeroTag: "⚡ YOUTUBE STREAM INTERCEPTOR ENGINE",
-    ytHeroTitle: "YouTube Player Accelerator Pro",
+    ytHeroTitle: "Zen Cinema Pro",
     ytHeroSubtitle: "Automatically hides and skips ads, fast-forwards non-skippable ads at 16x.",
     ytBtnBuy: "⚡ Buy VIP License ($19.99 / ₺499)",
     ytSimTitle: "🎮 Live Player & Stream Interceptor Simulator",
@@ -310,8 +310,8 @@ const TRANSLATIONS = {
     // GEN:PRODUCTS:START
     bundleTitle: "Ultimate Extension Suite Bundle Pass",
     bundleTagline: "Unlimited VIP Access to All Pro Extensions",
-    bundleDesc: "Includes full VIP access to YouTube Accelerator Pro, Clean Capture Pro, and early beta access to upcoming releases with a single master key.",
-    bundleF1: "YouTube Accelerator Pro VIP License",
+    bundleDesc: "Includes full VIP access to Zen Cinema Pro, Clean Capture Pro, and early beta access to upcoming releases with a single master key.",
+    bundleF1: "Zen Cinema Pro VIP License",
     bundleF2: "Clean Full Page & PDF Capture Pro License",
     bundleF3: "Single Universal Master License Key",
     bundleF4: "Early Beta Access to All Upcoming Extensions",
@@ -474,7 +474,7 @@ const TRANSLATIONS = {
     // GEN:PRODUCTS:END
 
     ytHeroTag: "⚡ MOTOR INTERCEPTOR DE TRANSMISIÓN DE YOUTUBE",
-    ytHeroTitle: "YouTube Player Accelerator Pro",
+    ytHeroTitle: "Zen Cinema Pro",
     ytHeroSubtitle: "Oculta y omite anuncios automáticamente, avanza a 16x los anuncios no omitibles, con modo de enfoque de cine.",
     ytBtnBuy: "⚡ Comprar Licencia VIP ($19.99 / ₺499)",
     ytSimTitle: "🎮 Simulador de Reproductor y Flujo en Vivo",
@@ -513,8 +513,8 @@ const TRANSLATIONS = {
     // GEN:PRODUCTS:START
     bundleTitle: "Pase Paquete Ultimate Extension Suite",
     bundleTagline: "Acceso VIP Ilimitado a Todas las Extensiones",
-    bundleDesc: "Incluye acceso a YouTube Accelerator Pro y Clean Capture Pro con un 20% de descuento.",
-    bundleF1: "Licencia VIP de YouTube Accelerator Pro",
+    bundleDesc: "Incluye acceso a Zen Cinema Pro y Clean Capture Pro con un 20% de descuento.",
+    bundleF1: "Licencia VIP de Zen Cinema Pro",
     bundleF2: "Licencia de Clean Full Page & PDF Capture Pro",
     bundleF3: "Clave de licencia maestra universal única",
     bundleF4: "Acceso anticipado a todas las próximas extensiones",
@@ -678,7 +678,7 @@ const TRANSLATIONS = {
     // GEN:PRODUCTS:END
 
     ytHeroTag: "⚡ YOUTUBE STREAM INTERCEPTOR ENGINE",
-    ytHeroTitle: "YouTube Player Accelerator Pro",
+    ytHeroTitle: "Zen Cinema Pro",
     ytHeroSubtitle: "Blendet Werbung automatisch aus und überspringt sie, spult nicht überspringbare Werbung 16-fach vor, mit Kino-Fokusmodus.",
     ytBtnBuy: "⚡ VIP-Lizenz Kaufen (19,99 $ / 499 ₺)",
     ytSimTitle: "🎮 Live-Player & Stream-Interceptor-Simulator",
@@ -717,8 +717,8 @@ const TRANSLATIONS = {
     // GEN:PRODUCTS:START
     bundleTitle: "Ultimate Extension Suite Bundle Pass",
     bundleTagline: "Unbegrenzter VIP-Zugang zu allen Pro-Erweiterungen",
-    bundleDesc: "Enthält VIP-Lizenzen für YouTube Accelerator Pro und Clean Capture Pro mit 20% Rabatt.",
-    bundleF1: "YouTube Accelerator Pro VIP-Lizenz",
+    bundleDesc: "Enthält VIP-Lizenzen für Zen Cinema Pro und Clean Capture Pro mit 20% Rabatt.",
+    bundleF1: "Zen Cinema Pro VIP-Lizenz",
     bundleF2: "Clean Full Page & PDF Capture Pro Lizenz",
     bundleF3: "Einzelner Universeller Master-Lizenzschlüssel",
     bundleF4: "Früher Beta-Zugang zu allen zukünftigen Erweiterungen",

@@ -11,7 +11,7 @@ const PRODUCTS_DB = {
     "icon": "⚡",
     "priceTry": 499,
     "priceUsd": 19.99,
-    "url": "/yt-extension-suite/",
+    "url": "/zen-cinema-pro/",
     "polarPriceId": "754b8849-861e-4221-9576-755bd80bce1b",
     "checkoutUrl": "https://buy.polar.sh/polar_cl_PSlObXBqmnn6MMU7VbiPUZoOznY7MwkBf85Cv0GvXDv"
   },
@@ -23,7 +23,7 @@ const PRODUCTS_DB = {
     "icon": "⚡",
     "priceTry": 499,
     "priceUsd": 19.99,
-    "url": "/yt-extension-suite/",
+    "url": "/zen-cinema-pro/",
     "polarPriceId": "754b8849-861e-4221-9576-755bd80bce1b",
     "checkoutUrl": "https://buy.polar.sh/polar_cl_PSlObXBqmnn6MMU7VbiPUZoOznY7MwkBf85Cv0GvXDv"
   },
