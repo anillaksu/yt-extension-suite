@@ -555,9 +555,8 @@
       if (!pinInput) return;
       const inputHash = await sha256(pinInput);
 
-      if (pinInput.toLowerCase() === 'anil2026' || inputHash === MASTER_PIN_HASH) {
-        sessionStorage.setItem('executive_auth', 'unlocked_anil2026');
-        sessionStorage.setItem('suite_dash_auth_ok_v2', 'true');
+      if (inputHash === MASTER_PIN_HASH) {
+        sessionStorage.setItem('executive_auth', 'unlocked_' + MASTER_PIN_HASH);
         document.getElementById('security-gate').style.display = 'none';
         document.getElementById('dash-main').style.setProperty('display', 'flex', 'important');
         initDashboard();
@@ -569,8 +568,7 @@
 
     function checkAuth() {
       const auth = sessionStorage.getItem('executive_auth');
-      const legacyAuth = sessionStorage.getItem('suite_dash_auth_ok_v2');
-      if (auth === 'unlocked_anil2026' || auth === 'unlocked_' + MASTER_PIN_HASH || legacyAuth === 'true') {
+      if (auth === 'unlocked_' + MASTER_PIN_HASH) {
         document.getElementById('security-gate').style.display = 'none';
         document.getElementById('dash-main').style.setProperty('display', 'flex', 'important');
         initDashboard();
