@@ -29,10 +29,17 @@ const KONTROL = arg.has("--kontrol");
 const YAYINLA = arg.has("--yayinla");
 const degisen = new Set();
 
-function oku(yol) { return readFileSync(path.join(KOK, yol), "utf8"); }
+// Satır sonları LF'ye çevrilerek okunur; yazarken dosyanın kendi biçimi (CRLF/LF) korunur,
+// yoksa git autocrlf'li bir kopyada her tur "değişti" sanılır.
+function oku(yol) { return readFileSync(path.join(KOK, yol), "utf8").replace(/\r\n/g, "\n"); }
 function yaz(yol, icerik) {
   const tam = path.join(KOK, yol);
-  if (existsSync(tam) && readFileSync(tam, "utf8") === icerik) return;
+  icerik = icerik.replace(/\r\n/g, "\n");
+  if (existsSync(tam)) {
+    const eski = readFileSync(tam, "utf8");
+    if (eski.replace(/\r\n/g, "\n") === icerik) return;
+    if (eski.includes("\r\n")) icerik = icerik.replace(/\n/g, "\r\n");
+  }
   degisen.add(yol.replace(/\\/g, "/"));
   if (!KONTROL) { mkdirSync(path.dirname(tam), { recursive: true }); writeFileSync(tam, icerik, "utf8"); }
 }
@@ -54,7 +61,16 @@ function sonDegisiklik(dizin) {
 }
 
 const fiyatMetni = (f) => `₺${f.try} / $${f.usd.toFixed(2)}`;
-const FIYAT_KALIBI = /₺\s?[\d.,]+\s*\/\s*\$\s?[\d.,]+/;
+// i18n.js'te dillerin fiyat yazımı farklı: tr "₺499 / $19.99", en/es "$19.99 / ₺499", de "19,99 $ / 499 ₺"
+const FIYAT_BICIMLERI = [
+  [/₺\s?[\d.,]+\s*\/\s*\$\s?[\d.,]+/, (f) => `₺${f.try} / $${f.usd.toFixed(2)}`],
+  [/\$\s?[\d.,]+\s*\/\s*₺\s?[\d.,]+/, (f) => `$${f.usd.toFixed(2)} / ₺${f.try}`],
+  [/[\d.,]+\s?\$\s*\/\s*[\d.,]+\s?₺/, (f) => `${f.usd.toFixed(2).replace(".", ",")} $ / ${f.try} ₺`],
+];
+function fiyatiDegistir(metin, f) {
+  for (const [kalip, bicim] of FIYAT_BICIMLERI) if (kalip.test(metin)) return metin.replace(kalip, bicim(f));
+  return metin;
+}
 
 // 1) Gerçeği topla
 const kayit = JSON.parse(readFileSync(KAYIT, "utf8").replace(/^\uFEFF/, ""));
@@ -100,13 +116,13 @@ yaz("urunler.json", JSON.stringify(veri, null, 2) + "\n");
   yaz("catalog.js", js.slice(0, bas) + JSON.stringify(db, null, 2) + js.slice(son));
 }
 
-// 4) i18n.js fiyat metinleri (4 dilde "₺X / $Y" kalıbı)
+// 4) i18n.js fiyat metinleri (4 dil, her dil kendi yazımıyla)
 {
   let js = oku("i18n.js");
   for (const [slug, u] of Object.entries(URUNLER)) {
     for (const anahtar of u.fiyatAnahtarlari) {
       const satir = new RegExp(`(\\n\\s*${anahtar}:\\s*")([^"\\n]*)(")`, "g");
-      js = js.replace(satir, (t, a, metin, c) => a + metin.replace(FIYAT_KALIBI, fiyatMetni(veri.urunler[slug].fiyat)) + c);
+      js = js.replace(satir, (t, a, metin, c) => a + fiyatiDegistir(metin, veri.urunler[slug].fiyat) + c);
     }
   }
   yaz("i18n.js", js);
