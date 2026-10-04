@@ -8,6 +8,7 @@ param(
   [switch]$Deneme   # push/PR yapmaz; yalnız ne değişeceğini yazar
 )
 $ErrorActionPreference = 'Stop'
+[Console]::OutputEncoding = [Text.Encoding]::UTF8   # node ciktisi gunlukte bozulmasin
 $gunluk = Join-Path (Split-Path $Calisma) 'urun-pr.log'
 New-Item -ItemType Directory -Force (Split-Path $Calisma) | Out-Null
 function Yaz($m) { "$(Get-Date -Format 'yyyy-MM-dd HH:mm:ss') $m" | Add-Content -Path $gunluk -Encoding utf8; $m }
