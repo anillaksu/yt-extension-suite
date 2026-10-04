@@ -3,12 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title data-i18n="p1Title">Zen Cinema Pro — Reklamsız Sinema Modu & YouTube Hızlandırma</title>
+  <title data-i18n="p1Title">Zen Cinema Pro — Reklamsız Sinema Modu</title>
   <meta name="description" content="Official showcase for Zen Cinema Pro. Skip every YouTube ad automatically (saving real data/bandwidth on every video), then watch in an immersive OLED-black cinema mode - no separate app, no account risk, runs entirely on your own device.">
   <meta property="og:description" content="Skip every YouTube ad, save bandwidth, and watch in a distraction-free cinema mode - directly on your own device and Google account, no shady workarounds.">
   <meta property="og:title" content="Zen Cinema Pro — Ad-Free Theater Mode for YouTube">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E%E2%9A%A1%3C/text%3E%3C/svg%3E">
   <link rel="stylesheet" href="../style.css?v=a178d0bd">
+  <link rel="stylesheet" href="../premium.css?v=d1d69f7a">
+  <script src="../premium.js?v=35fe85ad" defer></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -23,14 +25,14 @@
     <div class="nav-container">
       <a href="/store/index.html" class="logo-link">
         <span class="logo-badge">⚡</span>
-        <span class="logo-text" data-i18n="brandName">Anıl Aksu • Studio</span>
+        <span class="logo-text" data-i18n="brandName">Anıl Aksu • Chrome Extensions Studio</span>
       </a>
 
       <div class="nav-links">
-        <a href="/store/index.html" data-i18n="navHub">Portföy</a>
-        <a href="/store/" data-i18n="navStore">Mağaza</a>
+        <a href="/store/index.html" data-i18n="navHub">Portföy & Hub</a>
+        <a href="/store/" data-i18n="navStore">Mağaza & Sepet</a>
         <a href="/store/zen-cinema-pro/" class="active" data-i18n="navYtAccelerator">Zen Cinema Pro</a>
-        <a href="/store/screen-pdf-capture/" data-i18n="navCleanCapture">PDF Capture</a>
+        <a href="/store/screen-pdf-capture/" data-i18n="navCleanCapture">PDF & Ekran Yakalama</a>
         <a href="/store/index.html#future-projects" data-i18n="navFuture">Gelecek Projeler</a>
 
         <!-- Cart Button -->
@@ -56,19 +58,17 @@
   <!-- Product Hero -->
   <header class="hero">
     <div class="container">
+      <div class="hero-logo"><img src="../assets/logos/yt_accelerator.png" alt="Zen Cinema Pro logosu" width="88" height="88" decoding="async"></div>
       <div class="hero-tag" data-i18n="ytHeroTag">🍿 REKLAMSIZ SİNEMA MODU</div>
+      <div class="card-meta hero-meta"><span class="meta-pill" data-urun="yt_accelerator" data-urun-alan="surum">v1.0.0</span><span class="meta-pill" data-urun="yt_accelerator" data-urun-alan="guncelleme"><time datetime="2026-09-08">2026-09-08</time></span></div>
       <h1 class="hero-title" style="max-width: 900px; margin: 0 auto 20px;" data-i18n="ytHeroTitle">Zen Cinema Pro</h1>
-      <p class="hero-subtitle" data-i18n="ytHeroSubtitle">
-        Her reklamı otomatik atlayın, atlanamayanları 16x hızda geçin - böylece her videoda gerçek veri/bant genişliği tasarrufu edin. Sonra sayfayı OLED-siyaha çevirip dikkat dağıtmadan izleyin. Hepsi kendi cihazınızda, kendi Google hesabınızla; ayrı bir uygulama veya hesap riski yok.
-      </p>
+      <p class="hero-subtitle" data-i18n="ytHeroSubtitle">Her reklamı otomatik atlayın, atlanamayanları 16x hızda geçin - böylece her videoda gerçek veri/bant genişliği tasarrufu edin. Sonra sayfayı OLED-siyaha çevirip dikkat dağıtmadan izleyin. Hepsi kendi cihazınızda, kendi Google hesabınızla.</p>
 
       <div class="hero-actions">
         <button onclick="openCheckoutModal('yt_accelerator')" class="btn-primary" style="font-size: 1.1rem; padding: 16px 32px;" data-i18n="ytBtnBuy">
           ⚡ Hemen Satın Al (₺499 / $19.99)
         </button>
-        <button onclick="addToCart('yt_accelerator')" class="btn-cart-action" style="font-size: 1.1rem; padding: 16px 28px;" data-i18n="btnAddToCart">
-          🛒 Sepete Ekle
-        </button>
+        <button onclick="addToCart('yt_accelerator')" class="btn-cart-action" style="font-size: 1.1rem; padding: 16px 28px;" data-i18n="btnAddToCart">Sepete Ekle</button>
       </div>
 
       <!-- Real product screenshots -->
@@ -91,8 +91,8 @@
       <div style="background: #0f172a; border: 1px solid var(--border-color); border-radius: 24px; padding: 32px; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; border-bottom: 1px solid var(--border-color); padding-bottom: 16px; flex-wrap: wrap; gap: 12px;">
           <div>
-            <h3 style="color: #fff; font-size: 1.25rem; font-weight: 800;" data-i18n="ytSimTitle">🎮 Reklam Atlama Simülatörü</h3>
-            <p style="color: var(--text-muted); font-size: 0.85rem;" data-i18n="ytSimDesc">Eklentinin reklam algılandığında yaptığı gerçek adımları canlı test edin:</p>
+            <h3 style="color: #fff; font-size: 1.25rem; font-weight: 800;" data-i18n="ytSimTitle">🎮 Canlı Oynatıcı & Akış Simülatörü</h3>
+            <p style="color: var(--text-muted); font-size: 0.85rem;" data-i18n="ytSimDesc">Eklentinin YouTube oynatıcı API'sine müdahale mantığını canlı test edin:</p>
           </div>
           <span style="background: rgba(0, 240, 255, 0.15); color: #00f0ff; border: 1px solid rgba(0, 240, 255, 0.4); padding: 4px 12px; border-radius: 9999px; font-weight: 800; font-size: 0.8rem;">
             LIVE ENGINE v1.0.0
@@ -131,14 +131,14 @@
   <section class="section" style="padding: 20px 0 70px;">
     <div class="container">
       <div style="text-align: center; margin-bottom: 48px;">
-        <h2 style="font-size: 2.2rem; font-weight: 800; color: #fff; margin-bottom: 10px;" data-i18n="secProductsTitle">Teknik Yetenekler & Mimari</h2>
-        <p style="color: var(--text-muted); font-size: 1.05rem;" data-i18n="p1Desc">Zen Cinema Pro'yu rakiplerinden ayıran çekirdek motor teknolojileri:</p>
+        <h2 style="font-size: 2.2rem; font-weight: 800; color: #fff; margin-bottom: 10px;" data-i18n="secProductsTitle">Geliştirilen Bağımsız Eklentiler</h2>
+        <p style="color: var(--text-muted); font-size: 1.05rem;" data-i18n="p1Desc">YouTube'u kendi oynatma motoru ve CSS katmanı içinde çalıştırır; ışıkları kapatır, sayfayı karartır ve reklamları DOM seviyesinde anında geçersiz kılar.</p>
       </div>
 
       <div class="grid-3">
         <div class="product-card">
           <div class="card-icon">⚡</div>
-          <h3 class="card-title" data-i18n="p1F1">Anında Reklam Gizleme</h3>
+          <h3 class="card-title" data-i18n="p1F1">Reklam öğelerini CSS ile anında gizler</h3>
           <p class="card-desc">
             Sayfa yüklenir yüklenmez YouTube reklam öğelerini (banner, overlay, in-feed reklam) CSS enjeksiyonuyla anında gizler; DOM değişikliklerini MutationObserver ile sürekli izler.
           </p>
@@ -146,7 +146,7 @@
 
         <div class="product-card">
           <div class="card-icon">⏩</div>
-          <h3 class="card-title" data-i18n="p1F3">16x Reklam Atlama</h3>
+          <h3 class="card-title" data-i18n="p1F3">Reklamlarda 16x hızlı geçiş ve otomatik atlama</h3>
           <p class="card-desc">
             "Atla" butonunu otomatik tıklar; atlanamayan reklamlarda videoyu 16x hızda sonuna kadar ileri sarar, böylece bekleme süresi en aza iner.
           </p>
@@ -154,7 +154,7 @@
 
         <div class="product-card">
           <div class="card-icon">🛡️</div>
-          <h3 class="card-title" data-i18n="p1F4">Anti-Adblock Kalkanı</h3>
+          <h3 class="card-title" data-i18n="p1F4">Anti-adblock uyarı kalkanı (pop-up engelleyici)</h3>
           <p class="card-desc">
             YouTube'un "reklam engelleyici algılandı" uyarı pencerelerini DOM'dan kaldırır ve video oynatmaya otomatik devam eder.
           </p>
@@ -162,7 +162,7 @@
 
         <div class="product-card">
           <div class="card-icon">🧠</div>
-          <h3 class="card-title" data-i18n="p1F5">Otomatik Devam</h3>
+          <h3 class="card-title" data-i18n="p1F5">Reklam sonrası oynatmayı otomatik devam ettirir</h3>
           <p class="card-desc">
             Reklam bittiğinde video duraklamışsa oynatmaya otomatik devam eder — manuel müdahaleye gerek kalmaz.
           </p>
@@ -170,10 +170,8 @@
 
         <div class="product-card">
           <div class="card-icon">🔒</div>
-          <h3 class="card-title" data-i18n="arch1Title">%100 İstemci İçi Güvenlik</h3>
-          <p class="card-desc" data-i18n="arch1Desc">
-            Hiçbir video izleme geçmişi veya kullanıcı verisi sunucuya gönderilmez. Sıfır sunucu telemetrisi garantisi.
-          </p>
+          <h3 class="card-title" data-i18n="arch1Title">Sıfır Bulut Telemetrisi</h3>
+          <p class="card-desc" data-i18n="arch1Desc">Tüm canvas işleme, video akış düzenleme ve PDF motorları doğrudan bilgisayarınızın RAM belleğinde çalışır.</p>
         </div>
 
         <div class="product-card">
@@ -210,7 +208,7 @@
   <!-- Technical Specs Table -->
   <section class="section" style="background: rgba(15, 23, 42, 0.6); padding: 70px 0; border-top: 1px solid var(--border-color);">
     <div class="container" style="max-width: 860px;">
-      <h2 style="font-size: 2rem; font-weight: 800; color: #fff; text-align: center; margin-bottom: 30px;" data-i18n="ytTechSpecsTitle">Teknik Özellikler & Gereksinimler</h2>
+      <h2 style="font-size: 2rem; font-weight: 800; color: #fff; text-align: center; margin-bottom: 30px;" data-i18n="ytTechSpecsTitle">Teknik Özellikler & Uyumluluk</h2>
 
       <table style="width: 100%; border-collapse: collapse; background: #1e293b; border-radius: 14px; overflow: hidden; border: 1px solid var(--border-color);">
         <tr style="border-bottom: 1px solid rgba(255,255,255,0.06);">
@@ -231,7 +229,7 @@
         </tr>
         <tr>
           <td style="padding: 14px 20px; color: var(--text-muted); font-weight: 700;">Lisans Süresi</td>
-          <td style="padding: 14px 20px; color: #00f0ff; font-weight: 800;" data-i18n="p1PriceText">Ömür Boyu — Tüm Güncellemeler Dahil</td>
+          <td style="padding: 14px 20px; color: #00f0ff; font-weight: 800;" data-i18n="p1PriceText">Ömür Boyu VIP Lisans</td>
         </tr>
       </table>
     </div>
@@ -240,17 +238,11 @@
   <!-- CTA Box -->
   <section class="section" style="padding: 80px 0; text-align: center;">
     <div class="container" style="max-width: 760px;">
-      <h2 style="font-size: 2.2rem; font-weight: 800; color: #fff; margin-bottom: 14px;" data-i18n="p1Title">Zen Cinema Pro</h2>
-      <p style="color: var(--text-muted); font-size: 1.05rem; margin-bottom: 30px;" data-i18n="p1Desc">
-        Ömür boyu VIP lisans anahtarınızı alın, reklamsız ve kesintisiz YouTube deneyiminin tadını çıkarın.
-      </p>
+      <h2 style="font-size: 2.2rem; font-weight: 800; color: #fff; margin-bottom: 14px;" data-i18n="p1Title">Zen Cinema Pro — Reklamsız Sinema Modu</h2>
+      <p style="color: var(--text-muted); font-size: 1.05rem; margin-bottom: 30px;" data-i18n="p1Desc">YouTube'u kendi oynatma motoru ve CSS katmanı içinde çalıştırır; ışıkları kapatır, sayfayı karartır ve reklamları DOM seviyesinde anında geçersiz kılar.</p>
       <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
-        <button onclick="openCheckoutModal('yt_accelerator')" class="btn-primary" style="font-size: 1.1rem; padding: 16px 36px;" data-i18n="ytBtnBuy">
-          ⚡ VIP Lisansı Satın Al (₺499 / $19.99)
-        </button>
-        <button onclick="addToCart('yt_accelerator')" class="btn-cart-action" style="font-size: 1.1rem; padding: 16px 30px;" data-i18n="btnAddToCart">
-          🛒 Sepete Ekle
-        </button>
+        <button onclick="openCheckoutModal('yt_accelerator')" class="btn-primary" style="font-size: 1.1rem; padding: 16px 36px;" data-i18n="ytBtnBuy">⚡ Hemen Satın Al (₺499 / $19.99)</button>
+        <button onclick="addToCart('yt_accelerator')" class="btn-cart-action" style="font-size: 1.1rem; padding: 16px 30px;" data-i18n="btnAddToCart">Sepete Ekle</button>
       </div>
     </div>
   </section>
@@ -271,8 +263,8 @@
         <div>
           <h4 style="color: #fff; font-size: 0.95rem; font-weight: 700; margin-bottom: 14px;">Eklentiler</h4>
           <p><a href="/store/zen-cinema-pro/" style="color: var(--text-muted); font-size: 0.9rem;" data-i18n="navYtAccelerator">Zen Cinema Pro</a></p>
-          <p style="margin-top: 8px;"><a href="/store/screen-pdf-capture/" style="color: var(--text-muted); font-size: 0.9rem;" data-i18n="navCleanCapture">Clean Capture Pro</a></p>
-          <p style="margin-top: 8px;"><a href="/store/" style="color: var(--text-muted); font-size: 0.9rem;" data-i18n="navStore">VIP Mağaza & Sepet</a></p>
+          <p style="margin-top: 8px;"><a href="/store/screen-pdf-capture/" style="color: var(--text-muted); font-size: 0.9rem;" data-i18n="navCleanCapture">PDF & Ekran Yakalama</a></p>
+          <p style="margin-top: 8px;"><a href="/store/" style="color: var(--text-muted); font-size: 0.9rem;" data-i18n="navStore">Mağaza & Sepet</a></p>
         </div>
         <div>
           <h4 style="color: #fff; font-size: 0.95rem; font-weight: 700; margin-bottom: 14px;">Geliştirici</h4>
@@ -303,7 +295,7 @@
     <div class="cart-drawer-header">
       <div class="cart-drawer-title">
         <span>🛒</span>
-        <span data-i18n="navCart">Alışveriş Sepetim</span>
+        <span data-i18n="navCart">Sepetim</span>
       </div>
       <button class="cart-close-btn" onclick="closeCart()">✕</button>
     </div>
@@ -362,9 +354,7 @@
           <span data-i18n="modalCheckoutMarketing">Gelecekteki yeni eklentiler, güncellemeler ve indirim kuponları hakkında bildirim almayı onaylıyorum.</span>
         </label>
 
-        <button type="submit" id="btn-submit-order" class="btn-primary" style="width: 100%; justify-content: center; margin-top: 12px; font-size: 1.05rem;" data-i18n="modalCheckoutSubmitBtn">
-          🔒 Güvenli Ödeme & Lisansı Al &rarr;
-        </button>
+        <button type="submit" id="btn-submit-order" class="btn-primary" style="width: 100%; justify-content: center; margin-top: 12px; font-size: 1.05rem;" data-i18n="modalCheckoutSubmitBtn">🔒 Güvenli Ödeme & Lisansı Al →</button>
       </form>
     </div>
   </div>

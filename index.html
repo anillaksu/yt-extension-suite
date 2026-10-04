@@ -3,10 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title data-i18n="hubTitle">Anıl Aksu — Chrome Extension Engineering & Software Marketplace</title>
+  <title data-i18n="hubTitle">Gizlilik Odaklı & Yüksek Performanslı Tarayıcı Eklentileri</title>
   <meta name="description" content="Official portfolio & software marketplace of Anıl Aksu. Featuring high-performance, 100% client-side Chrome extensions: Zen Cinema Pro and Clean Full Page & PDF Capture Pro.">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E%E2%9A%A1%3C/text%3E%3C/svg%3E">
   <link rel="stylesheet" href="style.css?v=a178d0bd">
+  <link rel="stylesheet" href="premium.css?v=d1d69f7a">
+  <script src="premium.js?v=35fe85ad" defer></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <script src="analytics.js?v=197e7e94" defer></script>
@@ -21,14 +23,14 @@
     <div class="nav-container">
       <a href="/store/index.html" class="logo-link">
         <span class="logo-badge">⚡</span>
-        <span class="logo-text" data-i18n="brandName">Anıl Aksu • Studio</span>
+        <span class="logo-text" data-i18n="brandName">Anıl Aksu • Chrome Extensions Studio</span>
       </a>
 
       <div class="nav-links">
-        <a href="/store/index.html" class="active" data-i18n="navHub">Portföy</a>
-        <a href="/store/" data-i18n="navStore">Mağaza</a>
+        <a href="/store/index.html" class="active" data-i18n="navHub">Portföy & Hub</a>
+        <a href="/store/" data-i18n="navStore">Mağaza & Sepet</a>
         <a href="/store/zen-cinema-pro/" data-i18n="navYtAccelerator">Zen Cinema Pro</a>
-        <a href="/store/screen-pdf-capture/" data-i18n="navCleanCapture">PDF Capture</a>
+        <a href="/store/screen-pdf-capture/" data-i18n="navCleanCapture">PDF & Ekran Yakalama</a>
         <a href="#future-projects" data-i18n="navFuture">Gelecek Projeler</a>
 
         <!-- Cart Button with Live Badge -->
@@ -61,7 +63,7 @@
       </p>
 
       <div class="hero-actions">
-        <a href="/store/" class="btn-primary" data-i18n="hubBtnStore">🛒 Resmi Mağaza & Sepet &rarr;</a>
+        <a href="/store/" class="btn-primary" data-i18n="hubBtnStore">Resmi Mağaza & Sepet</a>
         <a href="#featured-products" class="btn-secondary" data-i18n="hubBtnExplore">Ürünleri İncele</a>
       </div>
 
@@ -82,9 +84,10 @@
       <div class="grid-3">
         <!-- Product 1: Zen Cinema Pro -->
         <div class="product-card">
-          <div class="card-icon">🍿</div>
-          <h3 class="card-title" data-i18n="p1Title">Zen Cinema Pro</h3>
+          <div class="card-icon card-logo"><img src="assets/logos/yt_accelerator.png" alt="Zen Cinema Pro logosu" width="64" height="64" decoding="async"></div>
+          <h3 class="card-title" data-i18n="p1Title">Zen Cinema Pro — Reklamsız Sinema Modu</h3>
           <div class="card-tagline" data-i18n="p1Tagline">Kendi Oynatıcısıyla Reklamlardan Sıfır Etkilenen İzleme</div>
+          <div class="card-meta"><span class="meta-pill" data-urun="yt_accelerator" data-urun-alan="surum">v1.0.0</span><span class="meta-pill" data-urun="yt_accelerator" data-urun-alan="guncelleme"><time datetime="2026-09-08">2026-09-08</time></span></div>
           <p class="card-desc" data-i18n="p1Desc">
             YouTube'u kendi oynatma motoru ve CSS katmanı içinde çalıştırır; ışıkları kapatır, sayfayı karartır ve reklamları DOM seviyesinde anında geçersiz kılar.
           </p>
@@ -93,7 +96,7 @@
             <li data-i18n="p1F1">Reklam öğelerini CSS ile anında gizler</li>
             <li data-i18n="p1F2">Akıllı video akış interceptor motoru</li>
             <li data-i18n="p1F3">Reklamlarda 16x hızlı geçiş ve otomatik atlama</li>
-            <li data-i18n="p1F4">Reklam sonrası otomatik oynatmaya devam eder</li>
+            <li data-i18n="p1F4">Anti-adblock uyarı kalkanı (pop-up engelleyici)</li>
           </ul>
 
           <div class="price-box">
@@ -101,29 +104,28 @@
               <div class="price-amount" data-i18n="p1Price">₺499 / $19.99</div>
               <div class="price-period" data-i18n="p1PriceText">Ömür Boyu VIP Lisans</div>
             </div>
+            <button onclick="addToCart('yt_accelerator')" class="btn-cart-action price-cart" aria-label="Sepete ekle" title="Sepete ekle">🛒</button>
           </div>
 
           <div class="card-actions">
-            <a href="/store/zen-cinema-pro/" class="btn-secondary" style="flex: 1; text-align: center; padding: 12px 14px; font-size: 0.88rem;" data-i18n="btnViewDetails">İncele</a>
-            <button onclick="openCheckoutModal('yt_accelerator')" class="btn-primary" style="flex: 1; justify-content: center; padding: 12px 14px; font-size: 0.88rem;" data-i18n="btnBuyNow">Hemen Al</button>
-            <button onclick="addToCart('yt_accelerator')" class="btn-cart-action" style="padding: 12px 16px;">🛒</button>
+            <a href="/store/zen-cinema-pro/" class="btn-secondary" style="flex: 1; text-align: center; padding: 12px 14px; font-size: 0.88rem;" data-i18n="btnViewDetails">Detaylı İncele</a>
+            <button onclick="openCheckoutModal('yt_accelerator')" class="btn-primary" style="flex: 1; justify-content: center; padding: 12px 14px; font-size: 0.88rem;" data-i18n="btnBuyNow">Hemen Satın Al</button>
           </div>
         </div>
 
         <!-- Product 2: Clean Capture Pro -->
         <div class="product-card">
-          <div class="card-icon">📸</div>
+          <div class="card-icon card-logo"><img src="assets/logos/clean_capture.png" alt="Clean Capture Pro logosu" width="64" height="64" decoding="async"></div>
           <h3 class="card-title" data-i18n="p2Title">Clean Full Page & PDF Capture Pro</h3>
-          <div class="card-tagline" data-i18n="p2Tagline">%100 İstemci Taraflı Tam Sayfa Ekran Görüntüsü & PDF</div>
-          <p class="card-desc" data-i18n="p2Desc">
-            Kaydır & birleştir tekniğiyle piksel kaybı olmadan tam sayfa düzen yakalama, çok sayfalı A4 PDF motoru ve yerel OCR.
-          </p>
+          <div class="card-tagline" data-i18n="p2Tagline">%100 İstemci Taraflı Ekran Görüntüsü & PDF</div>
+          <div class="card-meta"><span class="meta-pill" data-urun="clean_capture" data-urun-alan="surum">v1.0.0</span><span class="meta-pill" data-urun="clean_capture" data-urun-alan="guncelleme"><time datetime="2026-09-06">2026-09-06</time></span></div>
+          <p class="card-desc" data-i18n="p2Desc">Kaydır & birleştir tekniğiyle piksel piksel tam sayfa yakalama, A4 çok sayfalı PDF'e bölme ve sansür filtresi (blur/pikselleştirme).</p>
 
           <ul class="feature-list">
             <li data-i18n="p2F1">Kaydır & birleştir ile kayıpsız tam sayfa düzen yakalama</li>
             <li data-i18n="p2F2">Otomatik A4 çok sayfalı PDF dönüştürücü</li>
-            <li data-i18n="p2F3">İnteraktif DOM öğe seçici (Tablo, grafik)</li>
-            <li data-i18n="p2F5">Sansür filtresi (Blur) ve yerel OCR</li>
+            <li data-i18n="p2F3">DOM Öğe Seçici (Spesifik tablo ve grafikler)</li>
+            <li data-i18n="p2F5">Bulanıklaştırma & Sansürleme Filtresi</li>
           </ul>
 
           <div class="price-box">
@@ -131,19 +133,19 @@
               <div class="price-amount" data-i18n="p2Price">₺299 / $11.99</div>
               <div class="price-period" data-i18n="p2PriceText">Ömür Boyu VIP Stüdyo Lisansı</div>
             </div>
+            <button onclick="addToCart('clean_capture')" class="btn-cart-action price-cart" aria-label="Sepete ekle" title="Sepete ekle">🛒</button>
           </div>
 
           <div class="card-actions">
-            <a href="/store/screen-pdf-capture/" class="btn-secondary" style="flex: 1; text-align: center; padding: 12px 14px; font-size: 0.88rem;" data-i18n="btnViewDetails">İncele</a>
-            <button onclick="openCheckoutModal('clean_capture')" class="btn-primary" style="flex: 1; justify-content: center; padding: 12px 14px; font-size: 0.88rem;" data-i18n="btnBuyNow">Hemen Al</button>
-            <button onclick="addToCart('clean_capture')" class="btn-cart-action" style="padding: 12px 16px;">🛒</button>
+            <a href="/store/screen-pdf-capture/" class="btn-secondary" style="flex: 1; text-align: center; padding: 12px 14px; font-size: 0.88rem;" data-i18n="btnViewDetails">Detaylı İncele</a>
+            <button onclick="openCheckoutModal('clean_capture')" class="btn-primary" style="flex: 1; justify-content: center; padding: 12px 14px; font-size: 0.88rem;" data-i18n="btnBuyNow">Hemen Satın Al</button>
           </div>
         </div>
 
         <!-- Product 3: Bundle Pass -->
         <div class="product-card featured">
           <div class="badge-featured" data-i18n="featuredBadge">EN AVANTAJLI PAKET</div>
-          <div class="card-icon">💎</div>
+          <div class="card-icon card-logo card-logo-paket"><img src="assets/logos/yt_accelerator.png" alt="Zen Cinema Pro logosu" width="52" height="52" decoding="async"><img src="assets/logos/clean_capture.png" alt="Clean Capture Pro logosu" width="52" height="52" decoding="async"></div>
           <h3 class="card-title" data-i18n="bundleTitle">Ultimate Extension Suite Bundle Pass</h3>
           <div class="card-tagline" style="color: #f43f5e;" data-i18n="bundleTagline">Tüm Pro Eklentilere Tek Anahtarla Sınırsız Erişim</div>
           <p class="card-desc" data-i18n="bundleDesc">
@@ -166,8 +168,8 @@
           </div>
 
           <div class="card-actions">
-            <button onclick="openCheckoutModal('bundle_suite')" class="btn-primary" style="flex: 1; justify-content: center; font-size: 0.95rem;" data-i18n="btnBuyNow">⚡ Hemen Satın Al</button>
-            <button onclick="addToCart('bundle_suite')" class="btn-cart-action" style="flex: 1; justify-content: center; font-size: 0.95rem;" data-i18n="btnAddToCart">🛒 Sepete Ekle</button>
+            <button onclick="openCheckoutModal('bundle_suite')" class="btn-primary" style="flex: 1; justify-content: center; font-size: 0.95rem;" data-i18n="btnBuyNow">Hemen Satın Al</button>
+            <button onclick="addToCart('bundle_suite')" class="btn-cart-action" style="flex: 1; justify-content: center; font-size: 0.95rem;" data-i18n="btnAddToCart">Sepete Ekle</button>
           </div>
         </div>
       </div>
@@ -224,7 +226,7 @@
             <span style="font-size: 2rem;">🧠</span>
             <span style="background: rgba(56, 189, 248, 0.2); color: #38bdf8; font-size: 0.75rem; font-weight: 800; padding: 3px 8px; border-radius: 6px;">GELİŞTİRİLİYOR (%85)</span>
           </div>
-          <h3 style="color: #fff; font-size: 1.2rem; font-weight: 800; margin-bottom: 8px;" data-i18n="fut1Title">AI Prompt & Copilot Studio</h3>
+          <h3 style="color: #fff; font-size: 1.2rem; font-weight: 800; margin-bottom: 8px;" data-i18n="fut1Title">🧠 AI Prompt & Copilot Studio</h3>
           <p style="color: var(--text-muted); font-size: 0.9rem;" data-i18n="fut1Desc">Her web sitesinde çalışan yerel istemci taraflı AI prompt şablonlayıcı ve metin optimize edici.</p>
         </div>
 
@@ -233,7 +235,7 @@
             <span style="font-size: 2rem;">⚡</span>
             <span style="background: rgba(16, 185, 129, 0.2); color: #10b981; font-size: 0.75rem; font-weight: 800; padding: 3px 8px; border-radius: 6px;">PLANLANDI (%60)</span>
           </div>
-          <h3 style="color: #fff; font-size: 1.2rem; font-weight: 800; margin-bottom: 8px;" data-i18n="fut2Title">Chrome Tab Memory & RAM Saver</h3>
+          <h3 style="color: #fff; font-size: 1.2rem; font-weight: 800; margin-bottom: 8px;" data-i18n="fut2Title">⚡ Chrome Tab Memory & RAM Saver</h3>
           <p style="color: var(--text-muted); font-size: 0.9rem;" data-i18n="fut2Desc">Arka planda kullanılmayan sekmeleri otomatik uyku moduna alarak RAM tasarrufu sağlayan akıllı bellek yöneticisi.</p>
         </div>
 
@@ -242,7 +244,7 @@
             <span style="font-size: 2rem;">🛡️</span>
             <span style="background: rgba(244, 63, 94, 0.2); color: #f43f5e; font-size: 0.75rem; font-weight: 800; padding: 3px 8px; border-radius: 6px;">AR-GE (%40)</span>
           </div>
-          <h3 style="color: #fff; font-size: 1.2rem; font-weight: 800; margin-bottom: 8px;" data-i18n="fut3Title">Web Shield & Privacy AdGuard</h3>
+          <h3 style="color: #fff; font-size: 1.2rem; font-weight: 800; margin-bottom: 8px;" data-i18n="fut3Title">🛡️ Web Shield & Privacy AdGuard</h3>
           <p style="color: var(--text-muted); font-size: 0.9rem;" data-i18n="fut3Desc">Gereksiz izleyicileri ve çerez pencerelerini DOM katmanında sessizce temizleyen gizlilik kalkanı.</p>
         </div>
       </div>
@@ -253,7 +255,7 @@
         <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 24px;" data-i18n="newsletterDesc">Yeni eklenti lansmanları, beta test davetleri ve erken erişim indirim kuponları için bültenimize katılın.</p>
         <form onsubmit="subscribeNewsletter(event)" style="display: flex; gap: 12px; max-width: 480px; margin: 0 auto; flex-wrap: wrap;">
           <input type="email" id="newsletter-email" required placeholder="E-posta adresiniz..." class="form-input" style="flex: 1; min-width: 240px;">
-          <button type="submit" class="btn-primary" style="padding: 12px 24px;" data-i18n="newsletterBtn">Abone Ol</button>
+          <button type="submit" class="btn-primary" style="padding: 12px 24px;" data-i18n="newsletterBtn">Haberdar Et & Kaydol</button>
         </form>
       </div>
     </div>
@@ -263,7 +265,7 @@
   <section class="section" style="padding: 40px 0; background: rgba(10, 15, 29, 0.8);">
     <div class="container" style="max-width: 760px; text-align: center;">
       <h3 style="color: #fff; font-size: 1.4rem; font-weight: 800; margin-bottom: 8px;" data-i18n="recoveryTitle">🔑 Lisans Anahtarımı Bul / Sorgula</h3>
-      <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;" data-i18n="recoveryDesc">Daha önce satın aldığınız lisans anahtarını kaybettiyseniz, satın alma e-postanızı girerek anında görüntüleyebilirsiniz.</p>
+      <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;" data-i18n="recoveryDesc">Daha önce satın aldığınız lisans anahtarını kaybettiyseniz, e-postanızı girerek sorgulayabilirsiniz.</p>
       <form onsubmit="searchLicenses(event); return false;" id="license-recovery-form" style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
         <input type="text" id="recovery-query" placeholder="Satın alma e-posta adresiniz veya lisans kodunuz (LIC-...)..." data-i18n-placeholder="recoveryPlaceholder" class="form-input" style="max-width: 400px;">
         <button type="submit" id="recovery-submit-btn" class="btn-secondary" data-i18n="recoveryBtn">Sorgula</button>
@@ -288,8 +290,8 @@
         <div>
           <h4 style="color: #fff; font-size: 0.95rem; font-weight: 700; margin-bottom: 14px;">Eklentiler</h4>
           <p><a href="/store/zen-cinema-pro/" style="color: var(--text-muted); font-size: 0.9rem;" data-i18n="navYtAccelerator">Zen Cinema Pro</a></p>
-          <p style="margin-top: 8px;"><a href="/store/screen-pdf-capture/" style="color: var(--text-muted); font-size: 0.9rem;" data-i18n="navCleanCapture">Clean Capture Pro</a></p>
-          <p style="margin-top: 8px;"><a href="/store/" style="color: var(--text-muted); font-size: 0.9rem;" data-i18n="navStore">VIP Mağaza & Sepet</a></p>
+          <p style="margin-top: 8px;"><a href="/store/screen-pdf-capture/" style="color: var(--text-muted); font-size: 0.9rem;" data-i18n="navCleanCapture">PDF & Ekran Yakalama</a></p>
+          <p style="margin-top: 8px;"><a href="/store/" style="color: var(--text-muted); font-size: 0.9rem;" data-i18n="navStore">Mağaza & Sepet</a></p>
         </div>
         <div>
           <h4 style="color: #fff; font-size: 0.95rem; font-weight: 700; margin-bottom: 14px;">Geliştirici & Yol Haritası</h4>
@@ -322,7 +324,7 @@
     <div class="cart-drawer-header">
       <div class="cart-drawer-title">
         <span>🛒</span>
-        <span data-i18n="navCart">Alışveriş Sepetim</span>
+        <span data-i18n="navCart">Sepetim</span>
       </div>
       <button class="cart-close-btn" onclick="closeCart()">✕</button>
     </div>
@@ -347,7 +349,7 @@
     <div class="modal-content">
       <button class="modal-close" onclick="closeCheckoutModal()">✕</button>
       <h3 style="color: #fff; font-size: 1.4rem; font-weight: 800; margin-bottom: 6px;" data-i18n="modalCheckoutTitle">⚡ Hızlı Sipariş & Lisans Teslimatı</h3>
-      <p style="color: var(--text-muted); font-size: 0.88rem; margin-bottom: 20px;" data-i18n="modalCheckoutSubtitle">Üyelik gerekmez. Lisans anahtarınız ödeme sonrası anında ekranda gösterilir ve e-posta adresinize iletilir.</p>
+      <p style="color: var(--text-muted); font-size: 0.88rem; margin-bottom: 20px;" data-i18n="modalCheckoutSubtitle">Üyelik gerekmez. Lisansınız anında ekranda gösterilir ve e-postanıza iletilir.</p>
 
       <!-- Order Summary Box -->
       <div style="background: #1e293b; border-radius: 12px; padding: 14px; margin-bottom: 18px; font-size: 0.9rem;" id="checkout-order-summary"></div>
@@ -384,12 +386,10 @@
 
         <label class="checkbox-label">
           <input type="checkbox" id="checkout-marketing" checked>
-          <span data-i18n="modalCheckoutMarketing">Gelecekteki yeni eklentiler, güncellemeler ve özel indirim kuponları hakkında e-posta bildirimi almayı onaylıyorum.</span>
+          <span data-i18n="modalCheckoutMarketing">Gelecekteki yeni eklentiler, güncellemeler ve indirim kuponları hakkında bildirim almayı onaylıyorum.</span>
         </label>
 
-        <button type="submit" id="btn-submit-order" class="btn-primary" style="width: 100%; justify-content: center; margin-top: 12px; font-size: 1.05rem;" data-i18n="modalCheckoutSubmitBtn">
-          🔒 Güvenli Ödeme & Lisansı Al &rarr;
-        </button>
+        <button type="submit" id="btn-submit-order" class="btn-primary" style="width: 100%; justify-content: center; margin-top: 12px; font-size: 1.05rem;" data-i18n="modalCheckoutSubmitBtn">🔒 Güvenli Ödeme & Lisansı Al →</button>
       </form>
     </div>
   </div>
