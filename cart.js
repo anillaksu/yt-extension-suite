@@ -347,6 +347,11 @@ function copyLicenseKey(key) {
   }
 }
 
+// Kullanıcı girdisini HTML'e basmadan önce kaçışla (XSS önlemi)
+function htmlKacis(s) {
+  return String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+}
+
 // Self-Service License Recovery
 // Kimliksiz e-posta sorgusu YOK (başkasının anahtarını döndürmez). Yalnızca
 // kullanıcının elindeki anahtarı doğrudan Polar'ın public validate ucuna karşı
@@ -397,20 +402,20 @@ async function searchLicenses(event) {
       resultsEl.innerHTML = `
         <div style="background: rgba(16, 185, 129, 0.12); border: 1px solid #10b981; border-radius: 12px; padding: 18px; margin: 14px 0; text-align: left;">
           <div style="color: #10b981; font-weight: 800; font-size: 1rem; margin-bottom: 6px;">✅ Lisans Geçerli & Aktif</div>
-          <div style="color: #38bdf8; font-family: monospace; font-size: 1.1rem; font-weight: 800; margin: 10px 0; word-break: break-all;">${rawQuery}</div>
-          <button type="button" onclick="copyLicenseKey('${rawQuery.replace(/'/g, "\\'")}')" style="background: linear-gradient(135deg, #10b981, #059669); border:none; color:#fff; border-radius:8px; padding:8px 18px; font-weight:700; font-size:0.88rem; cursor:pointer;">📋 Lisans Kodunu Kopyala</button>
+          <div style="color: #38bdf8; font-family: monospace; font-size: 1.1rem; font-weight: 800; margin: 10px 0; word-break: break-all;">${htmlKacis(rawQuery)}</div>
+          <button type="button" data-anahtar="${htmlKacis(rawQuery)}" onclick="copyLicenseKey(this.dataset.anahtar)" style="background: linear-gradient(135deg, #10b981, #059669); border:none; color:#fff; border-radius:8px; padding:8px 18px; font-weight:700; font-size:0.88rem; cursor:pointer;">📋 Lisans Kodunu Kopyala</button>
         </div>
       `;
     } else {
       resultsEl.innerHTML = `
         <div style="background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.4); border-radius: 10px; padding: 14px; color: #f87171; font-size: 0.9rem; margin-top: 10px; text-align: left;">
-          ⚠️ <strong>"${rawQuery}"</strong> Polar'da geçerli bir lisans anahtarı olarak bulunamadı.<br>
+          ⚠️ <strong>"${htmlKacis(rawQuery)}"</strong> Polar'da geçerli bir lisans anahtarı olarak bulunamadı.<br>
           <span style="font-size: 0.82rem; color: #94a3b8; margin-top: 4px; display: inline-block;">Anahtarı kopyala-yapıştır ile girdiğinizden emin olun. Sorun devam ederse support@forfor.site.</span>
         </div>
       `;
     }
   } catch (e) {
-    resultsEl.innerHTML = `<div style="color: #f87171; padding: 12px; text-align: left;">⚠️ Doğrulama sunucusuna ulaşılamadı: ${e.message}. Lütfen tekrar deneyiniz.</div>`;
+    resultsEl.innerHTML = `<div style="color: #f87171; padding: 12px; text-align: left;">⚠️ Doğrulama sunucusuna ulaşılamadı: ${htmlKacis(e.message)}. Lütfen tekrar deneyiniz.</div>`;
   }
   return false;
 }
