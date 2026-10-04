@@ -154,11 +154,11 @@ const TRANSLATIONS = {
     // Pay What You Like / Developer Support
     pwylTag: "❤️ GÖNÜLLÜ DESTEK & DİLEDİĞİN KADAR ÖDE",
     pwylTitle: "Projeleri Beğendiniz mi? Dilediğiniz Kadar Destek Olun",
-    pwylSubtitle: "Eklentilerimizi temel özellikleriyle ömür boyu ücretsiz veya 7 gün tam VIP deneme ile kullanabilirsiniz. Geliştiriciyi desteklemek ve ekstra VIP özelliklerin kilidini açmak için dilediğiniz miktarı seçebilirsiniz.",
-    pwylOneTimeTitle: "Tek Seferlik Destek & Ömür Boyu VIP Teşekkür",
+    pwylSubtitle: "Eklentileri beğendiyseniz bağımsız geliştirmeye dilediğiniz kadar destek olabilirsiniz. Destek bir bağıştır, lisans içermez; eklenti lisansları yukarıdaki ürünlerdedir.",
+    pwylOneTimeTitle: "Tek Seferlik Destek",
     pwylOneTimeDesc: "Bir sinema bileti veya kahve fiyatına bağımsız açık web araçlarının gelişimine katkıda bulunun:",
-    pwylSubTitle: "Aylık Destekçi Kulübü",
-    pwylSubDesc: "Her ay yeni çıkacak eklentilerimize erken erişim ve özel Discord/GitHub rozetleri kazanın:",
+    pwylSubTitle: "Aylık Destekçi",
+    pwylSubDesc: "Bağımsız ve gizlilik odaklı araçların geliştirilmesini her ay düzenli olarak destekleyin:",
     pwylOptionPopular: "En Popüler Seçim",
 
     // FAQ
@@ -365,11 +365,11 @@ const TRANSLATIONS = {
     // Pay What You Like / Developer Support
     pwylTag: "❤️ DEVELOPER SUPPORT & PAY WHAT YOU LIKE",
     pwylTitle: "Love Our Extensions? Support The Creator As You Wish",
-    pwylSubtitle: "You can use all extensions completely free forever or with a 7-day full VIP trial. If you wish to support independent privacy software development and unlock extra VIP features, choose whatever amount you like.",
-    pwylOneTimeTitle: "One-Time Tip & Lifetime VIP Thanks",
+    pwylSubtitle: "If you like the extensions, you can support independent development with any amount. Support is a donation and does not include a license; extension licenses are available above.",
+    pwylOneTimeTitle: "One-Time Support",
     pwylOneTimeDesc: "For less than the price of a movie ticket or coffee, help sustain 100% client-side privacy tools:",
-    pwylSubTitle: "Monthly Supporters Club",
-    pwylSubDesc: "Get early access to all upcoming Chrome extensions and special Discord/GitHub perks:",
+    pwylSubTitle: "Monthly Supporter",
+    pwylSubDesc: "Support the development of independent, privacy-first tools every month:",
     pwylOptionPopular: "Popular Choice",
 
     faqTitle: "Frequently Asked Questions",
@@ -568,11 +568,11 @@ const TRANSLATIONS = {
     // Pay What You Like / Developer Support
     pwylTag: "❤️ APOYO AL DESARROLLADOR Y PAGA LO QUE QUIERAS",
     pwylTitle: "¿Le Gustan Nuestras Extensiones? Apoye Al Creador",
-    pwylSubtitle: "Puede usar todas las extensiones gratis con funciones estándar o disfrutar de una prueba VIP completa de 7 días. Si desea apoyar el desarrollo de software de privacidad sin telemetría, elija la cantidad que prefiera.",
-    pwylOneTimeTitle: "Aporte Único y Agradecimiento VIP de por Vida",
+    pwylSubtitle: "Si le gustan las extensiones, puede apoyar el desarrollo independiente con la cantidad que desee. El apoyo es una donación y no incluye licencia; las licencias están disponibles arriba.",
+    pwylOneTimeTitle: "Apoyo Único",
     pwylOneTimeDesc: "Por menos del precio de una entrada de cine o un café, apoye el software 100% del lado del cliente:",
-    pwylSubTitle: "Club de Suscriptores Mensuales",
-    pwylSubDesc: "Acceso anticipado a todas las próximas extensiones e insignias exclusivas:",
+    pwylSubTitle: "Apoyo Mensual",
+    pwylSubDesc: "Apoye cada mes el desarrollo de herramientas independientes y centradas en la privacidad:",
     pwylOptionPopular: "Opción Popular",
 
     faqTitle: "Preguntas Frecuentes",
@@ -772,11 +772,11 @@ const TRANSLATIONS = {
     // Pay What You Like / Developer Support
     pwylTag: "❤️ ENTWICKLER-UNTERSTÜTZUNG & FREI WÄHLBARER PREIS",
     pwylTitle: "Gefallen Ihnen Unsere Erweiterungen? Unterstützen Sie Uns Freiwillig",
-    pwylSubtitle: "Sie können alle Erweiterungen dauerhaft kostenlos mit Basisfunktionen oder mit einer 7-tägigen VIP-Testversion nutzen. Um die Entwicklung datenschutzorientierter Tools zu unterstützen, wählen Sie einen beliebigen Betrag.",
-    pwylOneTimeTitle: "Einmalige Unterstützung & Lebenslanges VIP-Dankeschön",
+    pwylSubtitle: "Wenn Ihnen die Erweiterungen gefallen, können Sie die unabhängige Entwicklung mit einem beliebigen Betrag unterstützen. Die Unterstützung ist eine Spende und enthält keine Lizenz; Lizenzen finden Sie oben.",
+    pwylOneTimeTitle: "Einmalige Unterstützung",
     pwylOneTimeDesc: "Für weniger als den Preis einer Kinokarte unterstützen Sie 100% Client-seitige Tools:",
-    pwylSubTitle: "Monatlicher Unterstützer-Club",
-    pwylSubDesc: "Erhalten Sie frühzeitigen Zugriff auf alle kommenden Erweiterungen und exklusive Vorteile:",
+    pwylSubTitle: "Monatliche Unterstützung",
+    pwylSubDesc: "Unterstützen Sie jeden Monat die Entwicklung unabhängiger, datenschutzorientierter Tools:",
     pwylOptionPopular: "Beliebte Option",
 
     faqTitle: "Häufig Gestellte Fragen",
