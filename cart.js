@@ -19,8 +19,20 @@ const POLAR_ORGANIZATION_ID = typeof CATALOG_ORGANIZATION_ID !== 'undefined'
   : '450fc977-6d1a-4af9-b6b7-a3313b344595'; // catalog.js yüklenmediyse son çare
 const POLAR_VALIDATE_ENDPOINT = 'https://api.polar.sh/v1/customer-portal/license-keys/validate';
 
+// catalog.js bu dosyadan ONCE yuklenmelidir (script sirasi). Yine de bir sayfa
+// etiketi unutursa ya da catalog.js 404 verirse asagidaki fonksiyonlar
+// ReferenceError firlatip BUTUN dugmeleri olduruyordu. Bu nedenle veri tabanina
+// her zaman guvenli bir takma adla erisilir. NOT: `const PRODUCTS_DB = typeof
+// PRODUCTS_DB ...` yazilamaz — ayni isimdeki const kendi initializer'inda
+// TDZ'ye dustugu icin ReferenceError verir.
+const DB = (typeof PRODUCTS_DB !== 'undefined' && PRODUCTS_DB) ? PRODUCTS_DB : {};
+
+function hasCatalog() {
+  return Object.keys(DB).length > 0;
+}
+
 function getProductName(productId) {
-  const prod = PRODUCTS_DB[productId];
+  const prod = DB[productId];
   if (!prod) return productId;
   if (typeof t === 'function' && prod.nameKey) {
     return t(prod.nameKey);
@@ -47,8 +59,13 @@ function updateCartBadge() {
 }
 
 function addToCart(productId, autoOpen = true) {
-  const prod = PRODUCTS_DB[productId];
-  if (!prod) return;
+  const prod = DB[productId];
+  if (!prod) {
+    showToast(hasCatalog()
+      ? '⚠️ Bu ürün şu anda sepete eklenemiyor.'
+      : '⚠️ Ürün kataloğu yüklenemedi (catalog.js). Sayfayı yenilemeyi deneyin.');
+    return;
+  }
 
   const existing = cart.find(item => item.id === prod.id || item.slug === productId || item.id === productId);
   if (existing) {
@@ -77,7 +94,7 @@ function addToCart(productId, autoOpen = true) {
 }
 
 function removeFromCart(productId) {
-  const prod = PRODUCTS_DB[productId];
+  const prod = DB[productId];
   const targetId = prod ? prod.id : productId;
   cart = cart.filter(item => item.id !== targetId && item.id !== productId && item.slug !== productId);
   saveCart();
@@ -87,7 +104,7 @@ function removeFromCart(productId) {
 }
 
 function updateQty(productId, delta) {
-  const prod = PRODUCTS_DB[productId];
+  const prod = DB[productId];
   const targetId = prod ? prod.id : productId;
   const item = cart.find(i => i.id === targetId || i.id === productId || i.slug === productId);
   if (!item) return;
@@ -192,7 +209,7 @@ function selectPaymentMethod(method) {
 let checkoutItems = [];
 
 function buildCheckoutLineItem(productId) {
-  const prod = PRODUCTS_DB[productId];
+  const prod = DB[productId];
   if (!prod) return null;
   return {
     id: prod.id,
@@ -213,7 +230,14 @@ function openCheckoutModal(singleProductId = null) {
   if (singleProductId) {
     // Tekli "Satın Al" — kalıcı sepete DOKUNMAZ, sadece bu ürünü checkout eder.
     const item = buildCheckoutLineItem(singleProductId);
-    if (!item) return;
+    if (!item) {
+      // Ürün kataloğu yoksa ya da ürün bilinmiyorsa kullanıcıya SEBEBİNİ söyle.
+      // Önceden burada sessizce dönüyordu; ekranda hiçbir iz kalmıyordu.
+      showToast(hasCatalog()
+        ? '⚠️ Bu ürün şu anda satın alınamıyor. Lütfen daha sonra tekrar deneyin.'
+        : '⚠️ Ürün kataloğu yüklenemedi (catalog.js). Sayfayı yenilemeyi deneyin.');
+      return;
+    }
     checkoutItems = [item];
   } else {
     // Sepet çekmecesinden "Siparişi Tamamla" — mevcut sepeti kullanır.
@@ -284,8 +308,22 @@ async function submitCheckout(event) {
 
   // checkoutItems modal acilirken doldurulur (openCheckoutModal) — tekli
   // "Satin Al" icin kalici sepetten BAGIMSIZDIR (Faz 4 bug duzeltmesi).
-  const item = checkoutItems[0] || cart[0] || PRODUCTS_DB.bundle_suite;
-  const directCheckoutUrl = item.checkoutUrl || PRODUCTS_DB[item.productId || item.id]?.checkoutUrl || PRODUCTS_DB.bundle_suite.checkoutUrl;
+  const item = checkoutItems[0] || cart[0] || DB.bundle_suite;
+  if (!item) {
+    if (btnSubmit) { btnSubmit.disabled = false; }
+    showToast('⚠️ Ödeme bağlantısı bulunamadı. Lütfen mağazadan tekrar deneyin.');
+    return;
+  }
+  const directCheckoutUrl = item.checkoutUrl
+    || DB[item.productId || item.id]?.checkoutUrl
+    || DB.bundle_suite?.checkoutUrl;
+  // ASLA tanımsız bir adrese yönlendirme. Eskiden burası "undefined"e
+  // gidebiliyordu; kullanıcı ödeme ekranı yerine 404 alıyordu.
+  if (!directCheckoutUrl) {
+    if (btnSubmit) { btnSubmit.disabled = false; }
+    showToast('⚠️ Ödeme bağlantısı üretilemedi. Lütfen mağazadan tekrar deneyin.');
+    return;
+  }
 
   if (typeof window.trackEvent === 'function') {
     window.trackEvent('Ecommerce', 'polar_checkout_redirect', item.id, item.priceTry);
