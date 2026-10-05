@@ -5,6 +5,12 @@
 
 const TRANSLATIONS = {
   tr: {
+  pwylNoLicense: "Bu bir bağıştır ve eklenti lisansı içermez. Lisanslar yukarıdaki üç üründedir.",
+  bagisTekTitle: "☕ Tek Seferlik Destek",
+  bagisTekDesc: "Tek bir ödeme. Bağışınız lisans içermez.",
+  bagisAylikTitle: "🔁 Aylık Destek",
+  bagisAylikDesc: "Her ay tekrarlanan destek. İstediğiniz zaman iptal edilebilir.",
+  bagisPopuler: "En Popüler",
   pwylNoFake: "Ayrıca destek tutarları için ayrı ürünler henüz yayında değil. Aşağıdaki düğmeler yalnızca gerçek ürün fiyatlarını gösterir ve o fiyattan ödeme alır.",
   pwylProduct1: "📸 Clean Full Page & PDF Capture Pro",
   pwylProduct1Desc: "Ömür boyu lisans, tüm cihazlarınızda kullanım.",
@@ -248,6 +254,12 @@ const TRANSLATIONS = {
     footerRights: "© 2026 Anıl Aksu • YT Extension Suite. Tüm hakları saklıdır."
   },
   en: {
+  pwylNoLicense: "This is a donation and does not include an extension license. Licenses are in the three products above.",
+  bagisTekTitle: "☕ One-time Support",
+  bagisTekDesc: "A single payment. Your donation includes no license.",
+  bagisAylikTitle: "🔁 Monthly Support",
+  bagisAylikDesc: "Recurring monthly support. Cancel anytime.",
+  bagisPopuler: "Most Popular",
   pwylNoFake: "Separate products for support amounts are not published yet. The buttons below show only real product prices and charge exactly those amounts.",
   pwylProduct1: "📸 Clean Full Page & PDF Capture Pro",
   pwylProduct1Desc: "Lifetime license, usable on all your devices.",
@@ -473,6 +485,12 @@ const TRANSLATIONS = {
     footerRights: "© 2026 Anıl Aksu • YT Extension Suite. All rights reserved."
   },
   es: {
+  pwylNoLicense: "Esta es una donación y no incluye licencia de la extensión. Las licencias están en los tres productos de arriba.",
+  bagisTekTitle: "☕ Apoyo único",
+  bagisTekDesc: "Un solo pago. Tu donación no incluye licencia.",
+  bagisAylikTitle: "🔁 Apoyo mensual",
+  bagisAylikDesc: "Apoyo mensual recurrente. Cancela cuando quieras.",
+  bagisPopuler: "Más popular",
   pwylNoFake: "Aún no hay productos separados por importes de apoyo. Los botones de abajo solo muestran precios reales de producto y cobran exactamente esos importes.",
   pwylProduct1: "📸 Clean Full Page & PDF Capture Pro",
   pwylProduct1Desc: "Licencia de por vida, usable en todos tus dispositivos.",
@@ -699,6 +717,12 @@ const TRANSLATIONS = {
     footerRights: "© 2026 Anıl Aksu • YT Extension Suite. Todos los derechos reservados."
   },
   de: {
+  pwylNoLicense: "Dies ist eine Spende und enthält keine Erweiterungslizenz. Lizenzen gibt es in den drei Produkten oben.",
+  bagisTekTitle: "☕ Einmalige Unterstützung",
+  bagisTekDesc: "Eine einzelne Zahlung. Ihre Spende enthält keine Lizenz.",
+  bagisAylikTitle: "🔁 Monatliche Unterstützung",
+  bagisAylikDesc: "Wiederkehrende monatliche Unterstützung. Jederzeit kündbar.",
+  bagisPopuler: "Am beliebtesten",
   pwylNoFake: "Separate Produkte für Support-Beträge sind noch nicht veröffentlicht. Die Buttons unten zeigen nur echte Produktpreise und berechnen genau diese Beträge.",
   pwylProduct1: "📸 Clean Full Page & PDF Capture Pro",
   pwylProduct1Desc: "Lebenslange Lizenz, auf allen deinen Geräten nutzbar.",

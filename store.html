@@ -395,6 +395,7 @@
   <script src="analytics.js?v=197e7e94" defer></script>
   <script src="i18n.js?v=f3fc95af" defer></script>
   <script src="catalog.js?v=fc383491" defer></script>
+<script src="bagis.js?v=2" defer></script>
   <script src="cart.js?v=c63740bb" defer></script>
 </head>
 <body>
@@ -551,41 +552,17 @@
     </div>
   </section>
 
-  <!-- Pay What You Like / Developer Support Section -->
+  <!-- Support / Donation Section: gercek Polar urunleri -->
   <section class="section" style="padding: 70px 0; background: linear-gradient(180deg, rgba(15, 23, 42, 0.4) 0%, rgba(30, 41, 59, 0.6) 100%); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
     <div class="container" style="max-width: 960px;">
-      <div style="text-align: center;">
+      <div style="text-align: center; margin-bottom: 36px;">
         <span class="badge-featured" style="margin-bottom: 12px; display: inline-block;" data-i18n="pwylTag">🎯 GÜNÜLLÜ DESTEK</span>
         <h2 style="font-size: 2.2rem; font-weight: 800; color: #fff; margin-bottom: 14px;" data-i18n="pwylTitle">Projeleri Beğendiyseniz Destek Olun</h2>
         <p style="color: var(--text-muted); font-size: 1.05rem; max-width: 760px; margin: 0 auto; line-height: 1.6;" data-i18n="pwylSubtitle">Eklentileri beğendiyseniz geliştirmeye destek olmak isteyebilirsiniz. Destek ayrı bir katkıdır ve lisans içermez; lisanslar yukarıdaki üç üründedir.</p>
-        <p style="color: var(--text-muted); font-size: 0.95rem; max-width: 760px; margin: 18px auto 0; line-height: 1.6;" data-i18n="pwylNoFake">Ayrıca destek tutarları için ayrı ürünler henüz yayında değil. Aşağıdaki düğmeler yalnızca gerçek ürün fiyatlarını gösterir ve o fiyattan ödeme alır.</p>
+        <p style="color: var(--text-muted); font-size: 0.95rem; max-width: 760px; margin: 16px auto 0; line-height: 1.6;" data-i18n="pwylNoLicense">Bu bir bağıştır ve eklenti lisansı içermez. Lisanslar yukarıdaki üç üründedir.</p>
       </div>
-
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 36px;">
-        <div style="background: rgba(15, 23, 42, 0.8); border: 1px solid var(--border-color); border-radius: 18px; padding: 30px; display: flex; flex-direction: column; justify-content: space-between;">
-          <div>
-            <h3 style="font-size: 1.25rem; font-weight: 800; color: #fff; margin-bottom: 10px;" data-i18n="pwylProduct1">📸 Clean Full Page & PDF Capture Pro</h3>
-            <p style="color: var(--text-muted); font-size: 0.92rem; line-height: 1.6; margin-bottom: 22px;" data-i18n="pwylProduct1Desc">Ömür boyu lisans, tüm cihazlarınızda kullanım.</p>
-          </div>
-          <button onclick="openCheckoutModal('clean_capture')" class="btn-primary" style="width: 100%; justify-content: center; font-size: 1.05rem; font-weight: 800;" data-i18n="pwylBuy1">₺299 / $11.99</button>
-        </div>
-
-        <div style="background: rgba(15, 23, 42, 0.8); border: 1px solid var(--border-color); border-radius: 18px; padding: 30px; display: flex; flex-direction: column; justify-content: space-between;">
-          <div>
-            <h3 style="font-size: 1.25rem; font-weight: 800; color: #fff; margin-bottom: 10px;" data-i18n="pwylProduct2">⚡ Zen Cinema Pro</h3>
-            <p style="color: var(--text-muted); font-size: 0.92rem; line-height: 1.6; margin-bottom: 22px;" data-i18n="pwylProduct2Desc">Ömür boyu lisans, tüm cihazlarınızda kullanım.</p>
-          </div>
-          <button onclick="openCheckoutModal('yt_accelerator')" class="btn-primary" style="width: 100%; justify-content: center; font-size: 1.05rem; font-weight: 800;" data-i18n="pwylBuy2">₺499 / $19.99</button>
-        </div>
-
-        <div style="background: rgba(15, 23, 42, 0.8); border: 1px solid var(--border-color); border-radius: 18px; padding: 30px; display: flex; flex-direction: column; justify-content: space-between;">
-          <div>
-            <h3 style="font-size: 1.25rem; font-weight: 800; color: #fff; margin-bottom: 10px;" data-i18n="pwylProduct3">💎 Ultimate Suite Bundle</h3>
-            <p style="color: var(--text-muted); font-size: 0.92rem; line-height: 1.6; margin-bottom: 22px;" data-i18n="pwylProduct3Desc">İki eklenti tek anahtarla, %20 indirimli.</p>
-          </div>
-          <button onclick="openCheckoutModal('bundle_suite')" class="btn-primary" style="width: 100%; justify-content: center; font-size: 1.05rem; font-weight: 800;" data-i18n="pwylBuy3">₺649 / $24.99</button>
-        </div>
-      </div>
+      <!-- Dugmeler Polar'ın KENDI fiyatindan uretilir; etiket ile tahsil edilen tutar ayni kaynaktan gelir. -->
+      <div id="bagis-kutulari"><p style="color: var(--text-muted); text-align: center;">Yükleniyor…</p></div>
     </div>
   </section>
 
