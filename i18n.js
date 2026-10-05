@@ -5,6 +5,27 @@
 
 const TRANSLATIONS = {
   tr: {
+  pwylNoFake: "Ayrıca destek tutarları için ayrı ürünler henüz yayında değil. Aşağıdaki düğmeler yalnızca gerçek ürün fiyatlarını gösterir ve o fiyattan ödeme alır.",
+  pwylProduct1: "📸 Clean Full Page & PDF Capture Pro",
+  pwylProduct1Desc: "Ömür boyu lisans, tüm cihazlarınızda kullanım.",
+  pwylBuy1: "₺299 / $11.99",
+  pwylProduct2: "⚡ Zen Cinema Pro",
+  pwylProduct2Desc: "Ömür boyu lisans, tüm cihazlarınızda kullanım.",
+  pwylBuy2: "₺499 / $19.99",
+  pwylProduct3: "💎 Ultimate Suite Bundle",
+  pwylProduct3Desc: "İki eklenti tek anahtarla, %20 indirimli.",
+  pwylBuy3: "₺649 / $24.99",
+  dlTitle: "Kurulum ve İndirme",
+  dlZipBtn: "⬇ Zen Cinema Pro'yu İndir (.zip)",
+  dlStepsTitle: "Nasıl kurulur?",
+  dlStep1: "1. Zip dosyasını indirin ve açın (klasörü çıkartın, içindeki dosyaları yerinde bırakın).",
+  dlStep2: "2. Chrome'da şu adresi açın: chrome://extensions",
+  dlStep3: "3. Sağ üstteki Geliştirici modu anahtarını açın.",
+  dlStep4: "4. Paketlenmemiş öğe yükle düğmesine basıp 1. adımda açtığınız klasörü seçin.",
+  dlNote: "Lisans anahtarınız Polar tarafından e-postanıza gönderilir. Eklenti simgesine tıklayıp anahtarı yapıştırarak etkinleştirin.",
+  cwsTitle: "Chrome Web Store'da Yayında",
+  cwsBtn: "⬇ Chrome Web Store'dan Yükle",
+  cwsNote: "En güncel sürümü doğrudan mağazadan kurun; güncellemeler otomatik gelir.",
     // Nav & Common
     brandName: "Anıl Aksu • Chrome Extensions Studio",
     navHub: "Portföy & Hub",
@@ -31,7 +52,7 @@ const TRANSLATIONS = {
     // Store Hero
     storeTag: "🛒 RESMİ YAZILIM PAZARI",
     storeTitle: "VIP Lisans Mağazası & Anında Teslimat",
-    storeSubtitle: "Üyelik gerektirmeden, güvenli ödeme altyapısı (Polar 3D Secure) üzerinden lisansınızı anında ekranda ve e-postanızda teslim alın.",
+    storeSubtitle: "Üyelik gerektirmeden, Polar ödeme altyapısı üzerinden lisansınızı satın alma sonrası e-postanıza gönderilir.",
     featuredBadge: "EN AVANTAJLI PAKET",
 
     // Products Common
@@ -151,10 +172,11 @@ const TRANSLATIONS = {
     compRow6Free: "Topluluk",
     compRow6Pro: "✓ Öncelikli",
 
-    // Pay What You Like / Developer Support
-    pwylTag: "❤️ GÖNÜLLÜ DESTEK & DİLEDİĞİN KADAR ÖDE",
-    pwylTitle: "Projeleri Beğendiniz mi? Dilediğiniz Kadar Destek Olun",
-    pwylSubtitle: "Eklentileri beğendiyseniz bağımsız geliştirmeye dilediğiniz kadar destek olabilirsiniz. Destek bir bağıştır, lisans içermez; eklenti lisansları yukarıdaki ürünlerdedir.",
+    // Developer Support. Onceki "pay what you like" butonlari KALDIRILDI:
+    // ekranda yazan tutardan farkli fiyat cekiyorlardi.
+    pwylTag: "🎯 GÜNÜLLÜ DESTEK",
+    pwylTitle: "Projeleri Beğendiyseniz Destek Olun",
+    pwylSubtitle: "Eklentileri beğendiyseniz geliştirmeye destek olmak isteyebilirsiniz. Destek ayrı bir katkıdır ve lisans içermez; lisanslar yukarıdaki üç üründedir.",
     pwylOneTimeTitle: "Tek Seferlik Destek",
     pwylOneTimeDesc: "Bir sinema bileti veya kahve fiyatına bağımsız açık web araçlarının gelişimine katkıda bulunun:",
     pwylSubTitle: "Aylık Destekçi",
@@ -164,11 +186,11 @@ const TRANSLATIONS = {
     // FAQ
     faqTitle: "Sıkça Sorulan Sorular",
     faqQ1: "Lisans anahtarımı nasıl teslim alırım?",
-    faqA1: "Ödemeniz onaylandığı anda lisans anahtarınız doğrudan tarayıcı ekranınızda büyük formatta gösterilir ve anında kopyalayabilirsiniz. Ayrıca fatura ve yedek anahtarınız satın alırken girdiğiniz e-posta adresinize iletilir.",
+    faqA1: "Ödemeniz onaylandıktan sonra Polar lisans anahtarınızı, satın alırken girdiğiniz e-posta adresine gönderir. Anahtarı bu e-postadan kopyalayıp eklentinin lisans alanına yapıştırırsınız. Bu sayfada anahtar otomatik olarak gösterilmez.",
     faqQ2: "Satın almak için üye olmam gerekiyor mu?",
     faqA2: "Hayır! Misafir alışverişi (Guest Checkout) altyapımız sayesinde şifre oluşturmanıza veya hesap açmanıza gerek yoktur. Yalnızca lisansın gideceği e-posta adresinizi girmeniz yeterlidir.",
     faqQ3: "Lisans kaç cihazda geçerlidir ve taşınabilir mi?",
-    faqA3: "Lisans, en fazla 5 tarayıcı donanımına (Hardware-ID) kadar aktive edilebilir. Bir cihazı bırakıp yenisini eklemek isterseniz support@forfor.site üzerinden cihaz sıfırlama talep edebilirsiniz.",
+    faqA3: "Lisans anahtarı belirli bir cihaza kilitli değildir; Polar üzerinde geçerli olan anahtar, onu giren tarayıcıda çalışır. Bu nedenle anahtarınızı kimseyle paylaşmamanız gerekir. Kendi cihazlarınız arasında kullanmanız sorun çıkarmaz.",
     faqQ4: "Hangi ödeme yöntemleri destekleniyor?",
     faqA4: "Türkiye içi ve uluslararası tüm banka/kredi kartları, Apple Pay, Google Pay ile Polar 3D Secure güvencesiyle anında ödeme yapabilirsiniz.",
     faqQ5: "İade veya cayma hakkı bulunuyor mu?",
@@ -176,13 +198,13 @@ const TRANSLATIONS = {
 
     // License Recovery
     recoveryTitle: "🔑 Lisans Anahtarımı Bul / Sorgula",
-    recoveryDesc: "Daha önce satın aldığınız lisans anahtarını kaybettiyseniz, e-postanızı girerek sorgulayabilirsiniz.",
-    recoveryPlaceholder: "Satın alma e-posta adresiniz veya sipariş no...",
+    recoveryDesc: "Lisans anahtarınızı kaybettiyseniz yalnızca anahtarın kendisini girerek doğrulayabilirsiniz. Polar güvenlik nedeniyle e-posta adresiyle sorguya izin vermez.",
+    recoveryPlaceholder: "Lisans anahtarınız (Polar'ın gönderdiği kod)",
     recoveryBtn: "Sorgula",
 
     // Checkout Modal
     modalCheckoutTitle: "⚡ Hızlı Sipariş & Lisans Teslimatı",
-    modalCheckoutSubtitle: "Üyelik gerekmez. Lisansınız anında ekranda gösterilir ve e-postanıza iletilir.",
+    modalCheckoutSubtitle: "Üyelik gerekmez. Ödeme sonrası Polar lisans anahtarını e-postanıza gönderir; anahtarı eklentinin lisans alanına girersiniz.",
     modalCheckoutSummaryLabel: "Ödenecek Tutar:",
     modalCheckoutEmailLabel: "E-Posta Adresiniz (Lisansın İletileceği Adres) *",
     modalCheckoutEmailPlaceholder: "adiniz@example.com",
@@ -226,6 +248,27 @@ const TRANSLATIONS = {
     footerRights: "© 2026 Anıl Aksu • YT Extension Suite. Tüm hakları saklıdır."
   },
   en: {
+  pwylNoFake: "Separate products for support amounts are not published yet. The buttons below show only real product prices and charge exactly those amounts.",
+  pwylProduct1: "📸 Clean Full Page & PDF Capture Pro",
+  pwylProduct1Desc: "Lifetime license, usable on all your devices.",
+  pwylBuy1: "₺299 / $11.99",
+  pwylProduct2: "⚡ Zen Cinema Pro",
+  pwylProduct2Desc: "Lifetime license, usable on all your devices.",
+  pwylBuy2: "₺499 / $19.99",
+  pwylProduct3: "💎 Ultimate Suite Bundle",
+  pwylProduct3Desc: "Both extensions with one key, 20% off.",
+  pwylBuy3: "₺649 / $24.99",
+  dlTitle: "Download & Install",
+  dlZipBtn: "⬇ Download Zen Cinema Pro (.zip)",
+  dlStepsTitle: "How to install",
+  dlStep1: "1. Download the zip and extract it (keep the folder with its files inside).",
+  dlStep2: "2. In Chrome open: chrome://extensions",
+  dlStep3: "3. Turn on Developer mode at the top right.",
+  dlStep4: "4. Click Load unpacked and select the folder you extracted in step 1.",
+  dlNote: "Polar emails your license key. Click the extension icon and paste the key to activate it.",
+  cwsTitle: "Published on the Chrome Web Store",
+  cwsBtn: "⬇ Get it on the Chrome Web Store",
+  cwsNote: "Install the latest version from the store; updates arrive automatically.",
     brandName: "Anıl Aksu • Chrome Extensions Studio",
     navHub: "Portfolio & Hub",
     navStore: "Store & Cart",
@@ -249,7 +292,7 @@ const TRANSLATIONS = {
 
     storeTag: "🛒 OFFICIAL SOFTWARE STORE",
     storeTitle: "VIP License Store & Instant Delivery",
-    storeSubtitle: "No account required. Receive your VIP license keys immediately on-screen and in your email via Polar 3D Secure.",
+    storeSubtitle: "No account required. With Polar checkout, your license key is emailed to you after your purchase.",
     featuredBadge: "BEST VALUE BUNDLE",
 
     secProductsTitle: "Independent Chrome Extensions",
@@ -362,10 +405,11 @@ const TRANSLATIONS = {
     compRow6Free: "Community",
     compRow6Pro: "✓ Priority",
 
-    // Pay What You Like / Developer Support
-    pwylTag: "❤️ DEVELOPER SUPPORT & PAY WHAT YOU LIKE",
-    pwylTitle: "Love Our Extensions? Support The Creator As You Wish",
-    pwylSubtitle: "If you like the extensions, you can support independent development with any amount. Support is a donation and does not include a license; extension licenses are available above.",
+    // Developer Support. Onceki "pay what you like" butonlari KALDIRILDI:
+    // ekranda yazan tutardan farkli fiyat cekiyorlardi.
+    pwylTag: "🎯 DAILY SUPPORT",
+    pwylTitle: "Enjoying the projects? Support them",
+    pwylSubtitle: "If you enjoy the extensions you may want to support further development. Support is a separate contribution and includes no license; licenses are in the three products above.",
     pwylOneTimeTitle: "One-Time Support",
     pwylOneTimeDesc: "For less than the price of a movie ticket or coffee, help sustain 100% client-side privacy tools:",
     pwylSubTitle: "Monthly Supporter",
@@ -374,23 +418,23 @@ const TRANSLATIONS = {
 
     faqTitle: "Frequently Asked Questions",
     faqQ1: "How do I receive my license key?",
-    faqA1: "As soon as your payment is confirmed, your license key is displayed immediately on your screen in large format for easy 1-click copying. A backup key and receipt are also sent directly to your email.",
+    faqA1: "Once your payment is confirmed, Polar emails your license key to the address you entered at checkout. You copy the key from that email and paste it into the extension's license field. No key is displayed on this page automatically.",
     faqQ2: "Do I need to create an account to purchase?",
     faqA2: "No! With our Guest Instant Checkout system, no passwords or account registrations are required. Simply provide your email for license delivery.",
     faqQ3: "How many devices is the license valid for and can it be transferred?",
-    faqA3: "Each license can be activated on up to 5 browser hardware profiles (Hardware-ID). You can request a device reset anytime via support@forfor.site to free up a slot for a new device.",
+    faqA3: "The license key is not locked to a specific device: any key that is valid at Polar works in the browser where you enter it. Please do not share your key. Using it on your own devices causes no problem.",
     faqQ4: "What payment methods are supported?",
     faqA4: "We support all major credit/debit cards, Apple Pay, Google Pay, and secure 3D Secure checkout via Polar.",
     faqQ5: "Is there a refund or return policy?",
     faqA5: "Our software licenses are intangible digital goods delivered immediately upon payment confirmation. In accordance with consumer protection laws and digital product regulations, there is no right of withdrawal or monetary refund once a license is issued.",
 
     recoveryTitle: "🔑 Retrieve My License Key",
-    recoveryDesc: "Lost your license key? Enter your purchase email address or order number to display your active keys instantly.",
-    recoveryPlaceholder: "Enter your checkout email address...",
+    recoveryDesc: "Lost your license key? You can verify it by entering the key itself. Polar does not allow lookups by email address, for security reasons.",
+    recoveryPlaceholder: "Your license key (the code from Polar's email)",
     recoveryBtn: "Lookup License",
 
     modalCheckoutTitle: "⚡ Instant Order & License Delivery",
-    modalCheckoutSubtitle: "No account required. Your license is delivered immediately on-screen and to your email.",
+    modalCheckoutSubtitle: "No account required. After payment Polar emails your license key; paste it into the extension's license field.",
     modalCheckoutSummaryLabel: "Total Amount:",
     modalCheckoutEmailLabel: "Your Email Address (For License Delivery) *",
     modalCheckoutEmailPlaceholder: "you@example.com",
@@ -429,6 +473,27 @@ const TRANSLATIONS = {
     footerRights: "© 2026 Anıl Aksu • YT Extension Suite. All rights reserved."
   },
   es: {
+  pwylNoFake: "Aún no hay productos separados por importes de apoyo. Los botones de abajo solo muestran precios reales de producto y cobran exactamente esos importes.",
+  pwylProduct1: "📸 Clean Full Page & PDF Capture Pro",
+  pwylProduct1Desc: "Licencia de por vida, usable en todos tus dispositivos.",
+  pwylBuy1: "₺299 / $11.99",
+  pwylProduct2: "⚡ Zen Cinema Pro",
+  pwylProduct2Desc: "Licencia de por vida, usable en todos tus dispositivos.",
+  pwylBuy2: "₺499 / $19.99",
+  pwylProduct3: "💎 Ultimate Suite Bundle",
+  pwylProduct3Desc: "Ambas extensiones con una clave, 20% de descuento.",
+  pwylBuy3: "₺649 / $24.99",
+  dlTitle: "Descarga e instalación",
+  dlZipBtn: "⬇ Descargar Zen Cinema Pro (.zip)",
+  dlStepsTitle: "Cómo instalarlo",
+  dlStep1: "1. Descarga el zip y descomprímelo (conserva la carpeta con sus archivos dentro).",
+  dlStep2: "2. En Chrome abre: chrome://extensions",
+  dlStep3: "3. Activa el Modo de desarrollador arriba a la derecha.",
+  dlStep4: "4. Pulsa Cargar descomprimida y selecciona la carpeta del paso 1.",
+  dlNote: "Polar envía tu clave de licencia por correo. Haz clic en el icono de la extensión y pega la clave para activarla.",
+  cwsTitle: "Publicado en Chrome Web Store",
+  cwsBtn: "⬇ Consíguelo en Chrome Web Store",
+  cwsNote: "Instala la última versión desde la tienda; las actualizaciones llegan solas.",
     brandName: "Anıl Aksu • Chrome Extensions Studio",
     navHub: "Portafolio & Hub",
     navStore: "Tienda & Carrito",
@@ -452,7 +517,7 @@ const TRANSLATIONS = {
 
     storeTag: "🛒 TIENDA OFICIAL DE SOFTWARE",
     storeTitle: "Tienda de Licencias VIP y Entrega Inmediata",
-    storeSubtitle: "Sin necesidad de cuenta. Reciba sus claves de licencia VIP inmediatamente en pantalla y en su correo mediante Polar 3D Secure.",
+    storeSubtitle: "Sin registro. Con el pago de Polar, tu clave de licencia se envía a tu correo después de la compra.",
     featuredBadge: "PAQUETE MÁS VENTAJOSO",
 
     secProductsTitle: "Extensiones de Chrome Destacadas",
@@ -565,10 +630,11 @@ const TRANSLATIONS = {
     compRow6Free: "Comunidad",
     compRow6Pro: "✓ Prioritario",
 
-    // Pay What You Like / Developer Support
-    pwylTag: "❤️ APOYO AL DESARROLLADOR Y PAGA LO QUE QUIERAS",
-    pwylTitle: "¿Le Gustan Nuestras Extensiones? Apoye Al Creador",
-    pwylSubtitle: "Si le gustan las extensiones, puede apoyar el desarrollo independiente con la cantidad que desee. El apoyo es una donación y no incluye licencia; las licencias están disponibles arriba.",
+    // Developer Support. Onceki "pay what you like" butonlari KALDIRILDI:
+    // ekranda yazan tutardan farkli fiyat cekiyorlardi.
+    pwylTag: "🎯 APOYO DIARIO",
+    pwylTitle: "¿Te gustan los proyectos? Apóyalos",
+    pwylSubtitle: "Si te gustan las extensiones, puedes apoyar el desarrollo. El apoyo es una contribución aparte y no incluye licencia; las licencias están en los tres productos de arriba.",
     pwylOneTimeTitle: "Apoyo Único",
     pwylOneTimeDesc: "Por menos del precio de una entrada de cine o un café, apoye el software 100% del lado del cliente:",
     pwylSubTitle: "Apoyo Mensual",
@@ -577,23 +643,23 @@ const TRANSLATIONS = {
 
     faqTitle: "Preguntas Frecuentes",
     faqQ1: "¿Cómo recibo mi clave de licencia?",
-    faqA1: "Tan pronto como se confirme su pago, su clave se muestra inmediatamente en su pantalla para copiarla fácilmente con un solo clic. También se envía una copia a su correo.",
+    faqA1: "Una vez confirmado el pago, Polar envía tu clave de licencia a la dirección de correo que indicaste al comprar. Copias la clave de ese correo y la pegas en el campo de licencia de la extensión. En esta página no se muestra ninguna clave automáticamente.",
     faqQ2: "¿Necesito registrarme para comprar?",
     faqA2: "¡No! Con nuestro sistema de pago instantáneo para invitados, no se requieren contraseñas ni registro. Solo ingrese su correo.",
     faqQ3: "¿Para cuántos dispositivos es válida la licencia y se puede transferir?",
-    faqA3: "Cada licencia se puede activar en hasta 5 perfiles de hardware del navegador (Hardware-ID). Puedes solicitar la liberación de un dispositivo en cualquier momento escribiendo a support@forfor.site.",
+    faqA3: "La clave de licencia no está bloqueada a un dispositivo concreto: cualquier clave válida en Polar funciona en el navegador donde la introduzcas. No compartas tu clave. Usarla en tus propios dispositivos no supone ningún problema.",
     faqQ4: "¿Qué métodos de pago se aceptan?",
     faqA4: "Aceptamos tarjetas de crédito/débito, Apple Pay, Google Pay mediante pasarela segura Polar 3D Secure.",
     faqQ5: "¿Existe política de devolución o reembolso?",
     faqA5: "Nuestras licencias son bienes digitales intangibles entregados de forma inmediata. De conformidad con las leyes de protección al consumidor y normativas de productos digitales, no existe derecho de desistimiento ni reembolso una vez generada la licencia.",
 
     recoveryTitle: "🔑 Recuperar Mi Clave de Licencia",
-    recoveryDesc: "Ingrese su correo electrónico de compra para ver sus claves de licencia activas.",
-    recoveryPlaceholder: "Correo electrónico de compra...",
+    recoveryDesc: "¿Perdiste tu clave de licencia? Puedes verificarla introduciendo la clave misma. Polar no permite buscar por correo electrónico por motivos de seguridad.",
+    recoveryPlaceholder: "Tu clave de licencia (el código del correo de Polar)",
     recoveryBtn: "Buscar Licencia",
 
     modalCheckoutTitle: "⚡ Pedido Rápido y Entrega de Licencia",
-    modalCheckoutSubtitle: "Sin registro. Su licencia se entrega de inmediato en pantalla y a su correo.",
+    modalCheckoutSubtitle: "Sin registro. Tras el pago, Polar envía tu clave de licencia por correo; pégala en el campo de licencia de la extensión.",
     modalCheckoutSummaryLabel: "Total a Pagar:",
     modalCheckoutEmailLabel: "Su Correo Electrónico (Para Entrega de Licencia) *",
     modalCheckoutEmailPlaceholder: "usted@ejemplo.com",
@@ -633,6 +699,27 @@ const TRANSLATIONS = {
     footerRights: "© 2026 Anıl Aksu • YT Extension Suite. Todos los derechos reservados."
   },
   de: {
+  pwylNoFake: "Separate Produkte für Support-Beträge sind noch nicht veröffentlicht. Die Buttons unten zeigen nur echte Produktpreise und berechnen genau diese Beträge.",
+  pwylProduct1: "📸 Clean Full Page & PDF Capture Pro",
+  pwylProduct1Desc: "Lebenslange Lizenz, auf allen deinen Geräten nutzbar.",
+  pwylBuy1: "₺299 / $11.99",
+  pwylProduct2: "⚡ Zen Cinema Pro",
+  pwylProduct2Desc: "Lebenslange Lizenz, auf allen deinen Geräten nutzbar.",
+  pwylBuy2: "₺499 / $19.99",
+  pwylProduct3: "💎 Ultimate Suite Bundle",
+  pwylProduct3Desc: "Beide Erweiterungen mit einem Schlüssel, 20 % günstiger.",
+  pwylBuy3: "₺649 / $24.99",
+  dlTitle: "Download & Installation",
+  dlZipBtn: "⬇ Zen Cinema Pro herunterladen (.zip)",
+  dlStepsTitle: "So wird es installiert",
+  dlStep1: "1. Lade die Zip herunter und entpacke sie (behalte den Ordner mit seinen Dateien).",
+  dlStep2: "2. In Chrome öffnen: chrome://extensions",
+  dlStep3: "3. Oben rechts den Entwicklermodus einschalten.",
+  dlStep4: "4. Auf Entpackt laden klicken und den Ordner aus Schritt 1 wählen.",
+  dlNote: "Polar sendet Ihren Lizenzschlüssel per E-Mail. Klicken Sie auf das Erweiterungssymbol und fügen Sie den Schlüssel ein.",
+  cwsTitle: "Im Chrome Web Store veröffentlicht",
+  cwsBtn: "⬇ Im Chrome Web Store holen",
+  cwsNote: "Installieren Sie die neueste Version aus dem Store; Updates kommen automatisch.",
     brandName: "Anıl Aksu • Chrome Extensions Studio",
     navHub: "Portfolio & Hub",
     navStore: "Shop & Warenkorb",
@@ -656,7 +743,7 @@ const TRANSLATIONS = {
 
     storeTag: "🛒 OFFIZIELLER SOFTWARE-SHOP",
     storeTitle: "VIP-Lizenz-Shop & Sofortige Zustellung",
-    storeSubtitle: "Kein Konto erforderlich. Erhalten Sie Ihre VIP-Lizenzschlüssel sofort auf dem Bildschirm und per E-Mail über Polar 3D Secure.",
+    storeSubtitle: "Kein Konto erforderlich. Mit Polar-Checkout wird Ihr Lizenzschlüssel nach dem Kauf per E-Mail versendet.",
     featuredBadge: "VORTEILHAFTESTES PAKET",
 
     secProductsTitle: "Unabhängige Chrome-Erweiterungen",
@@ -769,10 +856,11 @@ const TRANSLATIONS = {
     compRow6Free: "Community",
     compRow6Pro: "✓ Prioritär",
 
-    // Pay What You Like / Developer Support
-    pwylTag: "❤️ ENTWICKLER-UNTERSTÜTZUNG & FREI WÄHLBARER PREIS",
-    pwylTitle: "Gefallen Ihnen Unsere Erweiterungen? Unterstützen Sie Uns Freiwillig",
-    pwylSubtitle: "Wenn Ihnen die Erweiterungen gefallen, können Sie die unabhängige Entwicklung mit einem beliebigen Betrag unterstützen. Die Unterstützung ist eine Spende und enthält keine Lizenz; Lizenzen finden Sie oben.",
+    // Developer Support. Onceki "pay what you like" butonlari KALDIRILDI:
+    // ekranda yazan tutardan farkli fiyat cekiyorlardi.
+    pwylTag: "🎯 TÄGLICHE UNTERSTÜTZUNG",
+    pwylTitle: "Gefallen dir die Projekte? Unterstütze sie",
+    pwylSubtitle: "Wenn dir die Erweiterungen gefallen, kannst du die Weiterentwicklung unterstützen. Unterstützung ist ein separater Beitrag und enthält keine Lizenz; Lizenzen gibt es in den drei Produkten oben.",
     pwylOneTimeTitle: "Einmalige Unterstützung",
     pwylOneTimeDesc: "Für weniger als den Preis einer Kinokarte unterstützen Sie 100% Client-seitige Tools:",
     pwylSubTitle: "Monatliche Unterstützung",
@@ -781,23 +869,23 @@ const TRANSLATIONS = {
 
     faqTitle: "Häufig Gestellte Fragen",
     faqQ1: "Wie erhalte ich meinen Lizenzschlüssel?",
-    faqA1: "Sobald Ihre Zahlung bestätigt ist, wird Ihr Lizenzschlüssel sofort im Großformat auf Ihrem Bildschirm angezeigt. Zusätzlich wird eine Sicherungskopie an Ihre E-Mail gesendet.",
+    faqA1: "Sobald Ihre Zahlung bestätigt ist, sendet Polar Ihren Lizenzschlüssel per E-Mail an die beim Checkout angegebene Adresse. Sie kopieren den Schlüssel aus dieser E-Mail und fügen ihn in das Lizenzfeld der Erweiterung ein. Auf dieser Seite wird kein Schlüssel automatisch angezeigt.",
     faqQ2: "Muss ich ein Konto erstellen?",
     faqA2: "Nein! Dank unseres Gast-Sofortkaufs ist keine Registrierung erforderlich. Geben Sie einfach Ihre E-Mail-Adresse für die Lizenzzustellung an.",
     faqQ3: "Für wie viele Geräte gilt die Lizenz und ist sie übertragbar?",
-    faqA3: "Jede Lizenz kann auf bis zu 5 Browser-Hardwareprofilen (Hardware-ID) aktiviert werden. Sie können jederzeit über support@forfor.site die Freigabe eines Geräteplatzes beantragen.",
+    faqA3: "Der Lizenzschlüssel ist nicht an ein bestimmtes Gerät gebunden: Jeder bei Polar gültige Schlüssel funktioniert in dem Browser, in dem Sie ihn eingeben. Bitte teilen Sie Ihren Schlüssel nicht. Die Nutzung auf Ihren eigenen Geräten ist problemlos.",
     faqQ4: "Welche Zahlungsmethoden werden unterstützt?",
     faqA4: "Wir unterstützen alle gängigen Kreditkarten, Apple Pay, Google Pay und sichere 3D Secure Zahlungen über Polar.",
     faqQ5: "Gibt es ein Rückgabe- oder Rückerstattungsrecht?",
     faqA5: "Bei unseren Lizenzen handelt es sich um immaterielle digitale Güter, die sofort nach Zahlungsbestätigung bereitgestellt werden. Gemäß Verbraucherschutzgesetzen und Richtlinien für digitale Inhalte besteht nach Generierung des Schlüssels kein Widerrufs- oder Rückerstattungsrecht.",
 
     recoveryTitle: "🔑 Meinen Lizenzschlüssel abrufen",
-    recoveryDesc: "Geben Sie Ihre Kauf-E-Mail ein, um aktive Lizenzen sofort anzuzeigen.",
-    recoveryPlaceholder: "Ihre Kauf-E-Mail...",
+    recoveryDesc: "Lizenzschlüssel verloren? Sie können ihn prüfen, indem Sie den Schlüssel selbst eingeben. Polar lässt aus Sicherheitsgründen keine Abfrage per E-Mail-Adresse zu.",
+    recoveryPlaceholder: "Ihr Lizenzschlüssel (der Code aus der Polar-E-Mail)",
     recoveryBtn: "Lizenz suchen",
 
     modalCheckoutTitle: "⚡ Schnelle Bestellung & Lizenzzustellung",
-    modalCheckoutSubtitle: "Kein Konto erforderlich. Ihre Lizenz wird sofort auf dem Bildschirm und per E-Mail zugestellt.",
+    modalCheckoutSubtitle: "Kein Konto erforderlich. Nach der Zahlung sendet Polar Ihren Lizenzschlüssel per E-Mail; fügen Sie ihn in das Lizenzfeld der Erweiterung ein.",
     modalCheckoutSummaryLabel: "Zu Zahlender Betrag:",
     modalCheckoutEmailLabel: "Ihre E-Mail-Adresse (Für Lizenzzustellung) *",
     modalCheckoutEmailPlaceholder: "ihre-email@beispiel.de",
