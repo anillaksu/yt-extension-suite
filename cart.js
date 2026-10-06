@@ -458,24 +458,66 @@ async function searchLicenses(event) {
   return false;
 }
 
+// ── Anahtar teslim yöntemi: GELECEKTE DEĞİŞTİRMEK İÇİN TEK YER ───────────────
+// 'portal': Anahtar Polar müşteri portalında durur; başarı paneli portala yönlendirir.
+//           (06.10.2026 gerçek durum: Polar ayrı bir "lisans anahtarı e-postası"
+//            YOLLAMAZ; yalnız sipariş onayı gider, anahtar portaldadır.)
+// 'email' : İleride Polar ya da kendi backend'imiz anahtarı e-postayla yollarsa
+//           bu değeri 'email' yap; panel "anahtar e-postana gönderildi" der.
+// Yöntemi değiştirmek: yalnız ANAHTAR_TESLIM.yontem'i düzenle, başka yere dokunma.
+const ANAHTAR_TESLIM = {
+  yontem: 'portal',
+  portalUrl: 'https://polar.sh/anil-aksu/portal', // müşteri e-postasıyla girip anahtarını görür
+  destek: 'support@forfor.site'
+};
+
+// Ödeme sonrası başarı paneli (toast değil; kullanıcı anahtarını NASIL alacağını net görür).
+// Hiçbir anahtar UYDURULMAZ; yalnız gerçek teslim yoluna yönlendirir.
+function odemeBasariPaneli(urunAd) {
+  if (document.getElementById('odeme-basari')) return;
+  const portal = ANAHTAR_TESLIM.yontem === 'portal';
+  const ov = document.createElement('div');
+  ov.id = 'odeme-basari';
+  ov.setAttribute('role', 'dialog');
+  ov.setAttribute('aria-modal', 'true');
+  ov.style.cssText = 'position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(8,10,20,.72);backdrop-filter:blur(6px)';
+  const baslik = urunAd ? htmlKacis(urunAd) : 'Pro';
+  const anaMetin = portal
+    ? 'Ödemen alındı. Pro lisans anahtarın hesabında hazır. Anahtarı görmek için aşağıdaki butona bas, Polar hesabına kayıtlı e-postanla gir; sonra anahtarı eklentinin ayarlarına yapıştır.'
+    : 'Ödemen alındı. Pro lisans anahtarın e-postana gönderildi. Gelmezse birkaç dakika içinde spam/gereksiz klasörünü kontrol et.';
+  const cta = portal
+    ? `<a href="${ANAHTAR_TESLIM.portalUrl}" target="_blank" rel="noopener" style="display:inline-block;background:linear-gradient(135deg,#6d9bff,#8f6bff);color:#fff;font-weight:700;padding:13px 22px;border-radius:12px;text-decoration:none">Anahtarımı Gör →</a>`
+    : '';
+  ov.innerHTML =
+    `<div style="max-width:440px;width:100%;background:#12152280;border:1px solid #ffffff1f;border-radius:18px;padding:26px 24px;box-shadow:0 20px 60px #0009;color:#eef1ff;text-align:center;font-family:inherit">
+       <div style="font-size:40px;line-height:1;margin-bottom:10px">🎉</div>
+       <h3 style="margin:0 0 6px;font-size:20px">Teşekkürler! ${baslik} aktif</h3>
+       <p style="margin:0 0 18px;font-size:14.5px;line-height:1.55;color:#c7cce6">${anaMetin}</p>
+       ${cta}
+       <div style="margin-top:16px;font-size:12.5px;color:#9aa0c2">Sorun olursa: <a href="mailto:${ANAHTAR_TESLIM.destek}" style="color:#9ab6ff">${ANAHTAR_TESLIM.destek}</a></div>
+       <button type="button" id="odeme-basari-kapat" style="margin-top:14px;background:transparent;border:1px solid #ffffff33;color:#c7ccee;padding:9px 16px;border-radius:10px;cursor:pointer">Kapat</button>
+     </div>`;
+  document.body.appendChild(ov);
+  const kapat = () => ov.remove();
+  ov.querySelector('#odeme-basari-kapat').addEventListener('click', kapat);
+  ov.addEventListener('click', (e) => { if (e.target === ov) kapat(); });
+}
+
 // Initialization & Post-Payment Handler
 document.addEventListener('DOMContentLoaded', () => {
   updateCartBadge();
   renderCartDrawer();
 
-  // Polar checkout'tan başarıyla dönen kullanıcıya bilgi ver.
-  // Burada hiçbir lisans anahtarı UYDURULMAZ ve hiçbir admin/generate-license
-  // çağrısı yapılmaz — gerçek anahtar Polar'ın kendi e-postasıyla gelir.
+  // Polar checkout'tan başarıyla dönen kullanıcı. Anahtar UYDURULMAZ; gerçek
+  // teslim yolu ANAHTAR_TESLIM ile yönetilir (şu an: Polar müşteri portalı).
   const urlParams = new URLSearchParams(window.location.search);
   if (urlParams.get('success') === 'true') {
+    const urun = urlParams.get('product') || '';
     window.history.replaceState({}, document.title, window.location.pathname);
-
     if (typeof window.trackEvent === 'function') {
-      window.trackEvent('Ecommerce', 'purchase_success', urlParams.get('product') || 'unknown', 0);
+      window.trackEvent('Ecommerce', 'purchase_success', urun || 'unknown', 0);
     }
-
-    setTimeout(() => {
-      showToast('🎉 Ödeme alındı! Lisans anahtarınız Polar tarafından e-postanıza gönderiliyor.');
-    }, 400);
+    const ad = (DB[urun] && (DB[urun].nameKey ? '' : DB[urun].name)) || '';
+    setTimeout(() => odemeBasariPaneli(ad), 300);
   }
 });
