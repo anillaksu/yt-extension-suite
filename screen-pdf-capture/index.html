@@ -2,393 +2,227 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title data-i18n="p2Title">Clean Full Page & PDF Capture Pro</title>
-  <meta name="description" content="Official showcase for Clean Full Page & PDF Capture Pro. Scroll-and-stitch full-page capture, multi-page A4 PDF engine, DOM element picker, and blur redaction.">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E%E2%9A%A1%3C/text%3E%3C/svg%3E">
-  <link rel="stylesheet" href="../style.css?v=a178d0bd">
-  <link rel="stylesheet" href="../premium.css?v=d1d69f7a">
-  <script src="../premium.js?v=35fe85ad" defer></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Clean Capture — tam sayfa ekran görüntüsü ve PDF</title>
+  <meta name="description" content="Web sayfalarını tek parça yakalar; PNG, JPEG ya da çok sayfalı PDF olarak kaydeder. Yakalama tamamen tarayıcıda olur.">
+  <meta name="theme-color" content="#12100D">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2034%2034%22%3E%3Crect%20width%3D%2234%22%20height%3D%2234%22%20rx%3D%2210%22%20fill%3D%22%231F1B16%22%2F%3E%3Cpath%20d%3D%22M8.5%2022.5a8.5%208.5%200%200%201%2017%200%22%20fill%3D%22none%22%20stroke%3D%22%23EEE8DC%22%20stroke-width%3D%222.4%22%20stroke-linecap%3D%22round%22%2F%3E%3Ccircle%20cx%3D%2217%22%20cy%3D%2222%22%20r%3D%223.6%22%20fill%3D%22%23D9A864%22%2F%3E%3C%2Fsvg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <script src="../analytics.js?v=197e7e94" defer></script>
-  <script src="../i18n.js?v=f3fc95af" defer></script>
-  <script src="../catalog.js?v=fc383491" defer></script>
-  <script src="../cart.js?v=c63740bb" defer></script>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../site.css?v=f9a49f47">
+  <script src="../analytics.js?v=69eab22e" defer></script>
+  <script src="../i18n.js?v=7b59e685" defer></script>
+  <script src="../catalog.js?v=d6466181" defer></script>
+  <script src="../cart.js?v=596f935a" defer></script>
+  <script src="../site.js?v=5d997308" defer></script>
 </head>
 <body>
-
-  <!-- Navigation Bar -->
-  <nav class="navbar">
-    <div class="nav-container">
-      <a href="/store/index.html" class="logo-link">
-        <span class="logo-badge">⚡</span>
-        <span class="logo-text" data-i18n="brandName">Anıl Aksu • Chrome Extensions Studio</span>
-      </a>
-
-      <div class="nav-links">
-        <a href="/store/index.html" data-i18n="navHub">Portföy & Hub</a>
-        <a href="/store/" data-i18n="navStore">Mağaza & Sepet</a>
-        <a href="/store/zen-cinema-pro/" data-i18n="navYtAccelerator">Zen Cinema Pro</a>
-        <a href="/store/screen-pdf-capture/" class="active" data-i18n="navCleanCapture">PDF & Ekran Yakalama</a>
-        <a href="/store/index.html#future-projects" data-i18n="navFuture">Gelecek Projeler</a>
-
-        <!-- Cart Button -->
-        <button class="cart-nav-btn" onclick="openCart()">
-          <span>🛒</span>
-          <span data-i18n="navCart">Sepetim</span>
-          <span class="cart-badge" id="nav-cart-badge" style="display: none;">0</span>
-        </button>
-
-        <!-- Language Switcher -->
-        <div class="lang-selector">
-          <select id="lang-switch" class="lang-select-dropdown" onchange="applyLanguage(this.value)">
-            <option value="tr">🇹🇷 Türkçe</option>
-            <option value="en">🇬🇧 English</option>
-            <option value="es">🇪🇸 Español</option>
-            <option value="de">🇩🇪 Deutsch</option>
-          </select>
-        </div>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Product Hero -->
-  <header class="hero">
-    <div class="container">
-      <div class="hero-logo"><img src="../assets/logos/clean_capture.png" alt="Clean Capture Pro logosu" width="88" height="88" decoding="async"></div>
-      <div class="hero-tag" data-i18n="capHeroTag">📸 100% İSTEMCİ TARAFLI TAM SAYFA & PDF MOTORU</div>
-      <div class="card-meta hero-meta"><span class="meta-pill" data-urun="clean_capture" data-urun-alan="surum">v1.0.1</span><span class="meta-pill" data-urun="clean_capture" data-urun-alan="guncelleme"><time datetime="2026-10-05">2026-10-05</time></span></div>
-      <h1 class="hero-title" style="max-width: 950px; margin: 0 auto 20px;" data-i18n="capHeroTitle">Clean Full Page & PDF Capture Pro</h1>
-      <p class="hero-subtitle" data-i18n="capHeroSubtitle">Kaydır & birleştir tekniğiyle piksel kaybı olmadan tam sayfa ekran görüntüsü, çok sayfalı A4 PDF dönüştürücü ve blur/pikselleştirme ile sansürleme (yerel OCR yakında).</p>
-
-      <div class="hero-actions">
-        <button onclick="openCheckoutModal('clean_capture')" class="btn-primary" style="font-size: 1.1rem; padding: 16px 32px;" data-i18n="capBtnBuy">⚡ Hemen Satın Al (₺299 / $11.99)</button>
-        <button onclick="addToCart('clean_capture')" class="btn-cart-action" style="font-size: 1.1rem; padding: 16px 28px;" data-i18n="btnAddToCart">Sepete Ekle</button>
+  <header class="ust">
+    <div class="kap">
+      <a href="/store/index.html" class="marka" aria-label="Anıl Aksu Studio"><svg class="marka-isaret" viewBox="0 0 34 34" aria-hidden="true"><defs><linearGradient id="mz" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#352E26"/><stop offset="1" stop-color="#16130F"/></linearGradient><radialGradient id="mi" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#F2C987" stop-opacity=".9"/><stop offset="1" stop-color="#D9A864" stop-opacity="0"/></radialGradient></defs><rect x=".5" y=".5" width="33" height="33" rx="10" fill="url(#mz)" stroke="rgba(255,240,220,.16)"/><path d="M8.5 22.5a8.5 8.5 0 0 1 17 0" fill="none" stroke="#EEE8DC" stroke-width="2.2" stroke-linecap="round"/><circle cx="17" cy="22" r="7" fill="url(#mi)"/><circle cx="17" cy="22" r="3.2" fill="#D9A864"/></svg><span>Anıl Aksu <small>Studio</small></span></a>
+      <nav class="menu" aria-label="Site">
+        <a href="/store/index.html#eklentiler" data-i18n="s2NavUrunler">Eklentiler</a>
+        <a href="/store/zen-cinema-pro/">Zen Cinema</a>
+        <a href="/store/screen-pdf-capture/" class="aktif" aria-current="page">Clean Capture</a>
+        <a href="/store/" data-i18n="s2NavMagaza">Mağaza</a>
+        <a href="/store/#lisans" data-i18n="s2NavLisans">Lisansım</a>
+      </nav>
+      <div class="ust-arac">
+        <button class="cart-nav-btn" onclick="openCart()" aria-label="Sepet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.5L21 8H6.2"/><circle cx="10" cy="20" r="1.2"/><circle cx="17" cy="20" r="1.2"/></svg><span class="yazi" data-i18n="s2Sepet">Sepet</span><span class="cart-badge" id="nav-cart-badge" style="display: none;">0</span></button>
+        <select id="lang-switch" class="lang-select-dropdown" onchange="applyLanguage(this.value)" aria-label="Dil / Language">
+          <option value="tr">TR</option><option value="en">EN</option><option value="es">ES</option><option value="de">DE</option>
+        </select>
+        <button class="menu-ac" aria-label="Menü" aria-expanded="false"><span></span></button>
       </div>
     </div>
   </header>
 
-  <!-- Interactive Simulator Section -->
-  <section class="section" style="padding: 40px 0 70px;">
-    <div class="container" style="max-width: 960px;">
-      <div style="background: #0f172a; border: 1px solid var(--border-color); border-radius: 24px; padding: 32px; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; border-bottom: 1px solid var(--border-color); padding-bottom: 16px; flex-wrap: wrap; gap: 12px;">
-          <div>
-            <h3 style="color: #fff; font-size: 1.25rem; font-weight: 800;" data-i18n="capSimTitle">🖼️ İnteraktif DOM Öğe & Sansürleme Simülatörü</h3>
-            <p style="color: var(--text-muted); font-size: 0.85rem;" data-i18n="capSimDesc">Sayfa üzerindeki spesifik bileşenleri seçip PDF'e dönüştürme ve sansürleme mantığını test edin:</p>
+  <main>
+    <section class="kahraman">
+      <div class="kap">
+        <div>
+          <img class="urun-kahraman-simge" src="../assets/logos/clean_capture.png" alt="Clean Capture" width="84" height="84">
+          <span class="etiket buz" data-i18n="s2cEtiket">Clean Capture · ekran ve PDF</span>
+          <h1 data-i18n="s2cBaslik">Sayfanın <em class="vurgu">tamamı</em>, tek görüntüde.</h1>
+          <p data-i18n="s2cGiris" class="giris">Görünen alanın ötesine taşan sayfaları kaydırmadan, yapışkan başlıkları tekrarlamadan tek parça yakalar. PNG, JPEG ya da çok sayfalı PDF olarak kaydedersin; yakalama tamamen tarayıcında olur.</p>
+          <div class="eylemler">
+            <a href="https://chromewebstore.google.com/detail/flmplfhmicdkkanjojbmgjjmmcmfaalh" target="_blank" rel="noopener" class="dugme birincil"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="18" height="18"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg><span data-i18n="s2cKur">Chrome'a ücretsiz ekle</span></a>
+            <button onclick="openCheckoutModal('clean_capture')" class="dugme ikincil"><span>Pro</span> · <b class="dugme-fiyat" data-urun="clean_capture" data-urun-alan="fiyat">₺299 <span class="price-usd">/ $11.99</span></b></button>
           </div>
-          <span style="background: rgba(16, 185, 129, 0.15); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.4); padding: 4px 12px; border-radius: 9999px; font-weight: 800; font-size: 0.8rem;">
-            %100 İSTEMCİ İÇİ
-          </span>
+          <div class="not"><span data-i18n="s2cNot1">Chrome Web Store'da</span><span data-i18n="s2HubNot3">Ücretsiz sürüm süresiz</span><span data-i18n="s2zNot3">Veriler cihazında</span></div>
         </div>
+        <div class="sahne buz" aria-hidden="false">
+        <div class="isik"></div>
+        <div class="katman k1"><img src="../assets/clean-capture/3-editor.jpg" alt="Clean Capture" width="1280" height="800" loading="lazy" decoding="async"></div>
+        <div class="katman k2"><img src="../assets/clean-capture/1-full-page.jpg" alt="Clean Capture" width="1280" height="800" fetchpriority="high" decoding="async"></div>
+        
+      </div>
+      </div>
+    </section>
 
-        <!-- Simulated Web Page Canvas -->
-        <div style="position: relative; width: 100%; min-height: 280px; background: #1e293b; border-radius: 16px; padding: 24px; border: 1px solid rgba(255,255,255,0.08);" id="sim-capture-box">
-          <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 16px;">
-            <div id="sim-target-table" style="background: #0f172a; padding: 16px; border-radius: 10px; border: 2px dashed #00f0ff; transition: all 0.3s;">
-              <strong style="color: #00f0ff; font-size: 0.9rem;">📊 Finansal Rapor Tablosu (DOM Element)</strong>
-              <div style="margin-top: 10px; font-size: 0.8rem; color: #cbd5e1; font-family: monospace;">
-                Q1 Gelir: ₺1,450,000 [Hassas]<br>
-                Q2 Kar Marjı: %34.2 [Hassas]<br>
-                Büyüme Oranı: +18.4%
-              </div>
-            </div>
+    <section class="bolum cizgili">
+      <div class="kap">
+        <div class="bolum-bas" data-belir>
+          <span class="etiket buz" data-i18n="s2cOzEtiket">Neler yapar</span>
+          <h2 data-i18n="s2cOzBaslik">Yakala, düzenle, paylaş</h2>
+          <p data-i18n="s2cOzAlt">Dört yakalama biçimi, üç dışa aktarma biçimi ve yerleşik bir editör.</p>
+        </div>
+        <div class="izgara uc">
+          <article class="kart" data-belir><div class="simge-kutu buz"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="2"/><path d="M9 7h6M9 10h6M9 13h6M9 16h3"/></svg></div><h3 data-i18n="s2cO1B">Tam sayfa</h3><p data-i18n="s2cO1M">Kaydırılabilir tüm içerik tek görüntüde. Sayfa kaydırılmaz, başlıklar tekrarlanmaz.</p></article>
+          <article class="kart" data-belir><div class="simge-kutu buz"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M9 21h6"/></svg></div><h3 data-i18n="s2cO2B">Görünür alan</h3><p data-i18n="s2cO2M">Ekranda o an ne varsa, anında.</p></article>
+          <article class="kart" data-belir><div class="simge-kutu buz"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3"/><rect x="8" y="8" width="8" height="8" rx="1" stroke-dasharray="2 2"/></svg></div><h3 data-i18n="s2cO3B">Özel bölge</h3><p data-i18n="s2cO3M">Ekranda bir kutu çiz, yalnız o kısmı al.</p></article>
+          <article class="kart" data-belir><div class="simge-kutu buz"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3l5 15 2.5-6.5L19 9z"/></svg></div><h3 data-i18n="s2cO4B">Öğe seçici</h3><p data-i18n="s2cO4M">Bir tabloya, grafiğe ya da karta tıkla; yalnız o öğe piksel hassasiyetinde yakalanır.</p><div class="kisayol"><span class="hap">Pro</span></div></article>
+          <article class="kart" data-belir><div class="simge-kutu buz"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M8.5 14h7M8.5 17h5"/></svg></div><h3 data-i18n="s2cO5B">Çok sayfalı PDF</h3><p data-i18n="s2cO5M">Uzun görüntü A4 sayfalara bölünür; baskıya ve paylaşıma hazır.</p><div class="kisayol"><span class="hap">Pro</span></div></article>
+          <article class="kart" data-belir><div class="simge-kutu buz"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l4-1 11-11-3-3L5 16z"/><path d="M14 6l3 3"/></svg></div><h3 data-i18n="s2cO6B">Stüdyo editörü</h3><p data-i18n="s2cO6M">Kırp, ok ve dikdörtgen çiz, kalemle işaretle; hassas bilgileri bulanıklaştır ya da pikselleştir.</p></article>
+        </div>
+      </div>
+    </section>
 
-            <div id="sim-target-chart" style="background: #0f172a; padding: 16px; border-radius: 10px; border: 1px solid var(--border-color);">
-              <strong style="color: #38bdf8; font-size: 0.85rem;">📈 Analitik Grafik</strong>
-              <div style="height: 60px; background: rgba(56, 189, 248, 0.1); border-radius: 6px; margin-top: 8px; display: flex; align-items: flex-end; gap: 6px; padding: 6px;">
-                <div style="height: 40%; width: 20%; background: #38bdf8; border-radius: 2px;"></div>
-                <div style="height: 70%; width: 20%; background: #38bdf8; border-radius: 2px;"></div>
-                <div style="height: 100%; width: 20%; background: #00f0ff; border-radius: 2px;"></div>
-                <div style="height: 85%; width: 20%; background: #10b981; border-radius: 2px;"></div>
-              </div>
-            </div>
+    <section class="bolum cizgili">
+      <div class="kap">
+        <div class="galeri">
+          <figure class="genis" data-belir><img src="../assets/clean-capture/1-full-page.jpg" alt="Tek tıkla yakalama menüsü" width="1280" height="800" loading="lazy" decoding="async"><figcaption data-i18n="s2cG1">Tek tıkla yakalama menüsü</figcaption></figure>
+          <figure data-belir><img src="../assets/clean-capture/2-pro.jpg" alt="Pro: öğe seçici ve PDF" width="1280" height="800" loading="lazy" decoding="async"><figcaption data-i18n="s2cG2">Pro: öğe seçici ve PDF</figcaption></figure>
+          <figure data-belir><img src="../assets/clean-capture/3-editor.jpg" alt="Stüdyo editörü" width="1280" height="800" loading="lazy" decoding="async"><figcaption data-i18n="s2cG3">Stüdyo editörü</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="bolum cizgili">
+      <div class="kap">
+        <div class="bolum-bas orta" data-belir>
+          <span class="etiket buz" data-i18n="s2zPlanEtiket">Sürümler</span>
+          <h2 data-i18n="s2zPlanBaslik">Ücretsiz başla, gerekince Pro</h2>
+        </div>
+        <div class="izgara iki" style="max-width: 900px; margin-inline: auto;">
+          <article class="kart" data-belir>
+            <h3 data-i18n="s2Ucretsiz">Ücretsiz</h3>
+            <div class="fiyat" style="margin: 6px 0 4px;">₺0</div>
+            <ul class="tikli buz"><li data-i18n="s2cU1">Tam sayfa, görünür alan ve bölge yakalama</li><li data-i18n="s2cU2">PNG ve JPEG dışa aktarma</li><li data-i18n="s2cU3">Stüdyo editörü ve bulanıklaştırma</li><li data-i18n="s2zU3">Süresiz, hesap gerekmez</li></ul>
+            <a href="https://chromewebstore.google.com/detail/flmplfhmicdkkanjojbmgjjmmcmfaalh" target="_blank" rel="noopener" class="dugme ikincil" style="width: 100%;" data-i18n="s2cKur">Chrome'a ücretsiz ekle</a>
+          </article>
+          <article class="kart" data-belir style="border-color: rgba(142,197,232,.4);">
+            <h3 data-i18n="s2Pro">Pro</h3>
+            <div class="fiyat" style="margin: 6px 0 4px;" data-urun="clean_capture" data-urun-alan="fiyat">₺299 <span class="price-usd">/ $11.99</span></div>
+            <ul class="tikli buz"><li data-i18n="s2cP1">Çok sayfalı A4 PDF</li><li data-i18n="s2cP2">Öğe seçici</li><li data-i18n="s2zP4">Ömür boyu güncellemeler</li></ul>
+            <div style="display: flex; gap: 8px;"><button onclick="openCheckoutModal('clean_capture')" class="dugme birincil" style="flex: 1;" data-i18n="s2SatinAl">Satın al</button><button onclick="addToCart('clean_capture')" class="btn-cart-action price-cart" aria-label="Sepete ekle" title="Sepete ekle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.5L21 8H6.2"/><circle cx="10" cy="20" r="1.2"/><circle cx="17" cy="20" r="1.2"/></svg></button></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="bolum cizgili">
+      <div class="kap">
+        <div class="bolum-bas" data-belir>
+          <span class="etiket buz" data-i18n="s2zSpecEtiket">Gizlilik</span>
+          <h2 data-i18n="s2cIzinBaslik">Her izin, neden gerekli</h2>
+          <p data-i18n="s2Ilke1M">Notların, karelerin, yakaladığın sayfalar tarayıcının kendi belleğinde işlenir ve saklanır. Bizim bir sunucumuza hiçbir şey gönderilmez.</p>
+        </div>
+        <dl class="ozellik-listesi" data-belir>
+          <div><dt><code>activeTab</code></dt><dd data-i18n="s2cIz1">Yalnız simgeye ya da kısayola bastığında, o an açık olan sekmeyi yakalamak için. Diğer sekmelere erişmez.</dd></div>
+          <div><dt><code>scripting</code></dt><dd data-i18n="s2cIz2">Öğe ve bölge seçme arayüzünü yalnız tıkladığın sekmeye eklemek için.</dd></div>
+          <div><dt><code>debugger</code></dt><dd data-i18n="s2cIz3">Tam sayfa görüntüyü kaydırmadan tek parça almak için Chrome'un kendi ekran görüntüsü komutu. Görüntü alınınca hemen ayrılır; ağ trafiği ya da çerez okunmaz.</dd></div>
+          <div><dt><code>downloads</code></dt><dd data-i18n="s2cIz4">Ürettiğin PNG, JPEG ya da PDF dosyasını bilgisayarına kaydetmek için.</dd></div>
+          <div><dt><code>offscreen</code></dt><dd data-i18n="s2cIz5">Parçaları tek görüntüde birleştirmek için görünmez bir yerel sayfa. Ağa çıkmaz.</dd></div>
+          <div><dt><code>storage</code></dt><dd data-i18n="s2cIz6">Tercihlerini ve varsa Pro anahtarını yalnız bu tarayıcıda saklamak için.</dd></div>
+          <div><dt data-i18n="s2zS7">Sürüm</dt><dd><span data-urun="clean_capture" data-urun-alan="surum">v1.0.1</span> · <span data-urun="clean_capture" data-urun-alan="guncelleme"><time datetime="2026-10-06">2026-10-06</time></span></dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="bolum">
+      <div class="kap">
+        <div class="son-cagri" data-belir style="border-color: rgba(142,197,232,.3);">
+          <h2 data-i18n="s2cSonBaslik">Bir dahaki uzun sayfayı tek seferde al.</h2>
+          <p data-i18n="s2cSonAlt">Yakalama, PNG/JPEG ve editör hep ücretsiz. PDF ve öğe seçici için Pro bir kez alınır.</p>
+          <div class="eylemler">
+            <a href="https://chromewebstore.google.com/detail/flmplfhmicdkkanjojbmgjjmmcmfaalh" target="_blank" rel="noopener" class="dugme birincil"><span data-i18n="s2cKur">Chrome'a ücretsiz ekle</span><span class="ok" aria-hidden="true">→</span></a>
+            <button onclick="openCheckoutModal('clean_capture')" class="dugme ikincil" data-i18n="s2SatinAl">Satın al</button>
           </div>
-
-          <div style="margin-top: 18px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.06); display: flex; justify-content: space-between; align-items: center;">
-            <span style="font-size: 0.85rem; color: #10b981; font-weight: 700;" id="sim-capture-status">✓ Hedef Tablo Seçildi (DOM Element Picker)</span>
-            <span style="font-size: 0.8rem; color: var(--text-muted);">Çözünürlük: 2560x1440 @ 2x DPI</span>
-          </div>
-        </div>
-
-        <!-- Interactive Controls -->
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin-top: 24px;">
-          <button onclick="toggleCaptureSim('picker')" class="btn-secondary" style="font-size: 0.85rem; justify-content: flex-start;" data-i18n="capSimBtnPicker">🎯 DOM Bileşen Seçici</button>
-          <button onclick="toggleCaptureSim('redact')" class="btn-secondary" style="font-size: 0.85rem; justify-content: flex-start;" data-i18n="capSimBtnBlur">🔒 Sansür Filtresi (Blur)</button>
-          <button onclick="toggleCaptureSim('pdf')" class="btn-secondary" style="font-size: 0.85rem; justify-content: flex-start;" data-i18n="capSimBtnPdf">📄 A4 Çok Sayfalı PDF Export</button>
-          <button onclick="toggleCaptureSim('ocr')" class="btn-secondary" style="font-size: 0.85rem; justify-content: flex-start;" data-i18n="p2F6">Yerel OCR — Yakında</button>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
-  <!-- Core Features Grid -->
-  <section class="section" style="padding: 20px 0 70px;">
-    <div class="container">
-      <div style="text-align: center; margin-bottom: 48px;">
-        <h2 style="font-size: 2.2rem; font-weight: 800; color: #fff; margin-bottom: 10px;" data-i18n="secProductsTitle">Geliştirilen Bağımsız Eklentiler</h2>
-        <p style="color: var(--text-muted); font-size: 1.05rem;" data-i18n="p2Desc">Kaydır & birleştir tekniğiyle piksel piksel tam sayfa yakalama, A4 çok sayfalı PDF'e bölme ve sansür filtresi (blur/pikselleştirme).</p>
-      </div>
-
-      <div class="grid-3">
-        <div class="product-card">
-          <div class="card-icon">🚀</div>
-          <h3 class="card-title" data-i18n="p2F1">Kaydır & birleştir ile kayıpsız tam sayfa düzen yakalama</h3>
-          <p class="card-desc">
-            Sayfayı otomatik kaydırıp görünüm alanlarını piksel kaybı olmadan birleştirir — özel tarayıcı izni gerektirmeden, tarayıcı içinde çalışır. Sabit başlıkların (sticky header) tekrar etmesini engeller.
-          </p>
-        </div>
-
-        <div class="product-card">
-          <div class="card-icon">📄</div>
-          <h3 class="card-title" data-i18n="p2F2">Otomatik A4 çok sayfalı PDF dönüştürücü</h3>
-          <p class="card-desc">
-            Alınan görseli A4 boyutlarına otomatik böler. Her sayfanın altına sayfa numarası, kaynak URL ve tarih bilgisi ekleyerek baskıya hazır PDF üretir.
-          </p>
-        </div>
-
-        <div class="product-card">
-          <div class="card-icon">🎯</div>
-          <h3 class="card-title" data-i18n="p2F3">DOM Öğe Seçici (Spesifik tablo ve grafikler)</h3>
-          <p class="card-desc">
-            Tüm sayfa yerine imleçle üzerine geldiğiniz spesifik bir tabloyu, grafiği veya yorum kutucuğunu tek tıkla piksel hassasiyetinde yakalar.
-          </p>
-        </div>
-
-        <div class="product-card">
-          <div class="card-icon">🎨</div>
-          <h3 class="card-title" data-i18n="p2F4">Stüdyo Çizim & Düzenleme Araçları</h3>
-          <p class="card-desc">
-            Harici programa gerek duymadan oklar, dikdörtgenler, metin kutuları ekleyin, kırpın veya önemli alanları vurgulayın.
-          </p>
-        </div>
-
-        <div class="product-card">
-          <div class="card-icon">🙈</div>
-          <h3 class="card-title" data-i18n="p2F5">Bulanıklaştırma & Sansürleme Filtresi</h3>
-          <p class="card-desc">
-            Kredi kartı, telefon veya müşteri isimleri gibi hassas bilgileri tek sürüklemeyle bulanıklaştırın (blur) veya pikselleyin (pixelate).
-          </p>
-        </div>
-
-        <div class="product-card">
-          <div class="card-icon">🔤</div>
-          <h3 class="card-title" data-i18n="p2F6">Yerel OCR — Yakında</h3>
-          <p class="card-desc">
-            Görsel üzerindeki metinleri sunucuya göndermeden doğrudan tarayıcı belleğinde ayıklama özelliği geliştirme aşamasında; bu sürümde henüz aktif değil.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Technical Specs Table -->
-  <section class="section" style="background: rgba(15, 23, 42, 0.6); padding: 70px 0; border-top: 1px solid var(--border-color);">
-    <div class="container" style="max-width: 860px;">
-      <h2 style="font-size: 2rem; font-weight: 800; color: #fff; text-align: center; margin-bottom: 30px;" data-i18n="capTechSpecsTitle">Teknik Özellikler & Uyumluluk</h2>
-
-      <table style="width: 100%; border-collapse: collapse; background: #1e293b; border-radius: 14px; overflow: hidden; border: 1px solid var(--border-color);">
-        <tr style="border-bottom: 1px solid rgba(255,255,255,0.06);">
-          <td style="padding: 14px 20px; color: var(--text-muted); font-weight: 700;">Mimari Standart</td>
-          <td style="padding: 14px 20px; color: #fff; font-weight: 600;">Google Chrome Manifest V3 (Offscreen Document API)</td>
-        </tr>
-        <tr style="border-bottom: 1px solid rgba(255,255,255,0.06);">
-          <td style="padding: 14px 20px; color: var(--text-muted); font-weight: 700;">Gerekli İzinler</td>
-          <td style="padding: 14px 20px; color: #fff; font-weight: 600;">`activeTab`, `debugger`, `offscreen`, `downloads`, `storage`</td>
-        </tr>
-        <tr style="border-bottom: 1px solid rgba(255,255,255,0.06);">
-          <td style="padding: 14px 20px; color: var(--text-muted); font-weight: 700;">Dışa Aktarma Formatları</td>
-          <td style="padding: 14px 20px; color: #fff; font-weight: 600;">PNG (Kayıpsız), JPEG (Yüksek Kalite), PDF (A4 / Letter Çok Sayfalı)</td>
-        </tr>
-        <tr style="border-bottom: 1px solid rgba(255,255,255,0.06);">
-          <td style="padding: 14px 20px; color: var(--text-muted); font-weight: 700;">Kısayol Tuşları</td>
-          <td style="padding: 14px 20px; color: #00f0ff; font-weight: 700;">
-            <code style="background: #0f172a; padding: 2px 6px; border-radius: 4px;">Alt+Shift+F</code> (Tam Sayfa) • 
-            <code style="background: #0f172a; padding: 2px 6px; border-radius: 4px;">Alt+Shift+V</code> (Görünür Alan) • 
-            <code style="background: #0f172a; padding: 2px 6px; border-radius: 4px;">Alt+Shift+E</code> (DOM Seçici)
-          </td>
-        </tr>
-        <tr>
-          <td style="padding: 14px 20px; color: var(--text-muted); font-weight: 700;">Lisans Türü</td>
-          <td style="padding: 14px 20px; color: #10b981; font-weight: 800;" data-i18n="p2PriceText">Ömür Boyu VIP Stüdyo Lisansı</td>
-        </tr>
-      </table>
-    </div>
-  </section>
-
-  <!-- CTA Box -->
-  <section class="section" style="padding: 80px 0; text-align: center;">
-    <div class="container" style="max-width: 760px;">
-      <h2 style="font-size: 2.2rem; font-weight: 800; color: #fff; margin-bottom: 14px;" data-i18n="p2Title">Clean Full Page & PDF Capture Pro</h2>
-      <p style="color: var(--text-muted); font-size: 1.05rem; margin-bottom: 30px;" data-i18n="p2Desc">Kaydır & birleştir tekniğiyle piksel piksel tam sayfa yakalama, A4 çok sayfalı PDF'e bölme ve sansür filtresi (blur/pikselleştirme).</p>
-      <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
-        <button onclick="openCheckoutModal('clean_capture')" class="btn-primary" style="font-size: 1.1rem; padding: 16px 36px;" data-i18n="capBtnBuy">⚡ Hemen Satın Al (₺299 / $11.99)</button>
-        <button onclick="addToCart('clean_capture')" class="btn-cart-action" style="font-size: 1.1rem; padding: 16px 30px;" data-i18n="btnAddToCart">Sepete Ekle</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- Published on Chrome Web Store: gercek dagitim yolu -->
-  <section class="section" style="padding: 70px 0; background: rgba(15,23,42,0.55); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
-    <div class="container" style="max-width: 820px; text-align: center;">
-      <h2 style="font-size: 1.9rem; font-weight: 800; color: #fff; margin-bottom: 20px;" data-i18n="cwsTitle">Chrome Web Store'da Yayında</h2>
-      <div style="margin-bottom: 18px;">
-        <a href="https://chromewebstore.google.com/detail/flmplfhmicdkkanjojbmgjjmmcmfaalh" target="_blank" rel="noopener" class="btn-primary" style="display: inline-block; font-size: 1.05rem; padding: 16px 34px;" data-i18n="cwsBtn">⬇ Chrome Web Store'dan Yükle</a>
-      </div>
-      <p style="color: var(--text-muted); font-size: 0.92rem;" data-i18n="cwsNote">En güncel sürümü doğrudan mağazadan kurun; güncellemeler otomatik gelir.</p>
-    </div>
-  </section>
-
-
-  <!-- Footer -->
   <footer class="footer">
-    <div class="container">
+    <div class="kap">
       <div class="footer-grid">
         <div>
-          <div class="logo-link" style="margin-bottom: 12px;">
-            <span class="logo-badge">⚡</span>
-            <span class="logo-text">Anıl Aksu Studio</span>
-          </div>
-          <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;" data-i18n="footerDesc">
-            Anıl Aksu tarafından geliştirilen yüksek performanslı, gizlilik odaklı bağımsız Chrome eklentileri stüdyosu.
-          </p>
+          <a href="/store/index.html" class="marka"><svg class="marka-isaret" viewBox="0 0 34 34" aria-hidden="true"><defs><linearGradient id="mz" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#352E26"/><stop offset="1" stop-color="#16130F"/></linearGradient><radialGradient id="mi" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#F2C987" stop-opacity=".9"/><stop offset="1" stop-color="#D9A864" stop-opacity="0"/></radialGradient></defs><rect x=".5" y=".5" width="33" height="33" rx="10" fill="url(#mz)" stroke="rgba(255,240,220,.16)"/><path d="M8.5 22.5a8.5 8.5 0 0 1 17 0" fill="none" stroke="#EEE8DC" stroke-width="2.2" stroke-linecap="round"/><circle cx="17" cy="22" r="7" fill="url(#mi)"/><circle cx="17" cy="22" r="3.2" fill="#D9A864"/></svg><span>Anıl Aksu <small>Studio</small></span></a>
+          <p data-i18n="s2FootDesc">Az şey yapan ama onu iyi yapan tarayıcı eklentileri. Verin cihazında kalır, lisansı bir kez alırsın.</p>
         </div>
         <div>
-          <h4 style="color: #fff; font-size: 0.95rem; font-weight: 700; margin-bottom: 14px;">Eklentiler</h4>
-          <p><a href="/store/zen-cinema-pro/" style="color: var(--text-muted); font-size: 0.9rem;" data-i18n="navYtAccelerator">Zen Cinema Pro</a></p>
-          <p style="margin-top: 8px;"><a href="/store/screen-pdf-capture/" style="color: var(--text-muted); font-size: 0.9rem;" data-i18n="navCleanCapture">PDF & Ekran Yakalama</a></p>
-          <p style="margin-top: 8px;"><a href="/store/" style="color: var(--text-muted); font-size: 0.9rem;" data-i18n="navStore">Mağaza & Sepet</a></p>
+          <h4 data-i18n="s2NavUrunler">Eklentiler</h4>
+          <a href="/store/zen-cinema-pro/">Zen Cinema</a>
+          <a href="/store/screen-pdf-capture/">Clean Capture</a>
+          <a href="/store/" data-i18n="s2NavMagaza">Mağaza</a>
         </div>
         <div>
-          <h4 style="color: #fff; font-size: 0.95rem; font-weight: 700; margin-bottom: 14px;">Geliştirici</h4>
-          <p><a href="/store/index.html#future-projects" style="color: var(--text-muted); font-size: 0.9rem;" data-i18n="navFuture">Gelecek Projeler</a></p>
-          <p style="margin-top: 8px;"><a href="https://github.com/anillaksu" target="_blank" style="color: var(--text-muted); font-size: 0.9rem;">GitHub Portföy</a></p>
+          <h4 data-i18n="s2FootYasal">Yasal</h4>
+          <a href="/store/privacy/" data-i18n="navPrivacy">Gizlilik Politikası</a>
+          <a href="/store/terms/" data-i18n="navTerms">Kullanım Şartları</a>
+          <a href="/store/#lisans" data-i18n="s2NavLisans">Lisansım</a>
         </div>
         <div>
-          <h4 style="color: #fff; font-size: 0.95rem; font-weight: 700; margin-bottom: 14px;">Yasal</h4>
-          <p><a href="/store/privacy/" style="color: var(--text-muted); font-size: 0.9rem;" data-i18n="navPrivacy">Gizlilik Politikası</a></p>
-          <p style="margin-top: 8px;"><a href="/store/terms/" style="color: var(--text-muted); font-size: 0.9rem;" data-i18n="navTerms">Kullanım Şartları</a></p>
+          <h4>Studio</h4>
+          <a href="https://forfor.site/yazilar">Yazılar · Blog</a>
+          <a href="https://github.com/anillaksu" target="_blank" rel="noopener">GitHub</a>
         </div>
         <div>
-          <h4 style="color: #fff; font-size: 0.95rem; font-weight: 700; margin-bottom: 14px;">İletişim · Contact</h4>
-          <p><a href="mailto:support@forfor.site" style="color: var(--accent-cyan); font-size: 0.9rem; font-weight: 700;">support@forfor.site</a></p>
-          <p style="margin-top: 8px;"><a href="https://forfor.site/iletisim" style="color: var(--text-muted); font-size: 0.9rem;">forfor.site/iletisim</a></p>
-          <p style="margin-top: 8px;"><a href="https://forfor.site/yazilar" style="color: var(--text-muted); font-size: 0.9rem;">Yazılar · Blog</a></p>
+          <h4 data-i18n="s2FootIletisim">İletişim</h4>
+          <a href="mailto:support@forfor.site" class="eposta">support@forfor.site</a>
+          <a href="https://forfor.site/iletisim">forfor.site/iletisim</a>
         </div>
       </div>
-      <div style="border-top: 1px solid var(--border-color); padding-top: 24px; text-align: center; color: var(--text-muted); font-size: 0.85rem;" data-i18n="footerRights">
-        © 2026 Anıl Aksu • YT Extension Suite. Tüm hakları saklıdır.
-      </div>
+      <div class="footer-alt"><span data-i18n="s2FootHaklar">© 2026 Anıl Aksu. Tüm hakları saklıdır.</span><span data-i18n="s2FootOdeme">Ödemeler Polar üzerinden alınır.</span></div>
     </div>
   </footer>
 
-  <!-- Slide-Over Cart Drawer -->
   <div class="cart-drawer-overlay" id="cart-overlay" onclick="closeCart()"></div>
-  <div class="cart-drawer" id="cart-drawer">
+  <aside class="cart-drawer" id="cart-drawer" aria-label="Sepet">
     <div class="cart-drawer-header">
-      <div class="cart-drawer-title">
-        <span>🛒</span>
-        <span data-i18n="navCart">Sepetim</span>
-      </div>
-      <button class="cart-close-btn" onclick="closeCart()">✕</button>
+      <div class="cart-drawer-title"><span data-i18n="navCart">Sepetim</span></div>
+      <button class="cart-close-btn" onclick="closeCart()" aria-label="Kapat">✕</button>
     </div>
     <div class="cart-drawer-body" id="cart-drawer-items"></div>
     <div class="cart-drawer-footer">
-      <div class="cart-subtotal-row">
-        <span class="cart-subtotal-label" data-i18n="cartSubtotalLabel">Toplam Tutar:</span>
-        <span class="cart-subtotal-val" id="cart-drawer-subtotal">₺0.00</span>
-      </div>
-      <button onclick="openCheckoutModal()" class="btn-primary" style="width: 100%; justify-content: center; font-size: 1.05rem;" data-i18n="btnInstantCheckout">
-        🔒 Siparişi Tamamla (Kayıtsız)
-      </button>
+      <div class="cart-subtotal-row"><span class="cart-subtotal-label" data-i18n="s2Toplam">Toplam</span><span class="cart-subtotal-val" id="cart-drawer-subtotal">₺0.00</span></div>
+      <button onclick="openCheckoutModal()" class="btn-primary"><span data-i18n="s2CheckoutBaslik">Siparişi tamamla</span><span class="ok" aria-hidden="true">→</span></button>
     </div>
-  </div>
+  </aside>
 
-  <!-- Guest Checkout Modal -->
-  <div class="modal-overlay" id="checkout-modal">
+  <div class="modal-overlay" id="checkout-modal" role="dialog" aria-modal="true">
     <div class="modal-content">
-      <button class="modal-close" onclick="closeCheckoutModal()">✕</button>
-      <h3 style="color: #fff; font-size: 1.4rem; font-weight: 800; margin-bottom: 6px;" data-i18n="modalCheckoutTitle">⚡ Hızlı Sipariş & Lisans Teslimatı</h3>
-      <p style="color: var(--text-muted); font-size: 0.88rem; margin-bottom: 20px;" data-i18n="modalCheckoutSubtitle">Üyelik gerekmez. Ödeme sonrası Polar lisans anahtarını e-postanıza gönderir; anahtarı eklentinin lisans alanına girersiniz.</p>
-
-      <div style="background: #1e293b; border-radius: 12px; padding: 14px; margin-bottom: 18px; font-size: 0.9rem;" id="checkout-order-summary"></div>
-      <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 18px; padding: 0 4px;">
-        <span style="font-weight: 700; color: #cbd5e1;" data-i18n="modalCheckoutSummaryLabel">Ödenecek Tutar:</span>
-        <strong style="color: var(--accent-cyan); font-size: 1.3rem;" id="checkout-total-amount">₺0.00</strong>
-      </div>
-
+      <button class="modal-close" onclick="closeCheckoutModal()" aria-label="Kapat">✕</button>
+      <h3 data-i18n="s2CheckoutBaslik">Siparişi tamamla</h3>
+      <p data-i18n="s2CheckoutAlt">Üyelik gerekmez. Ödemeden sonra anahtarın Polar müşteri portalında hazır olur; eklentinin lisans alanına yapıştırırsın.</p>
+      <div class="modal-ozet" id="checkout-order-summary"></div>
+      <div class="modal-toplam"><span data-i18n="s2Toplam">Toplam</span><strong id="checkout-total-amount">₺0.00</strong></div>
       <form onsubmit="submitCheckout(event)">
         <div class="form-group">
-          <label class="form-label" data-i18n="modalCheckoutEmailLabel">E-Posta Adresiniz (Lisansın İletileceği Adres) *</label>
-          <input type="email" id="checkout-email" required placeholder="adiniz@example.com" data-i18n-placeholder="modalCheckoutEmailPlaceholder" class="form-input">
+          <label class="form-label" for="checkout-email" data-i18n="s2EpostaEtiket">E-posta adresin</label>
+          <input type="email" id="checkout-email" required placeholder="adiniz@example.com" class="form-input" autocomplete="email">
+          <p class="fiyat-not" data-i18n="s2EpostaIpucu">Polar müşteri portalına bu adresle girip anahtarını görürsün.</p>
         </div>
-
         <div class="form-group">
-          <label class="form-label" data-i18n="modalCheckoutNameLabel">Ad Soyad (Opsiyonel)</label>
-          <input type="text" id="checkout-name" placeholder="Ad Soyad..." data-i18n-placeholder="modalCheckoutNamePlaceholder" class="form-input">
+          <label class="form-label" for="checkout-name" data-i18n="s2AdEtiket">Ad soyad (isteğe bağlı)</label>
+          <input type="text" id="checkout-name" class="form-input" autocomplete="name">
         </div>
-
-        <label class="form-label" data-i18n="modalCheckoutPaymentLabel">Güvenli Ödeme Altyapısı:</label>
-        <div style="background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 12px; padding: 14px; margin-bottom: 18px; display: flex; align-items: center; gap: 12px;">
-          <span style="font-size: 1.5rem;">🔒</span>
-          <div>
-            <div style="color: #fff; font-weight: 700; font-size: 0.95rem;" data-i18n="modalCheckoutSecureTitle">🔒 3D Secure 256-Bit Güvenli Ödeme</div>
-            <div style="color: var(--text-muted); font-size: 0.82rem;" data-i18n="modalCheckoutSecureSub">Tüm Kredi / Banka Kartları & Apple Pay desteklenir. Lisansınız anında iletilir.</div>
-          </div>
-        </div>
-
-        <label class="checkbox-label">
-          <input type="checkbox" id="checkout-terms" required checked>
-          <span><a href="/store/terms/" target="_blank" style="color: var(--accent-cyan); text-decoration: underline;" data-i18n="modalCheckoutTermsPart1">Kullanım Koşulları</a> ve <a href="/store/privacy/" target="_blank" style="color: var(--accent-cyan); text-decoration: underline;" data-i18n="modalCheckoutTermsPart2">Gizlilik Politikasını</a> <span data-i18n="modalCheckoutTermsPart3">okudum, kabul ediyorum.</span></span>
-        </label>
-
-        <label class="checkbox-label">
-          <input type="checkbox" id="checkout-marketing" checked>
-          <span data-i18n="modalCheckoutMarketing">Gelecekteki yeni eklentiler, güncellemeler ve indirim kuponları hakkında bildirim almayı onaylıyorum.</span>
-        </label>
-
-        <button type="submit" id="btn-submit-order" class="btn-primary" style="width: 100%; justify-content: center; margin-top: 12px; font-size: 1.05rem;" data-i18n="modalCheckoutSubmitBtn">🔒 Güvenli Ödeme & Lisansı Al →</button>
+        <div class="guven"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5.5c0 4.3-3 8-7 9.5-4-1.5-7-5.2-7-9.5V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg><div><b data-i18n="s2GuvenB">Ödeme Polar üzerinden</b><span data-i18n="s2GuvenM">Kart bilgin bu siteye gelmez; ödeme Polar'ın güvenli sayfasında alınır.</span></div></div>
+        <label class="checkbox-label"><input type="checkbox" id="checkout-terms" required><span><a href="/store/terms/" target="_blank" data-i18n="modalCheckoutTermsPart1">Kullanım Koşulları</a> · <a href="/store/privacy/" target="_blank" data-i18n="modalCheckoutTermsPart2">Gizlilik Politikasını</a> <span data-i18n="modalCheckoutTermsPart3">okudum, kabul ediyorum.</span></span></label>
+        <label class="checkbox-label"><input type="checkbox" id="checkout-marketing"><span data-i18n="modalCheckoutMarketing">Gelecekteki yeni eklentiler, güncellemeler ve indirim kuponları hakkında bildirim almayı onaylıyorum.</span></label>
+        <button type="submit" id="btn-submit-order" class="btn-primary"><span data-i18n="s2OdemeyeGec">Ödemeye geç</span><span class="ok" aria-hidden="true">→</span></button>
       </form>
     </div>
   </div>
 
-  <!-- Order Success Modal -->
-  <div class="modal-overlay" id="order-success-modal">
+  <div class="modal-overlay" id="order-success-modal" role="dialog" aria-modal="true">
     <div class="modal-content">
-      <button class="modal-close" onclick="closeSuccessModal()">✕</button>
+      <button class="modal-close" onclick="closeSuccessModal()" aria-label="Kapat">✕</button>
       <div id="order-success-details"></div>
-      <button onclick="closeSuccessModal()" class="btn-secondary" style="width: 100%; justify-content: center; margin-top: 20px;" data-i18n="successCloseBtn">
-        Tamamla ve Kapat
-      </button>
+      <button onclick="closeSuccessModal()" class="btn-secondary" style="margin-top: 20px;" data-i18n="successCloseBtn">Tamamla ve Kapat</button>
     </div>
   </div>
-
-  <script>
-    function toggleCaptureSim(mode) {
-      const statusEl = document.getElementById('sim-capture-status');
-      const tableEl = document.getElementById('sim-target-table');
-
-      if (mode === 'picker') {
-        tableEl.style.filter = 'none';
-        tableEl.style.borderColor = '#00f0ff';
-        statusEl.textContent = '🎯 DOM Öğe Seçici: Tablo hedefi seçildi (Tek tıkla yakalama)';
-      } else if (mode === 'redact') {
-        tableEl.style.filter = 'blur(4px)';
-        tableEl.style.borderColor = '#f43f5e';
-        statusEl.textContent = '🙈 Sansürleme Aktif: Hassas gelir verileri bulanıklaştırıldı (Blur Redaction)';
-      } else if (mode === 'pdf') {
-        tableEl.style.filter = 'none';
-        tableEl.style.borderColor = '#10b981';
-        statusEl.textContent = '📄 A4 PDF Sayfalama: 1. Sayfa (297x210mm) Başlık + Sayfa No eklendi';
-      } else if (mode === 'ocr') {
-        tableEl.style.filter = 'none';
-        tableEl.style.borderColor = '#a855f7';
-        statusEl.textContent = '🔤 Yerel OCR: Geliştirme aşamasında, bu sürümde henüz aktif değil';
-      }
-    }
-  </script>
-
 </body>
 </html>

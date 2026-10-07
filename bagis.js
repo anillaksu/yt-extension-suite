@@ -51,23 +51,23 @@
     let html = '';
 
     html += `
-      <div style="background: rgba(15,23,42,0.8); border:1px solid var(--border-color); border-radius:18px; padding:30px;">
-        <h3 style="font-size:1.25rem; font-weight:800; color:#fff; margin-bottom:8px;" data-i18n="bagisTekTitle">☕ Tek Seferlik Destek</h3>
+      <div class="kart">
+        <h3 style="margin:0 0 8px;" data-i18n="bagisTekTitle">☕ Tek Seferlik Destek</h3>
         <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:20px;" data-i18n="bagisTekDesc">Tek bir ödeme. Bağışınız lisans içermez.</p>
         <div style="display:flex; gap:10px;">${tek.map((d, i) => kutu(d, i === 2)).join('')}</div>
       </div>`;
 
     if (aylik.length) {
       html += `
-      <div style="background: rgba(15,23,42,0.8); border:1px solid var(--border-color); border-radius:18px; padding:30px; position:relative;">
-        <div style="position:absolute; top:-12px; right:24px; background:#00f0ff; color:#000; font-size:0.7rem; font-weight:900; padding:3px 8px; border-radius:4px;" data-i18n="bagisPopuler">En Popüler</div>
-        <h3 style="font-size:1.25rem; font-weight:800; color:#fff; margin-bottom:8px;" data-i18n="bagisAylikTitle">🔁 Aylık Destek</h3>
+      <div class="kart" style="overflow:visible; border-color:rgba(217,168,100,.4);">
+        <div style="position:absolute; top:-12px; right:24px; background:#D9A864; color:#17120A; font-size:0.7rem; font-weight:900; padding:3px 8px; border-radius:4px;" data-i18n="bagisPopuler">En Popüler</div>
+        <h3 style="margin:0 0 8px;" data-i18n="bagisAylikTitle">🔁 Aylık Destek</h3>
         <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:20px;" data-i18n="bagisAylikDesc">Her ay tekrarlanan destek. İstediğiniz zaman iptal edilebilir.</p>
         <div style="display:flex; gap:10px;">${aylik.map((d, i) => kutu(d, i === 1)).join('')}</div>
       </div>`;
     }
 
-    kap.innerHTML = `<div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:24px;">${html}</div>`;
+    kap.innerHTML = `<div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr)); gap:24px;">${html}</div>`;
 
     // href'leri Polar'ın kendi verisinden bağla (etiket ile aynı kaynak).
     kap.querySelectorAll('[data-bagis-slug]').forEach((a) => {

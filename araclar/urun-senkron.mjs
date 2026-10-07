@@ -14,13 +14,13 @@ import path from "node:path";
 import { SAYFALAR, turkceSozluk, esitle } from "./metin-esitle.mjs";
 
 const KOK = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const KAYIT = process.env.URUN_KAYIT || "D:/CHROME_STORE_EXTENSIONS_PROJECTS/catalog/registry.json";
+const KAYIT = process.env.URUN_KAYIT || "D:/extension/catalog/registry.json";
 
 // Her ürünün GERÇEK kaynak klasörü ve fiyatı içeren i18n anahtarları.
-// Zen Cinema Pro: sinema modu yalnız Desktop\extension'da var (D:\...\yt-player-accelerator-pro eski kopya).
+// Zen Cinema Pro: sinema modu yalnız Desktop\extension'da var (D:\...\zen-cinema eski kopya).
 const URUNLER = {
-  yt_accelerator: { ad: "Zen Cinema Pro", dizin: process.env.KAYNAK_ZEN || "C:/Users/anil/Desktop/extension", fiyatAnahtarlari: ["p1Price", "ytBtnBuy"] },
-  clean_capture: { ad: "Clean Full Page & PDF Capture Pro", dizin: process.env.KAYNAK_CAPTURE || "D:/CHROME_STORE_EXTENSIONS_PROJECTS/clean-full-page-pdf-capture/extension", fiyatAnahtarlari: ["p2Price", "capBtnBuy"] },
+  yt_accelerator: { ad: "Zen Cinema Pro", dizin: process.env.KAYNAK_ZEN || "D:/extension/zen-cinema/extension", fiyatAnahtarlari: ["p1Price", "ytBtnBuy"] },
+  clean_capture: { ad: "Clean Full Page & PDF Capture Pro", dizin: process.env.KAYNAK_CAPTURE || "D:/extension/clean-full-page-pdf-capture/extension", fiyatAnahtarlari: ["p2Price", "capBtnBuy"] },
   bundle_suite: { ad: "Ultimate Extension Suite Bundle Pass", dizin: null, fiyatAnahtarlari: ["bundlePrice"] },
 };
 

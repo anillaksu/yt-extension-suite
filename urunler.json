@@ -8,8 +8,8 @@
         "usd": 19.99
       },
       "odeme": "https://buy.polar.sh/polar_cl_PSlObXBqmnn6MMU7VbiPUZoOznY7MwkBf85Cv0GvXDv",
-      "surum": "1.0.0",
-      "son_guncelleme": "2026-10-05",
+      "surum": "1.1.0",
+      "son_guncelleme": "2026-10-06",
       "logo": "assets/logos/yt_accelerator.png"
     },
     "clean_capture": {
@@ -20,7 +20,7 @@
       },
       "odeme": "https://buy.polar.sh/polar_cl_kBWTcTdoTsvTcoiSfik2VpBdnve2whd0eit3A1EQX4r",
       "surum": "1.0.1",
-      "son_guncelleme": "2026-10-05",
+      "son_guncelleme": "2026-10-06",
       "logo": "assets/logos/clean_capture.png"
     },
     "bundle_suite": {

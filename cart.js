@@ -153,9 +153,9 @@ function renderCartDrawer() {
           <div class="cart-item-price">₺${item.priceTry} × ${item.qty}</div>
         </div>
         <div style="display: flex; align-items: center; gap: 8px;">
-          <button onclick="updateQty('${item.id}', -1)" style="background: #334155; border: none; color: #fff; width: 24px; height: 24px; border-radius: 6px; cursor: pointer;">-</button>
+          <button onclick="updateQty('${item.id}', -1)" style="background: #302A23; border: none; color: #fff; width: 24px; height: 24px; border-radius: 6px; cursor: pointer;">-</button>
           <span style="font-weight: 700;">${item.qty}</span>
-          <button onclick="updateQty('${item.id}', 1)" style="background: #334155; border: none; color: #fff; width: 24px; height: 24px; border-radius: 6px; cursor: pointer;">+</button>
+          <button onclick="updateQty('${item.id}', 1)" style="background: #302A23; border: none; color: #fff; width: 24px; height: 24px; border-radius: 6px; cursor: pointer;">+</button>
         </div>
         <button class="cart-item-remove" onclick="removeFromCart('${item.id}')" title="Kaldır">✕</button>
       </div>
@@ -480,22 +480,22 @@ function odemeBasariPaneli(urunAd) {
   ov.id = 'odeme-basari';
   ov.setAttribute('role', 'dialog');
   ov.setAttribute('aria-modal', 'true');
-  ov.style.cssText = 'position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(8,10,20,.72);backdrop-filter:blur(6px)';
+  ov.style.cssText = 'position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(8,7,5,.72);backdrop-filter:blur(6px)';
   const baslik = urunAd ? htmlKacis(urunAd) : 'Pro';
   const anaMetin = portal
     ? 'Ödemen alındı. Pro lisans anahtarın hesabında hazır. Anahtarı görmek için aşağıdaki butona bas, Polar hesabına kayıtlı e-postanla gir; sonra anahtarı eklentinin ayarlarına yapıştır.'
     : 'Ödemen alındı. Pro lisans anahtarın e-postana gönderildi. Gelmezse birkaç dakika içinde spam/gereksiz klasörünü kontrol et.';
   const cta = portal
-    ? `<a href="${ANAHTAR_TESLIM.portalUrl}" target="_blank" rel="noopener" style="display:inline-block;background:linear-gradient(135deg,#6d9bff,#8f6bff);color:#fff;font-weight:700;padding:13px 22px;border-radius:12px;text-decoration:none">Anahtarımı Gör →</a>`
+    ? `<a href="${ANAHTAR_TESLIM.portalUrl}" target="_blank" rel="noopener" style="display:inline-block;background:linear-gradient(180deg,#F2C987,#D9A864);color:#17120A;font-weight:700;padding:13px 22px;border-radius:12px;text-decoration:none">Anahtarımı Gör →</a>`
     : '';
   ov.innerHTML =
-    `<div style="max-width:440px;width:100%;background:#12152280;border:1px solid #ffffff1f;border-radius:18px;padding:26px 24px;box-shadow:0 20px 60px #0009;color:#eef1ff;text-align:center;font-family:inherit">
+    `<div style="max-width:440px;width:100%;background:#1D1A16;border:1px solid rgba(255,240,220,.15);border-radius:18px;padding:26px 24px;box-shadow:0 20px 60px #0009;color:#EEE8DC;text-align:center;font-family:inherit">
        <div style="font-size:40px;line-height:1;margin-bottom:10px">🎉</div>
        <h3 style="margin:0 0 6px;font-size:20px">Teşekkürler! ${baslik} aktif</h3>
-       <p style="margin:0 0 18px;font-size:14.5px;line-height:1.55;color:#c7cce6">${anaMetin}</p>
+       <p style="margin:0 0 18px;font-size:14.5px;line-height:1.55;color:#A9A092">${anaMetin}</p>
        ${cta}
-       <div style="margin-top:16px;font-size:12.5px;color:#9aa0c2">Sorun olursa: <a href="mailto:${ANAHTAR_TESLIM.destek}" style="color:#9ab6ff">${ANAHTAR_TESLIM.destek}</a></div>
-       <button type="button" id="odeme-basari-kapat" style="margin-top:14px;background:transparent;border:1px solid #ffffff33;color:#c7ccee;padding:9px 16px;border-radius:10px;cursor:pointer">Kapat</button>
+       <div style="margin-top:16px;font-size:12.5px;color:#A9A092">Sorun olursa: <a href="mailto:${ANAHTAR_TESLIM.destek}" style="color:#F2C987">${ANAHTAR_TESLIM.destek}</a></div>
+       <button type="button" id="odeme-basari-kapat" style="margin-top:14px;background:transparent;border:1px solid #ffffff33;color:#A9A092;padding:9px 16px;border-radius:10px;cursor:pointer">Kapat</button>
      </div>`;
   document.body.appendChild(ov);
   const kapat = () => ov.remove();
