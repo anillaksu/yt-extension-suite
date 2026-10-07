@@ -206,7 +206,7 @@ const LISANS = `
 
 // ---------------- Ana sayfa ----------------
 function anaSayfa() {
-  const k = '';
+  const k = '/store/';
   return bas({ baslik: 'Anıl Aksu Studio — Zen Cinema ve Clean Capture', aciklama: 'Sakin, işe yarayan tarayıcı eklentileri: YouTube için Zen Cinema ve tam sayfa ekran görüntüsü için Clean Capture. Veriler cihazda kalır, lisans bir kez alınır.', k, aktif: '' }) + `
   <main>
     <section class="kahraman">
@@ -221,7 +221,7 @@ function anaSayfa() {
           </div>
           <div class="not">${i('s2HubNot1')}${i('s2HubNot2')}${i('s2HubNot3')}</div>
         </div>
-        ${sahne([`${k}assets/clean-capture/1-full-page.jpg`, 'Clean Capture'], [`${k}assets/zen-cinema/v110-{dil}-1-sinema.jpg`, 'Zen Cinema'], '<img src="assets/logos/yt_accelerator.png" width="40" height="40" alt=""><img src="assets/logos/clean_capture.png" width="40" height="40" alt="">', false, true)}
+        ${sahne([`${k}assets/clean-capture/1-full-page.jpg`, 'Clean Capture'], [`${k}assets/zen-cinema/v110-{dil}-1-sinema.jpg`, 'Zen Cinema'], `<img src="${k}assets/logos/yt_accelerator.png" width="40" height="40" alt=""><img src="${k}assets/logos/clean_capture.png" width="40" height="40" alt="">`, false, true)}
       </div>
     </section>
 
@@ -289,7 +289,7 @@ ${LISANS}
 
 // ---------------- Mağaza ----------------
 function magaza() {
-  const k = '';
+  const k = '/store/';
   const kart = ({ slug, logo, ad, tag, ozet, ozellikler, detay, featured }) => `
         <div class="product-card${featured ? ' featured' : ''}" data-belir>
           ${featured ? `<div class="badge-featured" data-i18n="s2EnIyi">${t('s2EnIyi')}</div>` : ''}
@@ -309,7 +309,7 @@ function magaza() {
           </div>
         </div>`;
   const satir = (key, u, p) => `<tr><td data-i18n="${key}">${t(key)}</td>${[u, p].map((x) => x === true ? '<td class="var">✓</td>' : x === false ? '<td class="yok">—</td>' : `<td${x.pro ? ' class="pro"' : ''} data-i18n="${x.k}">${t(x.k)}</td>`).join('')}</tr>`;
-  return bas({ baslik: 'Mağaza — Anıl Aksu Studio', aciklama: 'Zen Cinema Pro ve Clean Capture Pro ömür boyu lisansları. Ödeme Polar üzerinden, üyelik gerekmez.', k, aktif: 'magaza', ek: '\n  <script src="' + `bagis.js?v=${hash('bagis.js')}` + '" defer></script>' }) + `
+  return bas({ baslik: 'Mağaza — Anıl Aksu Studio', aciklama: 'Zen Cinema Pro ve Clean Capture Pro ömür boyu lisansları. Ödeme Polar üzerinden, üyelik gerekmez.', k, aktif: 'magaza', ek: '\n  <script src="/store/bagis.js?v=' + hash('bagis.js') + '" defer></script>' }) + `
   <main>
     <section class="kahraman orta">
       <div class="kap">
@@ -391,7 +391,7 @@ ${LISANS}
 
 // ---------------- Zen Cinema ----------------
 function zen() {
-  const k = '../';
+  const k = '/store/';
   const g = (n, ad, key, genis) => `<figure${genis ? ' class="genis"' : ''} data-belir><img data-dil-src="${k}assets/zen-cinema/v110-{dil}-${n}-${ad}.jpg" src="${k}assets/zen-cinema/v110-tr-${n}-${ad}.jpg" alt="${t(key)}" width="1280" height="800" loading="lazy" decoding="async"><figcaption data-i18n="${key}">${t(key)}</figcaption></figure>`;
   const ZIP = `/store/assets/downloads/zen-cinema-pro-v${urun.yt_accelerator.surum}.zip`;
   return bas({ baslik: 'Zen Cinema — YouTube için sinema görünümü ve video defteri', aciklama: 'YouTube\'u sayfa içinde sakin bir sinemaya çevirir; saniyeye bağlı not, kare ve altyazı satırını bir deftere kaydeder, o anı anan yorumları gösterir.', k, aktif: 'zen' }) + `
@@ -517,7 +517,7 @@ function zen() {
 
 // ---------------- Clean Capture ----------------
 function cc() {
-  const k = '../';
+  const k = '/store/';
   const CWS = 'https://chromewebstore.google.com/detail/flmplfhmicdkkanjojbmgjjmmcmfaalh';
   const g = (dosya, key, genis) => `<figure${genis ? ' class="genis"' : ''} data-belir><img src="${k}assets/clean-capture/${dosya}.jpg" alt="${t(key)}" width="1280" height="800" loading="lazy" decoding="async"><figcaption data-i18n="${key}">${t(key)}</figcaption></figure>`;
   const izin = [['activeTab', 's2cIz1'], ['scripting', 's2cIz2'], ['debugger', 's2cIz3'], ['downloads', 's2cIz4'], ['offscreen', 's2cIz5'], ['storage', 's2cIz6']];
@@ -655,7 +655,7 @@ const CIKTI = {
 // Yasal sayfalar: kaynak her çalıştırmada yedekten (ilk hâl) okunur ki tekrar üretim bozulmasın.
 const YEDEK = process.env.SITE_YEDEK || 'D:\\toparlama\\karantina\\site-yedek-20261006-225731'; // yasal metinlerin ilk hâli
 if (!YEDEK) throw new Error('SITE_YEDEK ortam değişkeni (orijinal site yedeği) gerekli');
-for (const [y, b, k] of [['privacy/index.html', 'Gizlilik Politikası', '../'], ['terms/index.html', 'Kullanım Şartları', '../'], ['privacy.html', 'Gizlilik Politikası', ''], ['terms.html', 'Kullanım Şartları', '']]) {
+for (const [y, b, k] of [['privacy/index.html', 'Gizlilik Politikası', '/store/'], ['terms/index.html', 'Kullanım Şartları', '/store/'], ['privacy.html', 'Gizlilik Politikası', '/store/'], ['terms.html', 'Kullanım Şartları', '/store/']]) {
   CIKTI[y] = yasal(fs.readFileSync(path.join(YEDEK, y), 'utf8'), b, k);
 }
 for (const [y, h] of Object.entries(CIKTI)) {
