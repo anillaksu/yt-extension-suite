@@ -110,6 +110,8 @@ kbd { font: 600 12px/1 ui-monospace, "Cascadia Mono", Consolas, monospace; color
 
 /* --- Kahraman --- */
 .kahraman { padding: clamp(48px, 8vw, 104px) 0 clamp(56px, 8vw, 110px); }
+/* 3B katmanlar açılış animasyonunda dışa taşar: telefonda yatay kaydırma doğmasın (clip kaydırma kabı yaratmaz). */
+.kahraman, .bolum { overflow-x: clip; }
 .kahraman .kap { display: grid; grid-template-columns: 1.02fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: center; }
 .kahraman h1 { margin: 22px 0 22px; }
 .kahraman .giris { font-size: clamp(17px, 1.5vw, 19px); line-height: 1.7; max-width: 560px; }
