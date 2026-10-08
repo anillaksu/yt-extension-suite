@@ -80,6 +80,8 @@ for (const [slug, u] of Object.entries(URUNLER)) {
   if (!k) throw new Error(`registry'de ürün yok: ${slug}`);
   if (k.status !== "live") throw new Error(`ürün canlı değil (${k.status}): ${slug} — mağazada gösterilemez`);
   const kayitUrun = { ad: u.ad, fiyat: { try: k.price.try, usd: k.price.usd }, odeme: k.polar?.checkout_url || null };
+  // Kurulum yolu tek: Chrome Web Store. yayinda=false iken mağaza düğmesi "incelemede" der, tıklanmaz (zip verilmez).
+  if (k.cws?.item_id) kayitUrun.cws = { url: `https://chromewebstore.google.com/detail/${k.cws.item_id}`, yayinda: k.cws.status === "published" };
   if (u.dizin) {
     if (!existsSync(path.join(u.dizin, "manifest.json"))) throw new Error(`kaynak bulunamadı: ${u.dizin}`);
     const m = JSON.parse(readFileSync(path.join(u.dizin, "manifest.json"), "utf8").replace(/^\uFEFF/, ""));

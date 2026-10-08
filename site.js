@@ -6,6 +6,18 @@
 
   function hazir(fn) { if (document.readyState !== 'loading') fn(); else document.addEventListener('DOMContentLoaded', fn); }
 
+  // Eski yerel "telemetri" betiğinin (analytics.js, 08.10.2026 kaldırıldı) ziyaretçi tarayıcısında bıraktığı kayıtları temizle.
+  try { ['suite_analytics_sessions', 'suite_analytics_events', 'suite_analytics_heatmap', 'suite_visitor_id'].forEach(function (k) { localStorage.removeItem(k); }); } catch (e) { /* depo kapalıysa temizlenecek bir şey de yoktur */ }
+
+  // Eklentilerden gelen satın alma bağlantısı: .../#satin-al → bu sayfanın ürünü, #satin-al-paket → paket; ödeme penceresi kendiliğinden açılır.
+  // Pencere koşulları ve cayma hakkı onayını aldığı için eklentiler doğrudan Polar'a değil buraya yönlendirir (YAYIN-SOZLESMESI.md).
+  window.addEventListener('load', function () {
+    var m = location.hash.match(/^#satin-al(-paket)?$/);
+    if (!m || typeof window.openCheckoutModal !== 'function') return;
+    var urun = m[1] ? 'bundle_suite' : /zen-cinema-pro/.test(location.pathname) ? 'yt_accelerator' : /screen-pdf-capture/.test(location.pathname) ? 'clean_capture' : null;
+    if (urun) setTimeout(function () { window.openCheckoutModal(urun); }, 350);
+  });
+
   hazir(function () {
     // Üst çubuk: kaydırınca cam zemin.
     var ust = document.querySelector('.ust');

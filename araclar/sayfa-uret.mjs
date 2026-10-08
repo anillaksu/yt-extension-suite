@@ -43,6 +43,16 @@ const IKON = {
 };
 const ok = '<span class="ok" aria-hidden="true">→</span>';
 
+// Kurulum tek yoldan: Chrome Web Store (urunler.json cws, kaynağı registry). Yayında değilse #kurulum açıklamasına iner; zip verilmez.
+const cws = (slug) => { const c = urun[slug].cws; if (!c) throw new Error('cws bilgisi yok: ' + slug); return c; };
+function kur(slug, sinif = 'birincil', simge = true, ekStil = '') {
+  const c = cws(slug);
+  const st = ekStil ? ` style="${ekStil}"` : '';
+  return c.yayinda
+    ? `<a href="${c.url}" target="_blank" rel="noopener" class="dugme ${sinif}"${st}>${simge ? IKON.indir : ''}<span data-i18n="s2cKur">${t('s2cKur')}</span></a>`
+    : `<a href="#kurulum" class="dugme ${sinif} inceleme"${st}><span data-i18n="s2CwsInceleme">${t('s2CwsInceleme')}</span></a>`;
+}
+
 const MARKA_SVG = `<svg class="marka-isaret" viewBox="0 0 34 34" aria-hidden="true"><defs><linearGradient id="mz" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#352E26"/><stop offset="1" stop-color="#16130F"/></linearGradient><radialGradient id="mi" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#F2C987" stop-opacity=".9"/><stop offset="1" stop-color="#D9A864" stop-opacity="0"/></radialGradient></defs><rect x=".5" y=".5" width="33" height="33" rx="10" fill="url(#mz)" stroke="rgba(255,240,220,.16)"/><path d="M8.5 22.5a8.5 8.5 0 0 1 17 0" fill="none" stroke="#EEE8DC" stroke-width="2.2" stroke-linecap="round"/><circle cx="17" cy="22" r="7" fill="url(#mi)"/><circle cx="17" cy="22" r="3.2" fill="#D9A864"/></svg>`;
 const FAVICON = "data:image/svg+xml," + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 34 34"><rect width="34" height="34" rx="10" fill="#1F1B16"/><path d="M8.5 22.5a8.5 8.5 0 0 1 17 0" fill="none" stroke="#EEE8DC" stroke-width="2.4" stroke-linecap="round"/><circle cx="17" cy="22" r="3.6" fill="#D9A864"/></svg>`);
 
@@ -62,13 +72,18 @@ function bas({ baslik, aciklama, k, aktif, ek = '' }) {
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="${v('site.css')}">${ek}
-  <script src="${v('analytics.js')}" defer></script>
   <script src="${v('i18n.js')}" defer></script>
   <script src="${v('catalog.js')}" defer></script>
   <script src="${v('cart.js')}" defer></script>
   <script src="${v('site.js')}" defer></script>
 </head>
 <body>
+  <div class="alan-serit">
+    <div class="kap">
+      <a href="https://forfor.site/" class="ana-don"><span aria-hidden="true">←</span> forfor.site</a>
+      <span class="alan-ad"><i aria-hidden="true"></i><span data-i18n="s2MagazaAlan">${t('s2MagazaAlan')}</span></span>
+    </div>
+  </div>
   <header class="ust">
     <div class="kap">
       <a href="/store/index.html" class="marka" aria-label="Anıl Aksu Studio">${MARKA_SVG}<span>Anıl Aksu <small>Studio</small></span></a>
@@ -155,7 +170,6 @@ function son() {
         </div>
         <div class="guven">${IKON.kalkan}<div><b data-i18n="s2GuvenB">${t('s2GuvenB')}</b><span data-i18n="s2GuvenM">${t('s2GuvenM')}</span></div></div>
         <label class="checkbox-label"><input type="checkbox" id="checkout-terms" required><span><a href="/store/terms/" target="_blank" data-i18n="modalCheckoutTermsPart1">${t('modalCheckoutTermsPart1')}</a> · <a href="/store/privacy/" target="_blank" data-i18n="modalCheckoutTermsPart2">${t('modalCheckoutTermsPart2')}</a> <span data-i18n="modalCheckoutTermsPart3">${t('modalCheckoutTermsPart3')}</span></span></label>
-        <label class="checkbox-label"><input type="checkbox" id="checkout-marketing"><span data-i18n="modalCheckoutMarketing">${t('modalCheckoutMarketing')}</span></label>
         <button type="submit" id="btn-submit-order" class="btn-primary"><span data-i18n="s2OdemeyeGec">${t('s2OdemeyeGec')}</span>${ok}</button>
       </form>
     </div>
@@ -393,7 +407,7 @@ ${LISANS}
 function zen() {
   const k = '/store/';
   const g = (n, ad, key, genis) => `<figure${genis ? ' class="genis"' : ''} data-belir><img data-dil-src="${k}assets/zen-cinema/v110-{dil}-${n}-${ad}.jpg" src="${k}assets/zen-cinema/v110-tr-${n}-${ad}.jpg" alt="${t(key)}" width="1280" height="800" loading="lazy" decoding="async"><figcaption data-i18n="${key}">${t(key)}</figcaption></figure>`;
-  const ZIP = `/store/assets/downloads/zen-cinema-pro-v${urun.yt_accelerator.surum}.zip`;
+  const Z = cws('yt_accelerator');
   return bas({ baslik: 'Zen Cinema — YouTube için sinema görünümü ve video defteri', aciklama: 'YouTube\'u sayfa içinde sakin bir sinemaya çevirir; saniyeye bağlı not, kare ve altyazı satırını bir deftere kaydeder, o anı anan yorumları gösterir.', k, aktif: 'zen' }) + `
   <main>
     <section class="kahraman">
@@ -405,7 +419,7 @@ function zen() {
           ${i('s2zGiris', 'p', 'class="giris"')}
           <div class="eylemler">
             <button onclick="openCheckoutModal('yt_accelerator')" class="dugme birincil"><span data-i18n="s2SatinAl">${t('s2SatinAl')}</span> · <b class="dugme-fiyat" data-urun="yt_accelerator" data-urun-alan="fiyat">${fiyat('yt_accelerator')}</b></button>
-            <a href="#kurulum" class="dugme ikincil">${IKON.indir}<span data-i18n="s2zIndir">${t('s2zIndir')}</span></a>
+            ${kur('yt_accelerator', 'ikincil')}
           </div>
           <div class="not">${i('s2HubNot3')}${i('s2HubNot2')}${i('s2zNot3')}</div>
         </div>
@@ -458,7 +472,7 @@ function zen() {
             ${i('s2Ucretsiz', 'h3')}
             <div class="fiyat" style="margin: 6px 0 4px;">₺0</div>
             ${tikli(['s2zU1', 's2zU2', 's2zU3'])}
-            <a href="#kurulum" class="dugme ikincil" style="width: 100%;" data-i18n="s2zIndir">${t('s2zIndir')}</a>
+            ${kur('yt_accelerator', 'ikincil', false, 'width: 100%;')}
           </article>
           <article class="kart" data-belir style="border-color: rgba(217,168,100,.4);">
             ${i('s2Pro', 'h3')}
@@ -487,14 +501,14 @@ function zen() {
       <div class="dar">
         <div class="bolum-bas orta" data-belir>
           <span class="etiket" data-i18n="s2zKurEtiket">${t('s2zKurEtiket')}</span>
-          ${i('dlTitle', 'h2')}
+          ${i('s2KurBaslik', 'h2')}
           ${i('s2zKurAlt', 'p')}
         </div>
         <div class="kart" data-belir style="padding: clamp(24px, 4vw, 40px);">
-          <div style="text-align: center; margin-bottom: 28px;"><a href="${ZIP}" download class="dugme birincil">${IKON.indir}<span data-i18n="dlZipBtn">${t('dlZipBtn')}</span></a></div>
-          ${i('dlStepsTitle', 'h3')}
-          <ol class="tikli" style="list-style: none;">${[1, 2, 3, 4].map((n) => `<li data-i18n="dlStep${n}">${t('dlStep' + n)}</li>`).join('')}</ol>
-          ${i('dlNote', 'p', 'style="font-size: 14.5px;"')}
+          <div style="text-align: center; margin-bottom: 22px;">${Z.yayinda
+            ? `<a href="${Z.url}" target="_blank" rel="noopener" class="dugme birincil">${IKON.indir}<span data-i18n="s2cKur">${t('s2cKur')}</span></a>`
+            : `<span class="dugme birincil inceleme" aria-disabled="true"><span data-i18n="s2CwsInceleme">${t('s2CwsInceleme')}</span></span>${i('s2zKurBekle', 'p', 'class="inceleme-not"')}`}</div>
+          <ol class="tikli" style="list-style: none;">${[1, 2, 3].map((n) => `<li data-i18n="s2KurA${n}">${t('s2KurA' + n)}</li>`).join('')}</ol>
         </div>
       </div>
     </section>
@@ -506,7 +520,7 @@ function zen() {
           ${i('s2zSonAlt', 'p')}
           <div class="eylemler">
             <button onclick="openCheckoutModal('yt_accelerator')" class="dugme birincil"><span data-i18n="s2SatinAl">${t('s2SatinAl')}</span>${ok}</button>
-            <a href="#kurulum" class="dugme ikincil" data-i18n="s2zIndir">${t('s2zIndir')}</a>
+            ${kur('yt_accelerator', 'ikincil', false)}
           </div>
         </div>
       </div>
@@ -518,7 +532,7 @@ function zen() {
 // ---------------- Clean Capture ----------------
 function cc() {
   const k = '/store/';
-  const CWS = 'https://chromewebstore.google.com/detail/flmplfhmicdkkanjojbmgjjmmcmfaalh';
+  const CWS = cws('clean_capture').url;
   const g = (dosya, key, genis) => `<figure${genis ? ' class="genis"' : ''} data-belir><img src="${k}assets/clean-capture/${dosya}.jpg" alt="${t(key)}" width="1280" height="800" loading="lazy" decoding="async"><figcaption data-i18n="${key}">${t(key)}</figcaption></figure>`;
   const izin = [['activeTab', 's2cIz1'], ['scripting', 's2cIz2'], ['debugger', 's2cIz3'], ['downloads', 's2cIz4'], ['offscreen', 's2cIz5'], ['storage', 's2cIz6']];
   return bas({ baslik: 'Clean Capture — tam sayfa ekran görüntüsü ve PDF', aciklama: 'Web sayfalarını tek parça yakalar; PNG, JPEG ya da çok sayfalı PDF olarak kaydeder. Yakalama tamamen tarayıcıda olur.', k, aktif: 'cc' }) + `
@@ -564,6 +578,7 @@ function cc() {
           ${g('1-full-page', 's2cG1', true)}
           ${g('2-pro', 's2cG2')}
           ${g('3-editor', 's2cG3')}
+          ${g('4-blur', 's2cG4', true)}
         </div>
       </div>
     </section>

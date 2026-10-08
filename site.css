@@ -77,6 +77,24 @@ em.vurgu { font-style: italic; color: var(--vurgu-acik); }
 kbd { font: 600 12px/1 ui-monospace, "Cascadia Mono", Consolas, monospace; color: var(--yazi); padding: 5px 7px; border-radius: 7px; border: 1px solid var(--cizgi2); border-bottom-width: 2px; background: var(--yuksek); }
 
 /* --- Üst çubuk --- */
+/* Alan şeridi: mağaza, ana siteden (gece + altın) ayrı bir "vitrin" alanıdır. Sıcak kehribar şerit + ana siteye dönüş. */
+.alan-serit { position: relative; z-index: 901; background: linear-gradient(90deg, #2A1F12, #3A2A16 45%, #2A1F12); border-bottom: 1px solid rgba(242, 201, 135, .22); box-shadow: inset 0 -1px 0 rgba(0, 0, 0, .35); }
+.alan-serit::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(90deg, transparent, rgba(242, 201, 135, .10), transparent); background-size: 220% 100%; animation: serit-isik 9s linear infinite; }
+@keyframes serit-isik { from { background-position: 120% 0; } to { background-position: -120% 0; } }
+.alan-serit .kap { display: flex; align-items: center; justify-content: space-between; height: 34px; font: 500 12.5px/1 var(--ui); letter-spacing: .02em; }
+.ana-don { color: rgba(238, 232, 220, .78); display: inline-flex; gap: 6px; align-items: center; padding: 6px 10px 6px 0; transition: color .2s, transform .25s var(--yumusak); }
+.ana-don:hover { color: var(--yazi); transform: translateX(-2px); }
+.alan-ad { display: inline-flex; align-items: center; gap: 8px; color: var(--vurgu-acik); text-transform: uppercase; letter-spacing: .12em; font-size: 11px; font-weight: 600; }
+.alan-ad i { width: 6px; height: 6px; border-radius: 50%; background: var(--vurgu); box-shadow: 0 0 10px var(--vurgu); }
+/* Mağazaya girişte şerit tek sefer "açılır": ana siteden gelen ziyaretçi farklı bir alana geçtiğini hisseder. */
+@media (prefers-reduced-motion: no-preference) { .alan-serit { animation: serit-gir .7s var(--yumusak) both; } }
+@keyframes serit-gir { from { transform: translateY(-100%); opacity: 0; } to { transform: none; opacity: 1; } }
+.dugme.inceleme { opacity: .85; }
+span.dugme.inceleme, span.dugme.birincil.inceleme { cursor: default; background: rgba(217, 168, 100, .06); color: var(--vurgu-acik); border: 1px dashed rgba(217, 168, 100, .45); box-shadow: none; opacity: 1; }
+.dugme.inceleme::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--vurgu); box-shadow: 0 0 8px var(--vurgu); margin-right: 8px; flex: none; }
+span.dugme.inceleme:hover { transform: none; }
+.inceleme-not { margin: 14px auto 0; max-width: 520px; font-size: 14.5px; color: var(--sonuk); }
+
 .ust { position: sticky; top: 0; z-index: 900; transition: background .3s, border-color .3s, backdrop-filter .3s; border-bottom: 1px solid transparent; }
 .ust.dolu { background: rgba(18, 16, 13, .78); backdrop-filter: blur(18px) saturate(1.3); -webkit-backdrop-filter: blur(18px) saturate(1.3); border-bottom-color: var(--cizgi); }
 .ust .kap { display: flex; align-items: center; gap: 18px; height: 72px; }
@@ -377,7 +395,7 @@ code { font: 500 .9em ui-monospace, "Cascadia Mono", Consolas, monospace; color:
 }
 @media (max-width: 860px) {
   .menu-ac { display: inline-flex; }
-  .menu { position: fixed; top: 72px; left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 2px; padding: 12px 16px 20px; background: rgba(18, 16, 13, .96); backdrop-filter: blur(18px); border-bottom: 1px solid var(--cizgi); transform: translateY(-8px); opacity: 0; visibility: hidden; transition: opacity .3s, transform .4s var(--yumusak), visibility .3s; }
+  .menu { position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 2px; padding: 12px 16px 20px; background: rgba(18, 16, 13, .96); backdrop-filter: blur(18px); border-bottom: 1px solid var(--cizgi); transform: translateY(-8px); opacity: 0; visibility: hidden; transition: opacity .3s, transform .4s var(--yumusak), visibility .3s; }
   .ust.acik .menu { opacity: 1; visibility: visible; transform: none; }
   .menu a { padding: 14px 12px; font-size: 16px; }
   .ust-arac { margin-left: auto; }
