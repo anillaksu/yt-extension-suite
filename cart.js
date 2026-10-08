@@ -41,7 +41,6 @@ function getProductName(productId) {
 }
 
 let cart = JSON.parse(localStorage.getItem('suite_cart') || '[]');
-let currentCurrency = localStorage.getItem('suite_currency') || 'TRY';
 
 function saveCart() {
   localStorage.setItem('suite_cart', JSON.stringify(cart));
@@ -116,7 +115,7 @@ function updateQty(productId, delta) {
   }
 }
 
-// Fiyatlar yalnız USD: Polar USD tahsil eder, kartın bankası kendi kuruyla çevirir (₺ tutarları kurdan koptuğu için kaldırıldı).
+// Fiyatlar yalnız USD: Polar USD tahsil eder, kartın bankası kendi kuruyla çevirir (yerel para tutarları kurdan koptuğu için kaldırıldı).
 function usd(n) { return '$' + Number(n).toFixed(2); }
 
 function getCartTotal() {
