@@ -138,7 +138,7 @@ function renderCartDrawer() {
       <div class="cart-empty-state">
         <div style="font-size: 3rem; margin-bottom: 12px;">🛒</div>
         <p>${emptyText}</p>
-        <a href="../store/" style="display: inline-block; margin-top: 14px; color: var(--accent-cyan); font-weight: 700;">${exploreText}</a>
+        <a href="/store/" style="display: inline-block; margin-top: 14px; color: var(--accent-cyan); font-weight: 700;">${exploreText}</a>
       </div>
     `;
     subtotalEl.textContent = '$0.00';

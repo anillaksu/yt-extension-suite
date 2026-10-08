@@ -12,8 +12,9 @@
         "url": "https://chromewebstore.google.com/detail/jipjbbmkfedkaaecnfmnfigdjildnmek",
         "yayinda": false
       },
-      "surum": "1.1.0",
-      "son_guncelleme": "2026-10-08",
+      "surum": null,
+      "son_guncelleme": null,
+      "manifest_surum": "1.1.0",
       "logo": "assets/logos/yt_accelerator.png"
     },
     "clean_capture": {
@@ -27,8 +28,9 @@
         "url": "https://chromewebstore.google.com/detail/flmplfhmicdkkanjojbmgjjmmcmfaalh",
         "yayinda": true
       },
-      "surum": "1.1.0",
-      "son_guncelleme": "2026-10-08",
+      "surum": "1.0.1",
+      "son_guncelleme": "2026-10-05",
+      "manifest_surum": "1.1.0",
       "logo": "assets/logos/clean_capture.png"
     },
     "bundle_suite": {

@@ -77,6 +77,9 @@ function fiyatiDegistir(metin, f) {
   return metin;
 }
 
+const SURUMLER = JSON.parse(readFileSync(path.join(path.dirname(KAYIT), "surumler.json"), "utf8").replace(/^﻿/, "")).surumler;
+const surumKarsilastir = (a, b) => { const x = a.split(".").map(Number), y = b.split(".").map(Number); for (let i = 0; i < 3; i++) if ((x[i] || 0) !== (y[i] || 0)) return (x[i] || 0) - (y[i] || 0); return 0; };
+
 // 1) Gerçeği topla
 const kayit = JSON.parse(readFileSync(KAYIT, "utf8").replace(/^\uFEFF/, ""));
 const veri = { kaynak: "catalog/registry.json + eklenti manifestleri", urunler: {} };
@@ -90,8 +93,11 @@ for (const [slug, u] of Object.entries(URUNLER)) {
   if (u.dizin) {
     if (!existsSync(path.join(u.dizin, "manifest.json"))) throw new Error(`kaynak bulunamadı: ${u.dizin}`);
     const m = JSON.parse(readFileSync(path.join(u.dizin, "manifest.json"), "utf8").replace(/^\uFEFF/, ""));
-    kayitUrun.surum = m.version;
-    kayitUrun.son_guncelleme = sonDegisiklik(u.dizin);
+    // Sözleşme §3.4: site yalnız Chrome Web Store'da YAYINDA olan sürümü gösterir (manifest sürümü incelemede olabilir).
+    const yayinda = SURUMLER.filter((s) => s.urun === slug && s.durum === "yayinda").sort((a, b) => surumKarsilastir(b.surum, a.surum))[0];
+    kayitUrun.surum = yayinda ? yayinda.surum : null;
+    kayitUrun.son_guncelleme = yayinda ? yayinda.tarih : null;
+    kayitUrun.manifest_surum = m.version;
     const ikon = path.join(u.dizin, "icons", "icon128.png");
     if (existsSync(ikon)) {
       const hedef = `assets/logos/${slug}.png`;

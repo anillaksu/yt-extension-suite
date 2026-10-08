@@ -325,7 +325,7 @@ function magaza() {
           </div>
         </div>`;
   const satir = (key, u, p) => `<tr><td data-i18n="${key}">${t(key)}</td>${[u, p].map((x) => x === true ? '<td class="var">✓</td>' : x === false ? '<td class="yok">—</td>' : `<td${x.pro ? ' class="pro"' : ''} data-i18n="${x.k}">${t(x.k)}</td>`).join('')}</tr>`;
-  return bas({ baslik: 'Mağaza — Anıl Aksu Studio', aciklama: 'Zen Cinema Pro ve Clean Capture Pro ömür boyu lisansları. Ödeme Polar üzerinden, üyelik gerekmez.', k, aktif: 'magaza', ek: '\n  <script src="/store/bagis.js?v=' + hash('bagis.js') + '" defer></script>' }) + `
+  return bas({ baslik: 'Mağaza — Anıl Aksu Studio', aciklama: 'Zen Cinema Pro ve Clean Capture Pro ömür boyu lisansları. Ödeme Polar üzerinden, üyelik gerekmez.', k, aktif: 'magaza' }) + `
   <main>
     <section class="kahraman orta">
       <div class="kap">
@@ -390,16 +390,6 @@ function magaza() {
       </div>
     </section>
 
-    <section class="bolum cizgili">
-      <div class="dar">
-        <div class="bolum-bas orta" data-belir>
-          <span class="etiket" data-i18n="s2DestekEtiket">${t('s2DestekEtiket')}</span>
-          ${i('s2DestekBaslik', 'h2')}
-          ${i('pwylSubtitle', 'p')}
-        </div>
-        <div id="bagis-kutulari" data-belir><p style="text-align: center;">…</p></div>
-      </div>
-    </section>
 ${LISANS}
   </main>
 ` + son();
@@ -494,7 +484,9 @@ function zen() {
         </div>
         <dl class="ozellik-listesi" data-belir>
           ${[1, 2, 3, 4, 5, 6].map((n) => `<div><dt data-i18n="s2zS${n}">${t('s2zS' + n)}</dt><dd data-i18n="s2zS${n}V">${t('s2zS' + n + 'V')}</dd></div>`).join('\n          ')}
-          <div><dt data-i18n="s2zS7">${t('s2zS7')}</dt><dd><span data-urun="yt_accelerator" data-urun-alan="surum">${surum('yt_accelerator')}</span> · <span data-urun="yt_accelerator" data-urun-alan="guncelleme">${tarih('yt_accelerator')}</span></dd></div>
+          <div><dt data-i18n="s2zS7">${t('s2zS7')}</dt><dd>${urun.yt_accelerator.surum
+            ? `<span data-urun="yt_accelerator" data-urun-alan="surum">${surum('yt_accelerator')}</span> · <span data-urun="yt_accelerator" data-urun-alan="guncelleme">${tarih('yt_accelerator')}</span>`
+            : `<span data-i18n="s2CwsInceleme">${t('s2CwsInceleme')}</span>`}</dd></div>
         </dl>
       </div>
     </section>
@@ -639,17 +631,11 @@ function cc() {
 }
 
 // ---------------- Yasal sayfalar: gövde eski dosyadan alınır, satır içi stiller temizlenir ----------------
-function yasal(html, baslik, k) {
-  const bas0 = html.indexOf('<h1');
-  const son0 = html.lastIndexOf('</div>', html.indexOf('<footer')); // dış kapsayıcının kapanışı
-  let govde = html.slice(bas0, son0).trim();
-  govde = govde.replace(/\s+style="[^"]*"/g, '').replace(/<br>\s*/g, '');
-  govde = govde.replace(/<\/div>\s*$/, ''); // iç kartın kapanışı (dış div zaten dışarıda)
-  govde = govde.replace(/^(<h1[^>]*>[\s\S]*?<\/h1>)\s*<p>([\s\S]*?)<\/p>\s*<div>/, '$1\n<p class="fiyat-not">$2</p>\n<div class="yasal-govde">');
-  // Güncel olmayan ifadeler (07.10.2026): bülten yok; ödeme güvencesi iddiası Polar'ın kendi sayfasına bırakılır.
-  govde = govde.replace('<strong>Polar (3D Secure / Global)</strong> güvencesiyle yürütülür.', '<strong>Polar</strong> tarafından, Polar\'ın kendi ödeme sayfasında yürütülür.')
-    .replace('Kayıtlı e-posta adresinizin bülten listemizden çıkarılması veya lisans kayıtlarınızın silinmesi', 'Kayıtlı e-posta adresinize ve lisans kayıtlarınıza erişim, düzeltme ya da silme');
-  govde = govde.replace(/<h3>/g, '<h2>').replace(/<\/h3>/g, '</h2>').replace('<h1', '<h1 style="font-size: clamp(34px, 4.6vw, 54px); margin-bottom: 10px;"');
+// Yasal gövde tek kaynaktan: D:\extension\legal\*.html (YAYIN-SOZLESMESI.md). Burada yalnız sayfa kabuğu eklenir, metin yamalanmaz.
+function yasal(kaynak, baslik, k) {
+  let govde = kaynak.replace(/<!--[\s\S]*?-->/g, '').trim();
+  if (!govde.startsWith('<h1') || !govde.includes('yasal-govde')) throw new Error('yasal kaynak biçimi beklenen gibi değil');
+  govde = govde.replace('<h1', '<h1 style="font-size: clamp(34px, 4.6vw, 54px); margin-bottom: 10px;"');
   return bas({ baslik, aciklama: baslik + ' — Anıl Aksu Studio', k, aktif: '' }) + `
   <main class="bolum" style="padding-top: clamp(40px, 6vw, 72px);">
     <div class="dar">
@@ -669,11 +655,10 @@ const CIKTI = {
   'zen-cinema-pro/index.html': zen(),
   'screen-pdf-capture/index.html': cc()
 };
-// Yasal sayfalar: kaynak her çalıştırmada yedekten (ilk hâl) okunur ki tekrar üretim bozulmasın.
-const YEDEK = process.env.SITE_YEDEK || 'D:\\toparlama\\karantina\\site-yedek-20261006-225731'; // yasal metinlerin ilk hâli
-if (!YEDEK) throw new Error('SITE_YEDEK ortam değişkeni (orijinal site yedeği) gerekli');
-for (const [y, b, k] of [['privacy/index.html', 'Gizlilik Politikası', '/store/'], ['terms/index.html', 'Kullanım Şartları', '/store/'], ['privacy.html', 'Gizlilik Politikası', '/store/'], ['terms.html', 'Kullanım Şartları', '/store/']]) {
-  CIKTI[y] = yasal(fs.readFileSync(path.join(YEDEK, y), 'utf8'), b, k);
+// Yasal sayfalar: tek kaynak D:\extension\legal (gizlilik.html, kosullar.html).
+const YASAL = process.env.YASAL_KAYNAK || 'D:\\extension\\legal';
+for (const [y, b, dosya] of [['privacy/index.html', 'Gizlilik Politikası', 'gizlilik.html'], ['terms/index.html', 'Kullanım ve Satış Koşulları', 'kosullar.html'], ['privacy.html', 'Gizlilik Politikası', 'gizlilik.html'], ['terms.html', 'Kullanım ve Satış Koşulları', 'kosullar.html']]) {
+  CIKTI[y] = yasal(fs.readFileSync(path.join(YASAL, dosya), 'utf8'), b, '/store/');
 }
 for (const [y, h] of Object.entries(CIKTI)) {
   fs.writeFileSync(path.join(KOK, y), h, 'utf8');
