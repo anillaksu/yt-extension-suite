@@ -403,32 +403,22 @@ async function searchLicenses(event) {
   const inputEl = document.getElementById('recovery-query');
   const resultsEl = document.getElementById('recovery-results');
   if (!resultsEl) return false;
+  // Metinler i18n.js (s2Lk*, 4 dil; kaynak araclar/site-metin.mjs). Renkler site.css değişkenleri.
+  const m = (k, yedek) => (typeof t === 'function' && t(k) !== k ? t(k) : yedek);
+  const kutu = (renk, icerik) => `<div style="border:1px solid ${renk};border-radius:12px;padding:14px;margin-top:12px;text-align:left;font-size:.92rem;line-height:1.55;color:var(--yazi)">${icerik}</div>`;
 
   const rawQuery = inputEl?.value?.trim();
   if (!rawQuery) {
-    resultsEl.innerHTML = `
-      <div style="background: rgba(245, 158, 11, 0.12); border: 1px solid rgba(245, 158, 11, 0.4); border-radius: 10px; padding: 12px; color: #fbbf24; font-size: 0.9rem; margin-top: 10px; text-align: left;">
-        ⚠️ Lütfen Polar'ın satın alma sonrası size verdiği lisans anahtarını giriniz.
-      </div>
-    `;
+    resultsEl.innerHTML = kutu('var(--cizgi2)', m('s2LkBos', 'Polar müşteri portalındaki lisans anahtarını yapıştır.'));
     inputEl?.focus();
     return false;
   }
-
   if (rawQuery.includes('@')) {
-    resultsEl.innerHTML = `
-      <div style="background: rgba(56, 189, 248, 0.12); border: 1px solid rgba(56, 189, 248, 0.4); border-radius: 10px; padding: 14px; color: #7dd3fc; font-size: 0.9rem; margin-top: 10px; text-align: left;">
-        📧 Güvenlik nedeniyle e-posta ile sorgulama yapılmıyor — bu, başkasının lisansının
-        çalınmasını engeller. Lisans anahtarınız satın alma sırasında Polar tarafından
-        e-postanıza gönderildi. Bulamıyorsanız <strong>support@forfor.site</strong> adresine
-        satın alma e-postanızın kime ait olduğunu belirterek yazın.
-      </div>
-    `;
+    resultsEl.innerHTML = kutu('var(--vurgu-koyu)', m('s2LkEposta', 'Güvenlik için e-postayla sorgu yapılmaz. Anahtarın Polar müşteri portalında.'));
     return false;
   }
 
-  resultsEl.innerHTML = '<div style="color: #fbbf24; padding: 14px; font-weight: 600; font-size: 0.95rem;">🔍 Polar üzerinde doğrulanıyor...</div>';
-
+  resultsEl.innerHTML = `<div style="color:var(--sonuk);padding:12px">${m('s2LkBekle', "Polar'da doğrulanıyor…")}</div>`;
   try {
     const resp = await fetch(POLAR_VALIDATE_ENDPOINT, {
       method: 'POST',
@@ -436,25 +426,19 @@ async function searchLicenses(event) {
       body: JSON.stringify({ key: rawQuery, organization_id: POLAR_ORGANIZATION_ID })
     });
     const data = await resp.json();
-
     if (resp.ok && (data.status === 'granted' || data.status === 'active' || data.id)) {
-      resultsEl.innerHTML = `
-        <div style="background: rgba(16, 185, 129, 0.12); border: 1px solid #10b981; border-radius: 12px; padding: 18px; margin: 14px 0; text-align: left;">
-          <div style="color: #10b981; font-weight: 800; font-size: 1rem; margin-bottom: 6px;">✅ Lisans Geçerli & Aktif</div>
-          <div style="color: #38bdf8; font-family: monospace; font-size: 1.1rem; font-weight: 800; margin: 10px 0; word-break: break-all;">${htmlKacis(rawQuery)}</div>
-          <button type="button" data-anahtar="${htmlKacis(rawQuery)}" onclick="copyLicenseKey(this.dataset.anahtar)" style="background: linear-gradient(135deg, #10b981, #059669); border:none; color:#fff; border-radius:8px; padding:8px 18px; font-weight:700; font-size:0.88rem; cursor:pointer;">📋 Lisans Kodunu Kopyala</button>
-        </div>
-      `;
+      resultsEl.innerHTML = kutu('var(--yesil)', `
+        <div style="color:var(--yesil);font-weight:700;margin-bottom:6px">✓ ${m('s2LkGecerli', 'Anahtar geçerli')}</div>
+        <div style="font-family:ui-monospace,monospace;font-weight:700;margin:8px 0;word-break:break-all;color:var(--vurgu-acik)">${htmlKacis(rawQuery)}</div>
+        <button type="button" class="dugme" data-anahtar="${htmlKacis(rawQuery)}" onclick="copyLicenseKey(this.dataset.anahtar)">${m('s2LkKopyala', 'Anahtarı kopyala')}</button>`);
+    } else if (resp.status >= 500 || resp.status === 429) {
+      resultsEl.innerHTML = kutu('var(--cizgi2)', m('s2LkHata', "Polar'a şu an ulaşılamadı. Biraz sonra tekrar dene."));
     } else {
-      resultsEl.innerHTML = `
-        <div style="background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.4); border-radius: 10px; padding: 14px; color: #f87171; font-size: 0.9rem; margin-top: 10px; text-align: left;">
-          ⚠️ <strong>"${htmlKacis(rawQuery)}"</strong> Polar'da geçerli bir lisans anahtarı olarak bulunamadı.<br>
-          <span style="font-size: 0.82rem; color: #94a3b8; margin-top: 4px; display: inline-block;">Anahtarı kopyala-yapıştır ile girdiğinizden emin olun. Sorun devam ederse support@forfor.site.</span>
-        </div>
-      `;
+      resultsEl.innerHTML = kutu('var(--kirmizi)', m('s2LkGecersiz', "Bu anahtar Polar'da geçerli bir lisans olarak bulunamadı."));
     }
   } catch (e) {
-    resultsEl.innerHTML = `<div style="color: #f87171; padding: 12px; text-align: left;">⚠️ Doğrulama sunucusuna ulaşılamadı: ${htmlKacis(e.message)}. Lütfen tekrar deneyiniz.</div>`;
+    console.warn('[lisans-sorgu] Polar isteği başarısız:', e);
+    resultsEl.innerHTML = kutu('var(--cizgi2)', m('s2LkHata', "Polar'a şu an ulaşılamadı. Biraz sonra tekrar dene."));
   }
   return false;
 }
@@ -482,21 +466,24 @@ function odemeBasariPaneli(urunAd) {
   ov.setAttribute('role', 'dialog');
   ov.setAttribute('aria-modal', 'true');
   ov.style.cssText = 'position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(8,7,5,.72);backdrop-filter:blur(6px)';
-  const baslik = urunAd ? htmlKacis(urunAd) : 'Pro';
+  // Metinler i18n.js (s2Od*, 4 dil; kaynak araclar/site-metin.mjs). t() yoksa Türkçe yedek.
+  const m = (k, yedek) => (typeof t === 'function' && t(k) !== k ? t(k) : yedek);
+  const urunSatiri = urunAd ? `<div style="margin:0 0 6px;font-size:13px;color:#F2C987">${htmlKacis(urunAd)}</div>` : '';
   const anaMetin = portal
-    ? 'Ödemen alındı. Pro lisans anahtarın hesabında hazır. Anahtarı görmek için aşağıdaki butona bas, Polar hesabına kayıtlı e-postanla gir; sonra anahtarı eklentinin ayarlarına yapıştır.'
-    : 'Ödemen alındı. Pro lisans anahtarın e-postana gönderildi. Gelmezse birkaç dakika içinde spam/gereksiz klasörünü kontrol et.';
+    ? m('s2OdPortal', 'Pro lisans anahtarın Polar müşteri portalında hazır.')
+    : m('s2OdEposta', 'Pro lisans anahtarın e-postana gönderildi.');
   const cta = portal
-    ? `<a href="${ANAHTAR_TESLIM.portalUrl}" target="_blank" rel="noopener" style="display:inline-block;background:linear-gradient(180deg,#F2C987,#D9A864);color:#17120A;font-weight:700;padding:13px 22px;border-radius:12px;text-decoration:none">Anahtarımı Gör →</a>`
+    ? `<a href="${ANAHTAR_TESLIM.portalUrl}" target="_blank" rel="noopener" style="display:inline-block;background:linear-gradient(180deg,#F2C987,#D9A864);color:#17120A;font-weight:700;padding:13px 22px;border-radius:12px;text-decoration:none">${m('s2OdGor', 'Anahtarımı gör →')}</a>`
     : '';
   ov.innerHTML =
     `<div style="max-width:440px;width:100%;background:#1D1A16;border:1px solid rgba(255,240,220,.15);border-radius:18px;padding:26px 24px;box-shadow:0 20px 60px #0009;color:#EEE8DC;text-align:center;font-family:inherit">
        <div style="font-size:40px;line-height:1;margin-bottom:10px">🎉</div>
-       <h3 style="margin:0 0 6px;font-size:20px">Teşekkürler! ${baslik} aktif</h3>
+       <h3 style="margin:0 0 6px;font-size:20px">${m('s2OdBaslik', 'Teşekkürler! Ödemen alındı')}</h3>
+       ${urunSatiri}
        <p style="margin:0 0 18px;font-size:14.5px;line-height:1.55;color:#A9A092">${anaMetin}</p>
        ${cta}
-       <div style="margin-top:16px;font-size:12.5px;color:#A9A092">Sorun olursa: <a href="mailto:${ANAHTAR_TESLIM.destek}" style="color:#F2C987">${ANAHTAR_TESLIM.destek}</a></div>
-       <button type="button" id="odeme-basari-kapat" style="margin-top:14px;background:transparent;border:1px solid #ffffff33;color:#A9A092;padding:9px 16px;border-radius:10px;cursor:pointer">Kapat</button>
+       <div style="margin-top:16px;font-size:12.5px;color:#A9A092">${m('s2OdSorun', 'Sorun olursa:')} <a href="mailto:${ANAHTAR_TESLIM.destek}" style="color:#F2C987">${ANAHTAR_TESLIM.destek}</a></div>
+       <button type="button" id="odeme-basari-kapat" style="margin-top:14px;background:transparent;border:1px solid #ffffff33;color:#A9A092;padding:9px 16px;border-radius:10px;cursor:pointer">${m('s2Kapat', 'Kapat')}</button>
      </div>`;
   document.body.appendChild(ov);
   const kapat = () => ov.remove();
