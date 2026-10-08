@@ -116,6 +116,9 @@ function updateQty(productId, delta) {
   }
 }
 
+// Fiyatlar yalnız USD: Polar USD tahsil eder, kartın bankası kendi kuruyla çevirir (₺ tutarları kurdan koptuğu için kaldırıldı).
+function usd(n) { return '$' + Number(n).toFixed(2); }
+
 function getCartTotal() {
   const totalTry = cart.reduce((acc, item) => acc + (item.priceTry * item.qty), 0);
   const totalUsd = cart.reduce((acc, item) => acc + (item.priceUsd * item.qty), 0);
@@ -138,7 +141,7 @@ function renderCartDrawer() {
         <a href="../store/" style="display: inline-block; margin-top: 14px; color: var(--accent-cyan); font-weight: 700;">${exploreText}</a>
       </div>
     `;
-    subtotalEl.textContent = '₺0.00';
+    subtotalEl.textContent = '$0.00';
     return;
   }
 
@@ -150,7 +153,7 @@ function renderCartDrawer() {
         <div class="cart-item-icon">${item.icon}</div>
         <div class="cart-item-details">
           <div class="cart-item-title">${itemName}</div>
-          <div class="cart-item-price">₺${item.priceTry} × ${item.qty}</div>
+          <div class="cart-item-price">${usd(item.priceUsd)} × ${item.qty}</div>
         </div>
         <div style="display: flex; align-items: center; gap: 8px;">
           <button onclick="updateQty('${item.id}', -1)" style="background: #302A23; border: none; color: #fff; width: 24px; height: 24px; border-radius: 6px; cursor: pointer;">-</button>
@@ -164,7 +167,7 @@ function renderCartDrawer() {
 
   const totals = getCartTotal();
   drawerBody.innerHTML = html;
-  subtotalEl.textContent = `₺${totals.totalTry} (${totals.totalUsd.toFixed(2)} USD)`;
+  subtotalEl.textContent = usd(totals.totalUsd);
 }
 
 function openCart() {
@@ -249,7 +252,7 @@ function openCheckoutModal(singleProductId = null) {
     // FARKLI ürün varsa submitCheckout sessizce sadece ilkini gönderirdi
     // (aynı bug). Bunun yerine burada uyarıp durduruyoruz.
     if (cart.length > 1) {
-      showToast('⚠️ Sepetinizde birden fazla farklı ürün var. Lütfen tek tek satın alın veya Ultimate Suite Bundle\'ı tercih edin.');
+      showToast('⚠️ Sepetinizde birden fazla farklı ürün var. Lütfen tek tek satın alın veya Zen Cinema + Clean Capture Paketi\'ni tercih edin.');
       openCart();
       return;
     }
@@ -261,13 +264,12 @@ function openCheckoutModal(singleProductId = null) {
   const totalEl = document.getElementById('checkout-total-amount');
 
   if (summaryEl && totalEl) {
-    const totalTry = checkoutItems.reduce((acc, item) => acc + (item.priceTry * item.qty), 0);
     const totalUsd = checkoutItems.reduce((acc, item) => acc + (item.priceUsd * item.qty), 0);
     summaryEl.innerHTML = checkoutItems.map(i => {
       const itemName = getProductName(i.id);
-      return `<div style="display:flex; justify-content:space-between; margin-bottom:6px;"><span>${i.icon} ${itemName} (${i.qty}x)</span><strong>₺${i.priceTry * i.qty}</strong></div>`;
+      return `<div style="display:flex; justify-content:space-between; margin-bottom:6px;"><span>${i.icon} ${itemName} (${i.qty}x)</span><strong>${usd(i.priceUsd * i.qty)}</strong></div>`;
     }).join('');
-    totalEl.textContent = `₺${totalTry} / $${totalUsd.toFixed(2)} USD`;
+    totalEl.textContent = usd(totalUsd);
   }
 
   if (modal) {

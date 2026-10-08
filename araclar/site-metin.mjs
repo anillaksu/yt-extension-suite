@@ -223,6 +223,7 @@ const M = {
   s2LisansYer: ['Lisans anahtarın', 'Your license key', 'Tu clave de licencia', 'Dein Lizenzschlüssel'],
   s2C2: ['Hayır. Hesap ya da şifre gerekmez; yalnız e-posta adresini girersin. Polar portalına bu adresle girip anahtarını görürsün.', 'No. No account or password; just your email. You\'ll use it to open the Polar portal and see your key.', 'No. Sin cuenta ni contraseña; solo tu correo. Con él entras al portal de Polar y ves tu clave.', 'Nein. Kein Konto, kein Passwort – nur deine E-Mail. Damit öffnest du das Polar-Portal und siehst deinen Schlüssel.'],
   s2CheckoutAlt: ['Üyelik gerekmez. Ödemeden sonra anahtarın Polar müşteri portalında hazır olur; eklentinin lisans alanına yapıştırırsın.', 'No account needed. After payment your key is ready in the Polar customer portal; paste it into the extension\'s license field.', 'Sin cuenta. Tras el pago, tu clave está lista en el portal de clientes de Polar; pégala en el campo de licencia de la extensión.', 'Kein Konto nötig. Nach der Zahlung liegt dein Schlüssel im Polar-Kundenportal; füge ihn ins Lizenzfeld der Erweiterung ein.'],
+  s2UsdNot: ['Ödeme ABD doları ile alınır; kartının bankası kendi kuruyla çevirir.', 'Payment is taken in US dollars; your card\'s bank converts at its own rate.', 'El pago se cobra en dólares estadounidenses; tu banco lo convierte a su propio tipo de cambio.', 'Die Zahlung erfolgt in US-Dollar; deine Bank rechnet zu ihrem eigenen Kurs um.'],
   s2Kapat: ['Kapat', 'Close', 'Cerrar', 'Schließen'],
 
   // --- Yasal sayfalar ---

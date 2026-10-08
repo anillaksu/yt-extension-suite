@@ -17,7 +17,8 @@ const TR = ctx.T.tr;
 const t = (k) => { if (TR[k] == null) throw new Error('i18n anahtarı yok: ' + k); return TR[k]; };
 const i = (k, etiket = 'span', ek = '') => `<${etiket} data-i18n="${k}"${ek ? ' ' + ek : ''}>${t(k)}</${etiket}>`;
 const urun = JSON.parse(oku('urunler.json')).urunler;
-const fiyat = (slug) => `₺${urun[slug].fiyat.try} <span class="price-usd">/ $${urun[slug].fiyat.usd.toFixed(2)}</span>`;
+// Yalnız USD (Polar USD tahsil eder; urun-senkron alanIcerigi ile aynı biçim olmalı).
+const fiyat = (slug) => `$${urun[slug].fiyat.usd.toFixed(2)}`;
 const surum = (slug) => `v${urun[slug].surum}`;
 const tarih = (slug) => `<time datetime="${urun[slug].son_guncelleme}">${urun[slug].son_guncelleme}</time>`;
 
@@ -146,7 +147,7 @@ function son() {
     </div>
     <div class="cart-drawer-body" id="cart-drawer-items"></div>
     <div class="cart-drawer-footer">
-      <div class="cart-subtotal-row"><span class="cart-subtotal-label" data-i18n="s2Toplam">${t('s2Toplam')}</span><span class="cart-subtotal-val" id="cart-drawer-subtotal">₺0.00</span></div>
+      <div class="cart-subtotal-row"><span class="cart-subtotal-label" data-i18n="s2Toplam">${t('s2Toplam')}</span><span class="cart-subtotal-val" id="cart-drawer-subtotal">$0.00</span></div>
       <button onclick="openCheckoutModal()" class="btn-primary"><span data-i18n="s2CheckoutBaslik">${t('s2CheckoutBaslik')}</span>${ok}</button>
     </div>
   </aside>
@@ -157,7 +158,8 @@ function son() {
       ${i('s2CheckoutBaslik', 'h3')}
       ${i('s2CheckoutAlt', 'p')}
       <div class="modal-ozet" id="checkout-order-summary"></div>
-      <div class="modal-toplam"><span data-i18n="s2Toplam">${t('s2Toplam')}</span><strong id="checkout-total-amount">₺0.00</strong></div>
+      <div class="modal-toplam"><span data-i18n="s2Toplam">${t('s2Toplam')}</span><strong id="checkout-total-amount">$0.00</strong></div>
+      ${i('s2UsdNot', 'p', 'class="fiyat-not"')}
       <form onsubmit="submitCheckout(event)">
         <div class="form-group">
           <label class="form-label" for="checkout-email" data-i18n="s2EpostaEtiket">${t('s2EpostaEtiket')}</label>
@@ -470,7 +472,7 @@ function zen() {
         <div class="izgara iki" style="max-width: 900px; margin-inline: auto;">
           <article class="kart" data-belir>
             ${i('s2Ucretsiz', 'h3')}
-            <div class="fiyat" style="margin: 6px 0 4px;">₺0</div>
+            <div class="fiyat" style="margin: 6px 0 4px;">$0</div>
             ${tikli(['s2zU1', 's2zU2', 's2zU3'])}
             ${kur('yt_accelerator', 'ikincil', false, 'width: 100%;')}
           </article>
@@ -592,7 +594,7 @@ function cc() {
         <div class="izgara iki" style="max-width: 900px; margin-inline: auto;">
           <article class="kart" data-belir>
             ${i('s2Ucretsiz', 'h3')}
-            <div class="fiyat" style="margin: 6px 0 4px;">₺0</div>
+            <div class="fiyat" style="margin: 6px 0 4px;">$0</div>
             ${tikli(['s2cU1', 's2cU2', 's2cU3', 's2zU3'], true)}
             <a href="${CWS}" target="_blank" rel="noopener" class="dugme ikincil" style="width: 100%;" data-i18n="s2cKur">${t('s2cKur')}</a>
           </article>

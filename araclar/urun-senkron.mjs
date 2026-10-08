@@ -21,7 +21,7 @@ const KAYIT = process.env.URUN_KAYIT || "D:/extension/catalog/registry.json";
 const URUNLER = {
   yt_accelerator: { ad: "Zen Cinema Pro", dizin: process.env.KAYNAK_ZEN || "D:/extension/zen-cinema/extension", fiyatAnahtarlari: ["p1Price", "ytBtnBuy"] },
   clean_capture: { ad: "Clean Full Page & PDF Capture Pro", dizin: process.env.KAYNAK_CAPTURE || "D:/extension/clean-full-page-pdf-capture/extension", fiyatAnahtarlari: ["p2Price", "capBtnBuy"] },
-  bundle_suite: { ad: "Ultimate Extension Suite Bundle Pass", dizin: null, fiyatAnahtarlari: ["bundlePrice"] },
+  bundle_suite: { ad: "Zen Cinema + Clean Capture Bundle", dizin: null, fiyatAnahtarlari: ["bundlePrice"] },
 };
 
 const arg = new Set(process.argv.slice(2));
@@ -60,12 +60,17 @@ function sonDegisiklik(dizin) {
   return new Date(en).toISOString().slice(0, 10);
 }
 
-const fiyatMetni = (f) => `₺${f.try} / $${f.usd.toFixed(2)}`;
-// i18n.js'te dillerin fiyat yazımı farklı: tr "₺499 / $19.99", en/es "$19.99 / ₺499", de "19,99 $ / 499 ₺"
+// Fiyat yalnız USD gösterilir: Polar USD tahsil eder, kartın bankası kendi kuruyla çevirir (08.10.2026 kararı).
+// Elle yazılmış ₺ tutarları kurdan koptuğu için müşteriye yanlış bilgi veriyordu; registry'deki price.try artık gösterilmez.
+const usd = (f) => `$${f.usd.toFixed(2)}`;
+const fiyatMetni = usd;
+// i18n.js'te yazım: tr/en/es "$19.99", de "19,99 $". Eski çift para biçimleri de tanınır ve tek USD'ye çevrilir.
 const FIYAT_BICIMLERI = [
-  [/₺\s?[\d.,]+\s*\/\s*\$\s?[\d.,]+/, (f) => `₺${f.try} / $${f.usd.toFixed(2)}`],
-  [/\$\s?[\d.,]+\s*\/\s*₺\s?[\d.,]+/, (f) => `$${f.usd.toFixed(2)} / ₺${f.try}`],
-  [/[\d.,]+\s?\$\s*\/\s*[\d.,]+\s?₺/, (f) => `${f.usd.toFixed(2).replace(".", ",")} $ / ${f.try} ₺`],
+  [/₺\s?[\d.,]+\s*\/\s*\$\s?[\d.,]+/, usd],
+  [/\$\s?[\d.,]+\s*\/\s*₺\s?[\d.,]+/, usd],
+  [/[\d.,]+\s?\$\s*\/\s*[\d.,]+\s?₺/, (f) => `${f.usd.toFixed(2).replace(".", ",")} $`],
+  [/\$\s?\d[\d.,]*/, usd],
+  [/\d[\d.,]*\s?\$/, (f) => `${f.usd.toFixed(2).replace(".", ",")} $`],
 ];
 function fiyatiDegistir(metin, f) {
   for (const [kalip, bicim] of FIYAT_BICIMLERI) if (kalip.test(metin)) return metin.replace(kalip, bicim(f));
@@ -136,7 +141,7 @@ const ALAN = /(<([a-z0-9]+)\b[^>]*\bdata-urun="([a-z_]+)"[^>]*\bdata-urun-alan="
 function alanIcerigi(v, alan) {
   if (alan === "surum") return v.surum ? `v${v.surum}` : null;
   if (alan === "guncelleme") return v.son_guncelleme ? `<time datetime="${v.son_guncelleme}">${v.son_guncelleme}</time>` : null;
-  if (alan === "fiyat") return `₺${v.fiyat.try} <span class="price-usd">/ $${v.fiyat.usd.toFixed(2)}</span>`;
+  if (alan === "fiyat") return usd(v.fiyat);
   return null;
 }
 // i18n.js 4. adımda yazıldıysa sözlük dosyadan taze okunur

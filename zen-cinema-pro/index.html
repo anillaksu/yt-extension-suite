@@ -11,9 +11,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/store/site.css?v=e516845b">
-  <script src="/store/i18n.js?v=3cfc2bfe" defer></script>
+  <script src="/store/i18n.js?v=d54a851d" defer></script>
   <script src="/store/catalog.js?v=d6466181" defer></script>
-  <script src="/store/cart.js?v=596f935a" defer></script>
+  <script src="/store/cart.js?v=0a536463" defer></script>
   <script src="/store/site.js?v=e24e8521" defer></script>
 </head>
 <body>
@@ -52,7 +52,7 @@
           <h1 data-i18n="s2zBaslik">Videodan <em class="vurgu">kopmadan</em> öğren.</h1>
           <p data-i18n="s2zGiris" class="giris">Zen Cinema, YouTube'un üstüne sakin bir katman ekler: sinema görünümü, saniyeye bağlı notlar, kareler ve o anı anan yorumlar. Hepsi birkaç tuş uzağında.</p>
           <div class="eylemler">
-            <button onclick="openCheckoutModal('yt_accelerator')" class="dugme birincil"><span data-i18n="s2SatinAl">Satın al</span> · <b class="dugme-fiyat" data-urun="yt_accelerator" data-urun-alan="fiyat">₺499 <span class="price-usd">/ $19.99</span></b></button>
+            <button onclick="openCheckoutModal('yt_accelerator')" class="dugme birincil"><span data-i18n="s2SatinAl">Satın al</span> · <b class="dugme-fiyat" data-urun="yt_accelerator" data-urun-alan="fiyat">$19.99</b></button>
             <a href="#kurulum" class="dugme ikincil inceleme"><span data-i18n="s2CwsInceleme">Chrome Web Store incelemesinde</span></a>
           </div>
           <div class="not"><span data-i18n="s2HubNot3">Ücretsiz sürüm süresiz</span><span data-i18n="s2HubNot2">Hesap gerekmez</span><span data-i18n="s2zNot3">Veriler cihazında</span></div>
@@ -109,13 +109,13 @@
         <div class="izgara iki" style="max-width: 900px; margin-inline: auto;">
           <article class="kart" data-belir>
             <h3 data-i18n="s2Ucretsiz">Ücretsiz</h3>
-            <div class="fiyat" style="margin: 6px 0 4px;">₺0</div>
+            <div class="fiyat" style="margin: 6px 0 4px;">$0</div>
             <ul class="tikli"><li data-i18n="s2zU1">Tüm hareketler: sinema, not, kare, altyazı, anlar</li><li data-i18n="s2zU2">3 videoya kadar defter</li><li data-i18n="s2zU3">Süresiz, hesap gerekmez</li></ul>
             <a href="#kurulum" class="dugme ikincil inceleme" style="width: 100%;"><span data-i18n="s2CwsInceleme">Chrome Web Store incelemesinde</span></a>
           </article>
           <article class="kart" data-belir style="border-color: rgba(217,168,100,.4);">
             <h3 data-i18n="s2Pro">Pro</h3>
-            <div class="fiyat" style="margin: 6px 0 4px;" data-urun="yt_accelerator" data-urun-alan="fiyat">₺499 <span class="price-usd">/ $19.99</span></div>
+            <div class="fiyat" style="margin: 6px 0 4px;" data-urun="yt_accelerator" data-urun-alan="fiyat">$19.99</div>
             <ul class="tikli"><li data-i18n="s2zP1">Sınırsız video defteri</li><li data-i18n="s2zP2">Markdown + görseller (ZIP) dışa aktarma</li><li data-i18n="s2zP3">Yazdırılabilir PDF</li><li data-i18n="s2zP4">Ömür boyu güncellemeler</li></ul>
             <div style="display: flex; gap: 8px;"><button onclick="openCheckoutModal('yt_accelerator')" class="dugme birincil" style="flex: 1;" data-i18n="s2SatinAl">Satın al</button><button onclick="addToCart('yt_accelerator')" class="btn-cart-action price-cart" aria-label="Sepete ekle" title="Sepete ekle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.5L21 8H6.2"/><circle cx="10" cy="20" r="1.2"/><circle cx="17" cy="20" r="1.2"/></svg></button></div>
           </article>
@@ -211,7 +211,7 @@
     </div>
     <div class="cart-drawer-body" id="cart-drawer-items"></div>
     <div class="cart-drawer-footer">
-      <div class="cart-subtotal-row"><span class="cart-subtotal-label" data-i18n="s2Toplam">Toplam</span><span class="cart-subtotal-val" id="cart-drawer-subtotal">₺0.00</span></div>
+      <div class="cart-subtotal-row"><span class="cart-subtotal-label" data-i18n="s2Toplam">Toplam</span><span class="cart-subtotal-val" id="cart-drawer-subtotal">$0.00</span></div>
       <button onclick="openCheckoutModal()" class="btn-primary"><span data-i18n="s2CheckoutBaslik">Siparişi tamamla</span><span class="ok" aria-hidden="true">→</span></button>
     </div>
   </aside>
@@ -222,7 +222,8 @@
       <h3 data-i18n="s2CheckoutBaslik">Siparişi tamamla</h3>
       <p data-i18n="s2CheckoutAlt">Üyelik gerekmez. Ödemeden sonra anahtarın Polar müşteri portalında hazır olur; eklentinin lisans alanına yapıştırırsın.</p>
       <div class="modal-ozet" id="checkout-order-summary"></div>
-      <div class="modal-toplam"><span data-i18n="s2Toplam">Toplam</span><strong id="checkout-total-amount">₺0.00</strong></div>
+      <div class="modal-toplam"><span data-i18n="s2Toplam">Toplam</span><strong id="checkout-total-amount">$0.00</strong></div>
+      <p data-i18n="s2UsdNot" class="fiyat-not">Ödeme ABD doları ile alınır; kartının bankası kendi kuruyla çevirir.</p>
       <form onsubmit="submitCheckout(event)">
         <div class="form-group">
           <label class="form-label" for="checkout-email" data-i18n="s2EpostaEtiket">E-posta adresin</label>
