@@ -10,10 +10,10 @@
       "odeme": "https://buy.polar.sh/polar_cl_PSlObXBqmnn6MMU7VbiPUZoOznY7MwkBf85Cv0GvXDv",
       "cws": {
         "url": "https://chromewebstore.google.com/detail/jipjbbmkfedkaaecnfmnfigdjildnmek",
-        "yayinda": false
+        "yayinda": true
       },
-      "surum": null,
-      "son_guncelleme": null,
+      "surum": "1.1.0",
+      "son_guncelleme": "2026-10-08",
       "manifest_surum": "1.1.0",
       "logo": "assets/logos/yt_accelerator.png"
     },
@@ -28,8 +28,8 @@
         "url": "https://chromewebstore.google.com/detail/flmplfhmicdkkanjojbmgjjmmcmfaalh",
         "yayinda": true
       },
-      "surum": "1.0.1",
-      "son_guncelleme": "2026-10-05",
+      "surum": "1.1.0",
+      "son_guncelleme": "2026-10-08",
       "manifest_surum": "1.1.0",
       "logo": "assets/logos/clean_capture.png"
     },
