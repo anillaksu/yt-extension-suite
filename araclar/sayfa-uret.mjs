@@ -383,7 +383,7 @@ function magaza() {
           <details open><summary data-i18n="s2S1">${t('s2S1')}</summary><p data-i18n="s2C1">${t('s2C1')}</p></details>
           <details><summary data-i18n="faqQ2">${t('faqQ2')}</summary><p data-i18n="s2C2">${t('s2C2')}</p></details>
           <details><summary data-i18n="s2S6">${t('s2S6')}</summary><p data-i18n="s2C6">${t('s2C6')}</p></details>
-          <details><summary data-i18n="faqQ3">${t('faqQ3')}</summary><p data-i18n="faqA3">${t('faqA3')}</p></details>
+          <details><summary data-i18n="s2S3">${t('s2S3')}</summary><p data-i18n="s2C3">${t('s2C3')}</p></details>
           <details><summary data-i18n="s2S4">${t('s2S4')}</summary><p data-i18n="s2C4">${t('s2C4')}</p></details>
           <details><summary data-i18n="faqQ5">${t('faqQ5')}</summary><p data-i18n="faqA5">${t('faqA5')}</p></details>
         </div>
