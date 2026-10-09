@@ -14,7 +14,7 @@
       },
       "surum": "1.1.0",
       "son_guncelleme": "2026-10-08",
-      "manifest_surum": "1.1.0",
+      "manifest_surum": "1.1.1",
       "logo": "assets/logos/yt_accelerator.png"
     },
     "clean_capture": {
@@ -30,7 +30,7 @@
       },
       "surum": "1.1.0",
       "son_guncelleme": "2026-10-08",
-      "manifest_surum": "1.1.0",
+      "manifest_surum": "1.1.1",
       "logo": "assets/logos/clean_capture.png"
     },
     "bundle_suite": {
