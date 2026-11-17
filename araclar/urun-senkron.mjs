@@ -1,6 +1,6 @@
 // Mağazayı ürünlerin gerçek durumuyla eşitler (tek kaynak → tüm yüzeyler).
 //   Kaynaklar : catalog/registry.json (fiyat, ad) + her eklentinin kaynak klasörü (manifest sürümü, son değişiklik, logo)
-//   Hedefler  : urunler.json, assets/logos/*.png, catalog.js fiyatları, i18n.js fiyat metinleri (4 dil),
+//   Hedefler  : urunler.json (son_notlar = surumler.json'daki yayındaki sürümün notları), assets/logos/*.png, catalog.js fiyatları, i18n.js fiyat metinleri (4 dil),
 //               sayfalardaki [data-urun][data-urun-alan] alanları, statik metin = i18n tr (metin-esitle)
 // Kullanım:
 //   node araclar/urun-senkron.mjs            → yerelde günceller, ne değiştiğini yazar
@@ -77,7 +77,10 @@ function fiyatiDegistir(metin, f) {
   return metin;
 }
 
-const SURUMLER = JSON.parse(readFileSync(path.join(path.dirname(KAYIT), "surumler.json"), "utf8").replace(/^﻿/, "")).surumler;
+const SURUM_KAYDI = JSON.parse(readFileSync(path.join(path.dirname(KAYIT), "surumler.json"), "utf8").replace(/^﻿/, ""));
+const SURUMLER = SURUM_KAYDI.surumler;
+// Ana sitedeki sürüm notları sayfası (/surumler) kayıttan türer: scripts/surum-motoru.mjs. Bağlantı anchor'ı kayıttaki site_slug.
+const SURUM_NOT_URL = (slug) => `https://forfor.site/surumler/#${SURUM_KAYDI.urunler?.[slug]?.site_slug ?? slug}`;
 const surumKarsilastir = (a, b) => { const x = a.split(".").map(Number), y = b.split(".").map(Number); for (let i = 0; i < 3; i++) if ((x[i] || 0) !== (y[i] || 0)) return (x[i] || 0) - (y[i] || 0); return 0; };
 
 // 1) Gerçeği topla
@@ -98,6 +101,10 @@ for (const [slug, u] of Object.entries(URUNLER)) {
     kayitUrun.surum = yayinda ? yayinda.surum : null;
     kayitUrun.son_guncelleme = yayinda ? yayinda.tarih : null;
     kayitUrun.manifest_surum = m.version;
+    // Sürüm notları (yenilikler): surumler.json yayındaki kaydından; mağaza ve ana site aynı kaynaktan konuşur.
+    kayitUrun.son_notlar = yayinda
+      ? { surum: yayinda.surum, yayin_tarihi: yayinda.yayin_tarihi ?? yayinda.tarih, ozet: yayinda.ozet, degisiklikler: yayinda.degisiklikler ?? [], yazi: yayinda.blog ? `https://forfor.site/yazilar/${yayinda.blog}/` : null, tum_notlar: SURUM_NOT_URL(slug) }
+      : null;
     const ikon = path.join(u.dizin, "icons", "icon128.png");
     if (existsSync(ikon)) {
       const hedef = `assets/logos/${slug}.png`;
@@ -148,6 +155,7 @@ function alanIcerigi(v, alan) {
   if (alan === "surum") return v.surum ? `v${v.surum}` : null;
   if (alan === "guncelleme") return v.son_guncelleme ? `<time datetime="${v.son_guncelleme}">${v.son_guncelleme}</time>` : null;
   if (alan === "fiyat") return usd(v.fiyat);
+  if (alan === "notlar") return v.son_notlar ? `<a href="${v.son_notlar.tum_notlar}">Sürüm notları</a>` : null;
   return null;
 }
 // i18n.js 4. adımda yazıldıysa sözlük dosyadan taze okunur

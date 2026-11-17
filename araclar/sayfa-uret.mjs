@@ -20,6 +20,8 @@ const urun = JSON.parse(oku('urunler.json')).urunler;
 // Yalnız USD (Polar USD tahsil eder; urun-senkron alanIcerigi ile aynı biçim olmalı).
 const fiyat = (slug) => `$${urun[slug].fiyat.usd.toFixed(2)}`;
 const surum = (slug) => `v${urun[slug].surum}`;
+// Sürüm notları bağlantısı: urunler.json son_notlar (kaynak: catalog/surumler.json → ana site /surumler).
+const notlar = (slug) => (urun[slug].son_notlar ? ` · <span data-urun="${slug}" data-urun-alan="notlar"><a href="${urun[slug].son_notlar.tum_notlar}">Sürüm notları</a></span>` : '');
 const tarih = (slug) => `<time datetime="${urun[slug].son_guncelleme}">${urun[slug].son_guncelleme}</time>`;
 
 const IKON = {
@@ -485,7 +487,7 @@ function zen() {
         <dl class="ozellik-listesi" data-belir>
           ${[1, 2, 3, 4, 5, 6].map((n) => `<div><dt data-i18n="s2zS${n}">${t('s2zS' + n)}</dt><dd data-i18n="s2zS${n}V">${t('s2zS' + n + 'V')}</dd></div>`).join('\n          ')}
           <div><dt data-i18n="s2zS7">${t('s2zS7')}</dt><dd>${urun.yt_accelerator.surum
-            ? `<span data-urun="yt_accelerator" data-urun-alan="surum">${surum('yt_accelerator')}</span> · <span data-urun="yt_accelerator" data-urun-alan="guncelleme">${tarih('yt_accelerator')}</span>`
+            ? `<span data-urun="yt_accelerator" data-urun-alan="surum">${surum('yt_accelerator')}</span> · <span data-urun="yt_accelerator" data-urun-alan="guncelleme">${tarih('yt_accelerator')}</span>${notlar('yt_accelerator')}`
             : `<span data-i18n="s2CwsInceleme">${t('s2CwsInceleme')}</span>`}</dd></div>
         </dl>
       </div>
@@ -609,7 +611,7 @@ function cc() {
         </div>
         <dl class="ozellik-listesi" data-belir>
           ${izin.map(([ad, key]) => `<div><dt><code>${ad}</code></dt><dd data-i18n="${key}">${t(key)}</dd></div>`).join('\n          ')}
-          <div><dt data-i18n="s2zS7">${t('s2zS7')}</dt><dd><span data-urun="clean_capture" data-urun-alan="surum">${surum('clean_capture')}</span> · <span data-urun="clean_capture" data-urun-alan="guncelleme">${tarih('clean_capture')}</span></dd></div>
+          <div><dt data-i18n="s2zS7">${t('s2zS7')}</dt><dd><span data-urun="clean_capture" data-urun-alan="surum">${surum('clean_capture')}</span> · <span data-urun="clean_capture" data-urun-alan="guncelleme">${tarih('clean_capture')}</span>${notlar('clean_capture')}</dd></div>
         </dl>
       </div>
     </section>

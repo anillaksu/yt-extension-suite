@@ -15,6 +15,22 @@
       "surum": "1.2.0",
       "son_guncelleme": "2026-10-09",
       "manifest_surum": "1.3.0",
+      "son_notlar": {
+        "surum": "1.2.0",
+        "yayin_tarihi": "2026-10-09",
+        "ozet": {
+          "tr": "Altı renk teması: Kehribar ve Gece ücretsiz, dördü Pro.",
+          "en": "Six color themes: Amber and Night free, four with Pro."
+        },
+        "degisiklikler": [
+          "Renk teması seçici (açılır pencere): Kehribar, Gece, Yosun, Gül, Mor, Grafit",
+          "Kehribar ve Gece ücretsiz; Yosun, Gül, Mor, Grafit Pro (kilitli temaya tıklayınca Pro notu)",
+          "Tema YouTube katmanı, sinema perdesi, defter, hoş geldin ve açılır pencerede anında uygulanır (lib/temalar.js tek kaynak)",
+          "Her temada okunabilirlik ≥ 4.5:1 (WCAG AA), test: scripts/zen-tema-testi.mjs"
+        ],
+        "yazi": "https://forfor.site/yazilar/zen-cinema-1-2-0/",
+        "tum_notlar": "https://forfor.site/surumler/#zen-cinema"
+      },
       "logo": "assets/logos/yt_accelerator.png"
     },
     "clean_capture": {
@@ -31,6 +47,20 @@
       "surum": "1.2.1",
       "son_guncelleme": "2026-11-16",
       "manifest_surum": "1.2.1",
+      "son_notlar": {
+        "surum": "1.2.1",
+        "yayin_tarihi": "2026-11-17",
+        "ozet": {
+          "tr": "Mağaza adı \"Screenshot\" sözcüğünü içerecek şekilde güncellendi; işlev aynı.",
+          "en": "Store name now includes \"Screenshot\"; functionality unchanged."
+        },
+        "degisiklikler": [
+          "Chrome Web Store adı \"Clean Full Page Screenshot & PDF Capture Pro\" oldu (mağaza aramasında bulunurluk); eklentinin işlevi değişmedi",
+          "Eklenti adı 4 dilde (en, tr, es, de) güncellendi; Polar ürün adı değişmedi"
+        ],
+        "yazi": "https://forfor.site/yazilar/clean-capture-1-2-1/",
+        "tum_notlar": "https://forfor.site/surumler/#clean-capture"
+      },
       "logo": "assets/logos/clean_capture.png"
     },
     "bundle_suite": {
